@@ -9,37 +9,42 @@
   <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg0:#f5f8ff;
       --bg1:#eef4ff;
-      --card:#ffffffcc;
-      --cardSolid:#ffffff;
+
+      --card: rgba(255,255,255,.68);
+      --card2: rgba(255,255,255,.78);
       --border: rgba(17,24,39,.08);
+
       --text:#0f172a;
       --muted:#556072;
       --muted2:#6b768a;
 
       --blue:#2b6eea;
       --blueSoft: rgba(43,110,234,.10);
-      --blueSoft2: rgba(43,110,234,.06);
 
       --yellowSoft: rgba(255, 215, 90, .55);
       --yellowText:#473300;
 
-      --shadow: 0 10px 30px rgba(15,23,42,.08);
+      --shadow: 0 10px 28px rgba(15,23,42,.08);
       --shadow2: 0 14px 42px rgba(15,23,42,.10);
 
       --r-xl: 18px;
       --r-lg: 16px;
-      --r-md: 14px;
 
       --icon: rgba(15,23,42,.72);
       --iconSoft: rgba(15,23,42,.55);
 
       --max: 1080px;
+
+      /* NAV (distinct from background) */
+      --navBg: rgba(255,255,255,.78);
+      --navBorder: rgba(17,24,39,.10);
+      --navHighlight: rgba(43,110,234,.18);
     }
 
     *{ box-sizing:border-box; }
@@ -64,51 +69,34 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(245,248,255,.72);
-      border-bottom: 1px solid rgba(17,24,39,.06);
+      background: var(--navBg);
+      border-bottom: 1px solid var(--navBorder);
+      box-shadow: 0 10px 26px rgba(15,23,42,.06);
     }
+    /* subtle highlight line for premium look */
+    .nav::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-1px;
+      height: 2px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--navHighlight) 20%,
+        rgba(43,110,234,.10) 50%,
+        transparent 80%,
+        transparent 100%);
+      pointer-events:none;
+    }
+
     .nav-inner{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 14px 18px;
+      padding: 12px 18px;
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:flex-end; /* left side empty */
       gap: 14px;
-    }
-
-    .nav-left{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .skku-mark{
-      width: 26px;
-      height: 26px;
-      object-fit: contain;
-      flex: 0 0 auto;
-    }
-    .nav-school{
-      display:flex;
-      flex-direction:column;
-      gap: 1px;
-      min-width: 0;
-    }
-    .nav-school .school{
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .nav-school .place{
-      font-size: 12px;
-      color: var(--muted2);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      position: relative;
     }
 
     .tabs{
@@ -123,9 +111,9 @@
       padding: 9px 12px;
       border-radius: 999px;
       border: 1px solid rgba(17,24,39,.10);
-      background: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.70);
       color: rgba(15,23,42,.85);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 13px;
       box-shadow: 0 6px 16px rgba(15,23,42,.06);
       transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
@@ -133,12 +121,12 @@
     .tab:hover{
       transform: translateY(-1px);
       box-shadow: 0 10px 22px rgba(15,23,42,.09);
-      background: rgba(255,255,255,.75);
+      background: rgba(255,255,255,.88);
       text-decoration:none;
     }
     .tab.active{
-      border-color: rgba(43,110,234,.22);
-      background: rgba(43,110,234,.10);
+      border-color: rgba(43,110,234,.24);
+      background: rgba(43,110,234,.11);
       color: rgba(24,63,160,.95);
     }
     .tab svg{ width: 16px; height: 16px; }
@@ -151,8 +139,8 @@
     }
     .grid{
       display:grid;
-      grid-template-columns: 340px 1fr;
-      gap: 28px;
+      grid-template-columns: 300px 1fr; /* compact like older version */
+      gap: 26px;
       align-items:start;
       padding-top: 10px;
     }
@@ -160,18 +148,19 @@
     /* Left profile area */
     .side{
       position: sticky;
-      top: 78px; /* below navbar */
+      top: 78px;
       align-self: start;
     }
 
     .photo{
       width: 100%;
-      max-width: 310px;
+      max-width: 280px;            /* reduce photo size */
       border-radius: var(--r-xl);
       overflow: hidden;
       background: rgba(255,255,255,.55);
       border: 1px solid rgba(17,24,39,.08);
       box-shadow: var(--shadow);
+      margin-left: 0;
     }
     .photo img{
       width: 100%;
@@ -180,40 +169,81 @@
     }
 
     .name{
-      margin: 14px 0 6px;
-      font-size: 30px;
+      margin: 12px 0 6px;
+      font-size: 28px;            /* slightly smaller */
       font-weight: 800;
       letter-spacing: -0.03em;
     }
 
     .side-card{
-      margin-top: 12px;
-      background: rgba(255,255,255,.65);
+      margin-top: 10px;
+      background: var(--card);
       border: 1px solid rgba(17,24,39,.08);
       border-radius: var(--r-xl);
       box-shadow: var(--shadow);
-      padding: 14px 14px;
+      padding: 12px 12px;         /* reduce padding */
     }
 
+    /* School row (moved back to profile card) */
+    .school-row{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(17,24,39,.06);
+      margin-bottom: 10px;
+    }
+    .school-row img{
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+    .school-meta{
+      display:flex;
+      flex-direction:column;
+      gap: 1px;
+      min-width:0;
+    }
+    .school-meta .school{
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .school-meta .place{
+      font-size: 12px;
+      color: var(--muted2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Icon-only contact rows */
     .kv{
       display:grid;
-      grid-template-columns: 22px 1fr;
-      gap: 10px 12px;
+      grid-template-columns: 20px 1fr;
+      gap: 8px 10px;
       align-items:center;
       color: var(--muted);
       font-size: 13px;
+      padding: 2px 4px;
     }
     .kv a{
       color: rgba(24,63,160,.95);
-      font-weight: 600;
+      font-weight: 700;
     }
-    .kv svg{ width: 18px; height: 18px; color: var(--iconSoft); }
+    .kv svg{ width: 16px; height: 16px; color: var(--iconSoft); }
 
     .cat-row{
-      margin-top: 12px;
+      margin-top: 10px;
       display:flex;
       flex-direction:column;
-      gap: 10px;
+      gap: 8px;
     }
     .pill-big{
       display:inline-flex;
@@ -225,7 +255,7 @@
       background: var(--blueSoft);
       border: 1px solid rgba(43,110,234,.18);
       color: rgba(24,63,160,.95);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 12.5px;
       letter-spacing: -0.01em;
     }
@@ -237,9 +267,7 @@
     }
 
     /* Right content */
-    .main{
-      min-width:0;
-    }
+    .main{ min-width:0; }
 
     /* Hero (no box) */
     .hero{
@@ -264,7 +292,7 @@
       border-radius: 999px;
       background: var(--yellowSoft);
       color: var(--yellowText);
-      font-weight: 700;
+      font-weight: 800;
       border: 1px solid rgba(71,51,0,.10);
     }
 
@@ -274,9 +302,7 @@
       margin: 14px 0 16px;
     }
 
-    .section{
-      margin-top: 14px;
-    }
+    .section{ margin-top: 14px; }
     .section-title{
       display:flex;
       align-items:center;
@@ -295,7 +321,7 @@
     }
 
     .card{
-      background: rgba(255,255,255,.66);
+      background: var(--card2);
       border: 1px solid rgba(17,24,39,.08);
       border-radius: var(--r-xl);
       box-shadow: var(--shadow);
@@ -320,6 +346,7 @@
       font-weight: 800;
       letter-spacing: -0.01em;
       font-size: 14px;
+      white-space: nowrap;
     }
     .ri-head .label svg{ width: 18px; height: 18px; color: var(--icon); }
 
@@ -328,6 +355,7 @@
       flex-wrap:wrap;
       gap: 8px;
       margin-left: auto;
+      justify-content:flex-end;
     }
     .pill-small{
       display:inline-flex;
@@ -338,7 +366,7 @@
       background: transparent;
       border: 1px solid rgba(43,110,234,.20);
       color: rgba(24,63,160,.90);
-      font-weight: 600;
+      font-weight: 650;
       font-size: 12px;
       letter-spacing: -0.01em;
     }
@@ -361,7 +389,6 @@
     }
     .proj-title svg{ width: 18px; height: 18px; color: var(--icon); }
 
-    /* Footer */
     footer{
       margin-top: 20px;
       display:flex;
@@ -397,18 +424,9 @@
   <!-- NAV -->
   <div class="nav">
     <div class="nav-inner">
-      <div class="nav-left">
-        <!-- Put skku-logo.png in repo root -->
-        <img class="skku-mark" src="skku-logo.png" alt="Sungkyunkwan University logo" />
-        <div class="nav-school">
-          <div class="school">Sungkyunkwan University</div>
-          <div class="place">Seoul, Republic of Korea</div>
-        </div>
-      </div>
-
+      <!-- left side intentionally empty -->
       <div class="tabs" role="navigation" aria-label="Primary">
         <a class="tab" id="tab-home" href="#home" aria-label="Home">
-          <!-- home icon -->
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M3 10.6 12 3l9 7.6v9.4a1.6 1.6 0 0 1-1.6 1.6H4.6A1.6 1.6 0 0 1 3 20V10.6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
             <path d="M9.2 21V14.3a1.4 1.4 0 0 1 1.4-1.4h2.8a1.4 1.4 0 0 1 1.4 1.4V21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -416,7 +434,6 @@
           Home
         </a>
         <a class="tab" id="tab-about" href="#about" aria-label="About">
-          <!-- user icon -->
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M20 21a7.2 7.2 0 0 0-16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Z" stroke="currentColor" stroke-width="1.8"/>
@@ -432,22 +449,28 @@
       <!-- LEFT -->
       <aside class="side reveal" data-reveal>
         <div class="photo">
-          <!-- Put profile.jpg(or png) in repo root -->
           <img src="profile.jpg" alt="Profile photo of Minseok Kim">
         </div>
 
         <div class="name">Minseok Kim</div>
 
         <div class="side-card">
+          <!-- moved back here -->
+          <div class="school-row">
+            <img src="skku-logo.png" alt="Sungkyunkwan University logo" />
+            <div class="school-meta">
+              <div class="school">Sungkyunkwan University</div>
+              <div class="place">Seoul, Republic of Korea</div>
+            </div>
+          </div>
+
           <div class="kv" aria-label="contact">
-            <!-- mail -->
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4.5 7.5h15v9a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
               <path d="m5 8 7 6 7-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
 
-            <!-- lab -->
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M10 3v6.2l-4.4 7.6A3.2 3.2 0 0 0 8.4 22h7.2a3.2 3.2 0 0 0 2.8-5.2L14 9.2V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M8.2 15.2h7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -483,10 +506,9 @@
 
           <div class="divider"></div>
 
-          <!-- Research Interests -->
           <div class="section">
             <h3 class="section-title">
-              <!-- AI brain+gear-ish icon (simple, consistent stroke) -->
+              <!-- AI brain+gear-ish icon -->
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M9.2 4.8a3 3 0 0 1 5.6 0 2.6 2.6 0 0 1 2.6 3.1 2.6 2.6 0 0 1 1.4 4.2 2.6 2.6 0 0 1-1.4 4.2 2.6 2.6 0 0 1-2.6 3.1H9.2a2.6 2.6 0 0 1-2.6-3.1 2.6 2.6 0 0 1-1.4-4.2 2.6 2.6 0 0 1 1.4-4.2 2.6 2.6 0 0 1 2.6-3.1Z"
                       stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -510,7 +532,7 @@
                     Multimodal
                   </div>
 
-                  <div class="pill-row" aria-label="multimodal subareas">
+                  <div class="pill-row">
                     <span class="pill-small">
                       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M10 6h10v10H10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -535,14 +557,13 @@
                     </span>
                   </div>
                 </div>
-
                 <p class="desc">Learning and reasoning across modalities for robust, practical systems.</p>
               </div>
 
               <div class="card reveal" data-reveal>
                 <div class="ri-head">
                   <div class="label">
-                    <!-- shield + (more square-ish) -->
+                    <!-- squarer shield + -->
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                       <path d="M12 3.8 19 6.8v6.1c0 4.7-3 7.6-7 9.2-4-1.6-7-4.5-7-9.2V6.8l7-3Z"
                             stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -552,7 +573,7 @@
                     Digital Therapeutics
                   </div>
 
-                  <div class="pill-row" aria-label="digital therapeutics domains">
+                  <div class="pill-row">
                     <span class="pill-small">
                       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -576,13 +597,11 @@
                     </span>
                   </div>
                 </div>
-
                 <p class="desc">Human-centered AI for clinically meaningful and safe applications.</p>
               </div>
             </div>
           </div>
 
-          <!-- Projects -->
           <div class="section" style="margin-top:18px;">
             <h3 class="section-title">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -625,7 +644,6 @@
         <section id="about" class="reveal" data-reveal style="display:none;">
           <div class="section">
             <h3 class="section-title">
-              <!-- graduation cap -->
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M2.6 9.5 12 4.8l9.4 4.7L12 14.2 2.6 9.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
                 <path d="M6.5 11.4V16c0 1.7 2.6 3.2 5.5 3.2S17.5 17.7 17.5 16v-4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -638,7 +656,6 @@
               <!-- M.S. first -->
               <div class="card reveal" data-reveal>
                 <div class="proj-title">
-                  <!-- university/building icon -->
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
                     <path d="M6 20V9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -673,7 +690,6 @@
 
           <div class="section">
             <h3 class="section-title">
-              <!-- briefcase -->
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M9 7V5.8A1.8 1.8 0 0 1 10.8 4h2.4A1.8 1.8 0 0 1 15 5.8V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
                 <path d="M5 7h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -740,7 +756,6 @@
       tabHome.classList.toggle("active", !isAbout);
       tabAbout.classList.toggle("active", isAbout);
       window.scrollTo({ top: 0, behavior: "instant" });
-      // re-run reveals for the new page
       requestAnimationFrame(() => triggerReveal(true));
     }
 
@@ -753,7 +768,7 @@
     function triggerReveal(force=false){
       const vh = window.innerHeight || document.documentElement.clientHeight;
       targets().forEach((el, idx) => {
-        if (el.offsetParent === null) return; // hidden (other page)
+        if (el.offsetParent === null) return;
         const rect = el.getBoundingClientRect();
         const inView = rect.top < vh - 60;
         if (inView || force){
