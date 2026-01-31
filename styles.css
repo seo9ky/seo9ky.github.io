@@ -158,7 +158,7 @@ a:hover{ text-decoration:underline; }
   align-items:center;
   gap:10px;
   font-size:18px;
-  font-weight:800;
+  font-weight:700;
   letter-spacing:-0.02em;
   margin:0 0 12px;
 }
@@ -185,13 +185,12 @@ a:hover{ text-decoration:underline; }
   width:100%;
   height:auto;
   display:block;
-  /* No extra border/frame */
 }
 
 .profile .name{
   margin:18px 0 10px;
-  font-size:30px;
-  font-weight:800;
+  font-size:32px;
+  font-weight:700;
   letter-spacing:-0.03em;
   text-align:center;
 }
@@ -219,12 +218,12 @@ a:hover{ text-decoration:underline; }
 }
 .contact-row a{
   color: var(--accent);
-  font-weight:700;
+  font-weight:600;
   text-decoration:none;
 }
 .contact-row a:hover{ text-decoration:underline; }
 
-/* School block: clean, no external-link icon */
+/* School block */
 .school-link{
   display:flex;
   gap:12px;
@@ -242,7 +241,7 @@ a:hover{ text-decoration:underline; }
   text-decoration:none;
 }
 .school-logo{
-  width:44px;            /* 요청: 텍스트 높이에 맞춰 더 키움 */
+  width:44px;
   height:44px;
   border-radius: 12px;
   background: rgba(255,255,255,0.8);
@@ -264,7 +263,7 @@ a:hover{ text-decoration:underline; }
   line-height:1.18;
 }
 .school-meta .uni{
-  font-weight:900;
+  font-weight:700;
   font-size:13px;
   color: rgba(15,23,42,0.92);
 }
@@ -446,13 +445,4 @@ a:hover{ text-decoration:underline; }
   color: var(--muted);
   font-size:13px;
   line-height:1.45;
-}
-
-/* footer */
-.footer{
-  display:flex;
-  justify-content:space-between;
-  margin-top:14px;
-  color: var(--muted2);
-  font-size:12px;
 }
