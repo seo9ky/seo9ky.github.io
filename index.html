@@ -41,10 +41,10 @@
       align-self: flex-start;
     }
 
-    /* Profile photo (3:4 ratio, rounded-rectangle card feel) */
+    /* Profile photo (4:5 ratio, crop less body) */
     .avatar{
       width: 210px;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 4 / 5;
       height: auto;
       border-radius: 16px;
       object-fit: cover;
@@ -58,14 +58,10 @@
 
     .name{
       font-size: 28px;
-      margin: 0 0 6px;
+      margin: 0 0 10px;
       letter-spacing:-0.2px;
     }
-    .tagline{
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+
     .card{
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -112,7 +108,8 @@
     li{ margin: 7px 0; }
     .item-title{ font-weight: 650; }
     .item-meta{ color: var(--muted); font-size: 14px; margin-top: 2px; }
-    .badge-row{ margin-top: 8px; display:flex; flex-wrap:wrap; gap:8px; }
+
+    .badge-row{ margin-top: 10px; display:flex; flex-wrap:wrap; gap:8px; }
     .badge{
       font-size: 12px;
       padding: 4px 10px;
@@ -151,7 +148,6 @@
         <img class="avatar" src="./profile.jpg" alt="Profile photo" />
 
         <h1 class="name">Minseok Kim</h1>
-        <p class="tagline">Multimodal Learning · Digital Therapeutics</p>
 
         <div class="card">
           <div class="kv">
@@ -180,7 +176,7 @@
           <h2>Hello!</h2>
           <p>
             I’m <b>Minseok Kim</b>, a researcher interested in building practical, human-centered AI systems.
-            My current focus is on <b>Multimodal Learning</b> and <b>Digital Therapeutics</b>.
+            My current focus is on <b>Multimodal</b> and <b>Digital Therapeutics</b>.
           </p>
           <p>
             If you’d like to collaborate or chat, feel free to reach out via email.
@@ -192,7 +188,7 @@
           <h3>Research Interests</h3>
           <ul>
             <li>
-              <span class="item-title">Multimodal Learning</span>
+              <span class="item-title">Multimodal</span>
               <div class="item-meta">Vision–language reasoning, multimodal representation, robust evaluation</div>
             </li>
             <li>
