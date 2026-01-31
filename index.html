@@ -186,33 +186,22 @@
       font-weight: 700;
     }
 
-    /* School logo block */
-    .school-row{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      margin: 0 0 14px;
-      color: var(--text-muted);
-      font-size: 13px;
+    /* Watermark logo inside the info card */
+    .info-card{
+      position: relative;
+      overflow: hidden; /* ensures watermark respects rounded corners */
     }
-    .school-logo{
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: #fff;
-      display:block;
-      object-fit: contain;
-      padding: 4px;
-      box-shadow: 0 6px 18px rgba(17,24,39,0.06);
-    }
-    .school-text{
-      line-height: 1.25;
-    }
-    .school-text b{
-      color: var(--text);
-      font-weight: 700;
-      letter-spacing: -0.01em;
+    .watermark{
+      position: absolute;
+      top: -10px;
+      right: -12px;
+      width: 92px;
+      height: 92px;
+      opacity: 0.09;               /* "은은하게" */
+      filter: grayscale(100%);
+      transform: rotate(10deg);
+      pointer-events: none;
+      user-select: none;
     }
 
     .kv{
@@ -221,6 +210,8 @@
       gap: 9px 12px;
       font-size: 14px;
       color: var(--text-muted);
+      position: relative;
+      z-index: 1; /* keep text above watermark */
     }
 
     .kv b{
@@ -233,6 +224,8 @@
       display:flex;
       flex-wrap:wrap;
       gap: 8px;
+      position: relative;
+      z-index: 1;
     }
 
     .pill{
@@ -394,6 +387,15 @@
       .sidebar{ width:auto; flex: 1 1 auto; position: static; top: auto; }
       .avatar{ width: 190px; }
       .brand .brand-sub{ display:none; }
+
+      /* slightly smaller watermark on mobile */
+      .watermark{
+        width: 78px;
+        height: 78px;
+        top: -8px;
+        right: -10px;
+        opacity: 0.08;
+      }
     }
   </style>
 </head>
@@ -421,16 +423,10 @@
 
         <h1 class="name reveal">Minseok Kim</h1>
 
-        <!-- School logo added here -->
-        <div class="school-row reveal">
-          <img class="school-logo" src="./skku-logo.jpg" alt="Sungkyunkwan University logo" />
-          <div class="school-text">
-            <b>Sungkyunkwan University</b><br>
-            Seoul, Republic of Korea
-          </div>
-        </div>
+        <div class="card card-pad info-card reveal">
+          <!-- Watermark logo (logo file must exist in repo) -->
+          <img class="watermark" src="./skku-logo.jpg" alt="SKKU logo watermark" />
 
-        <div class="card card-pad reveal">
           <div class="kv">
             <b>Email</b>
             <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
