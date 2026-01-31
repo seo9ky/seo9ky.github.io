@@ -1,141 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minseok Kim — About</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minseok Kim — About</title>
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Standard icon set -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
+</head>
 
-    <!-- Font Awesome (Standard icon set) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      referrerpolicy="no-referrer"
-    />
+<body data-page="about">
+  <div class="bg"></div>
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+  <div class="shell">
+    <header class="topbar" aria-label="Top navigation">
+      <nav class="navpill">
+        <a class="navbtn" href="index.html">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+        <a class="navbtn is-active" href="about.html">
+          <i class="fa-regular fa-user"></i>
+          <span>About</span>
+        </a>
+      </nav>
+    </header>
 
-  <body>
-    <div class="page">
-      <header class="topbar">
-        <nav class="nav" aria-label="Primary navigation">
-          <a class="nav-btn" href="index.html">
-            <i class="fa-solid fa-house" aria-hidden="true"></i>
-            <span>Home</span>
-          </a>
-          <a class="nav-btn active" href="about.html" aria-current="page">
-            <i class="fa-regular fa-user" aria-hidden="true"></i>
-            <span>About</span>
-          </a>
-        </nav>
-      </header>
+    <main class="layout">
+      <!-- Left: Profile card -->
+      <aside class="profile-wrap">
+        <section class="profile-card" id="profileCard" aria-label="Profile card">
+          <div class="profile-photo">
+            <img src="assets/profile.jpg" alt="Profile photo of Minseok Kim" />
+          </div>
 
-      <div class="layout">
-        <aside class="sidebar" aria-label="Profile sidebar">
-          <div class="profile-card">
-            <div class="profile-photo" aria-label="Profile photo">
-              <img src="assets/profile.jpg" alt="Minseok Kim profile photo" />
-            </div>
+          <h1 class="profile-name">Minseok Kim</h1>
 
-            <div class="profile-name">Minseok Kim</div>
+          <div class="profile-links">
+            <a class="plink" href="mailto:seo9ky@g.skku.edu">
+              <i class="fa-regular fa-envelope"></i>
+              <span>seo9ky@g.skku.edu</span>
+            </a>
 
-            <div class="profile-links" aria-label="Contact links">
-              <a class="profile-link" href="mailto:seo9ky@g.skku.edu">
-                <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-                <span>seo9ky@g.skku.edu</span>
-              </a>
-
-              <a class="profile-link" href="https://dsail.skku.edu" target="_blank" rel="noopener">
-                <i class="fa-solid fa-globe" aria-hidden="true"></i>
-                <span>DSAIL@SKKU</span>
-              </a>
-            </div>
-
-            <a
-              class="skku-link"
-              href="https://www.skku.edu/skku/index.do"
-              target="_blank"
-              rel="noopener"
-              aria-label="Open Sungkyunkwan University website"
-              title="Open SKKU website"
-            >
-              <div class="skku-mark" aria-hidden="true">
-                <img src="assets/skku-logo.png" alt="" />
-              </div>
-
-              <div class="skku-meta">
-                <div class="skku-name">Sungkyunkwan University</div>
-                <div class="skku-loc">Seoul, Republic of Korea</div>
-              </div>
-
-              <i class="fa-solid fa-arrow-up-right-from-square skku-external" aria-hidden="true"></i>
+            <a class="plink" href="https://dsail.skku.edu" target="_blank" rel="noopener noreferrer">
+              <!-- Use the same DSAIL icon as Experiences -->
+              <i class="fa-solid fa-microscope"></i>
+              <span>DSAIL@SKKU</span>
             </a>
           </div>
-        </aside>
 
-        <main class="content">
-          <section class="section" aria-label="Education">
-            <div class="section-head">
-              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
-              <h2 class="section-title">Education</h2>
+          <a class="school-link" id="schoolLink" href="https://www.skku.edu/skku/index.do" target="_blank" rel="noopener noreferrer" aria-label="Sungkyunkwan University link">
+            <img class="school-logo" src="assets/skku-logo.png" alt="Sungkyunkwan University logo" />
+            <div class="school-meta">
+              <div class="school-name">Sungkyunkwan University</div>
+              <div class="school-loc">Seoul, Republic of Korea</div>
             </div>
+          </a>
+        </section>
+      </aside>
 
-            <div class="card">
-              <!-- Education content kept as-is -->
-              <div class="edu-item">
+      <!-- Right: Content -->
+      <section class="content" aria-label="Main content">
+        <!-- Education (Do not modify text content) -->
+        <section class="section">
+          <div class="section-title">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>Education</h3>
+          </div>
+
+          <div class="card">
+            <div class="edu-row">
+              <div class="edu-ico"><i class="fa-solid fa-building-columns"></i></div>
+              <div class="edu-body">
                 <div class="edu-title">Sungkyunkwan University</div>
                 <div class="edu-sub">Seoul, Republic of Korea</div>
                 <div class="edu-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</div>
               </div>
+            </div>
 
-              <div class="divider" role="separator" aria-hidden="true"></div>
+            <div class="item-divider"></div>
 
-              <div class="edu-item">
+            <div class="edu-row">
+              <div class="edu-ico"><i class="fa-solid fa-building-columns"></i></div>
+              <div class="edu-body">
                 <div class="edu-title">Sungkyunkwan University</div>
                 <div class="edu-sub">Seoul, Republic of Korea</div>
                 <div class="edu-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section class="section" aria-label="Experiences">
-            <div class="section-head">
-              <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
-              <h2 class="section-title">Experiences</h2>
-            </div>
+        <!-- Experiences -->
+        <section class="section">
+          <div class="section-title">
+            <i class="fa-solid fa-briefcase"></i>
+            <h3>Experiences</h3>
+          </div>
 
-            <div class="card">
-              <div class="item">
-                <div class="item-head">
-                  <div class="item-icon" aria-hidden="true">
-                    <i class="fa-solid fa-building-columns"></i>
-                  </div>
-                  <div class="item-title">DSAIL@SKKU</div>
+          <div class="card">
+            <div class="exp-row">
+              <div class="exp-ico">
+                <!-- Same as profile DSAIL icon -->
+                <i class="fa-solid fa-microscope"></i>
+              </div>
+              <div class="exp-body">
+                <div class="exp-title">DSAIL@SKKU</div>
+                <div class="exp-meta">Intern · Jun. 2025 – Feb. 2026</div>
+                <div class="exp-text">
+                  Worked on ML and DL research projects, focusing on model development, evaluation, and practical experimentation.
                 </div>
-
-                <div class="meta-line">Intern · Jun. 2025 – Feb. 2026</div>
-
-                <p class="item-desc">
-                  Worked on ML/DL research projects, focusing on model development, evaluation, and practical experimentation.
-                </p>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <footer class="footer" aria-label="Footer">
-            <div class="footer-left">© Minseok Kim</div>
-            <div class="footer-right">Last updated: February 2026</div>
-          </footer>
-        </main>
-      </div>
-    </div>
-  </body>
+        <footer class="footer">
+          <div class="footer-left">© Minseok Kim</div>
+          <div class="footer-right">Last updated: February 2026</div>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function syncProfileCardWidth() {
+      const card = document.getElementById("profileCard");
+      const link = document.getElementById("schoolLink");
+      if (!card || !link) return;
+
+      card.style.width = "auto";
+
+      const prevDisplay = link.style.display;
+      const prevWidth = link.style.width;
+
+      link.style.display = "inline-flex";
+      link.style.width = "max-content";
+
+      const contentW = Math.ceil(link.scrollWidth);
+
+      link.style.display = prevDisplay;
+      link.style.width = prevWidth;
+
+      const horizontalPadding = 28;
+      const target = contentW + horizontalPadding;
+
+      card.style.width = target + "px";
+    }
+
+    window.addEventListener("load", () => {
+      syncProfileCardWidth();
+    });
+
+    window.addEventListener("resize", () => {
+      syncProfileCardWidth();
+    });
+  </script>
+</body>
 </html>
