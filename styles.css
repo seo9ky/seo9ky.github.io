@@ -188,19 +188,19 @@ a:hover{ text-decoration:underline; }
 }
 
 .profile .name{
-  margin:20px 0 20px;
+  margin:20px 0 18px;
   font-size:32px;
   font-weight:700;
   letter-spacing:-0.03em;
   text-align:left;
-  padding: 0 2px;
+  padding: 0 4px;
 }
 
 .profile .contacts{
   display:flex;
   flex-direction:column;
   gap:10px;
-  margin-top:20px;
+  margin-top:18px;
   padding:0 2px;
 }
 
@@ -209,7 +209,7 @@ a:hover{ text-decoration:underline; }
   align-items:center;
   gap:10px;
   color: var(--muted2);
-  font-weight:600;
+  font-weight:700;
   font-size:14px;
 }
 .contact-row svg{
@@ -219,7 +219,7 @@ a:hover{ text-decoration:underline; }
 }
 .contact-row a{
   color: var(--muted2);
-  font-weight:600;
+  font-weight:700;
   text-decoration:none;
 }
 .contact-row a:hover{ text-decoration:underline; }
@@ -265,7 +265,7 @@ a:hover{ text-decoration:underline; }
 }
 .school-meta .uni{
   font-weight:700;
-  font-size:14px;
+  font-size:13px;
   color: rgba(15,23,42,0.92);
 }
 .school-meta .loc{
