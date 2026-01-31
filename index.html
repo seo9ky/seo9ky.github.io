@@ -98,7 +98,7 @@
       gap: 14px;
     }
 
-    /* Left side of nav (to reduce "empty top-left") */
+    /* Left side of nav */
     .nav-left{
       display:flex;
       align-items:center;
@@ -307,7 +307,7 @@
       gap: 8px;
       padding: 6px 12px;
       border-radius: var(--r-pill);
-      background: var(--primary-bg);         /* filled */
+      background: var(--primary-bg);
       border: 1px solid var(--primary-border);
       color: var(--primary-600);
       font-size: 12.5px;
@@ -327,7 +327,7 @@
       min-width: 0;
     }
 
-    /* Intro: no box (minimal) */
+    /* Intro: no box */
     .intro{
       margin-bottom: 18px;
     }
@@ -348,7 +348,7 @@
     }
     .intro p:last-child{ margin-bottom: 0; }
 
-    /* More natural, less "boxed" emphasis */
+    /* Natural emphasis */
     .key{
       display:inline-block;
       padding: 1px 6px;
@@ -417,7 +417,7 @@
       font-size: 13.5px;
     }
 
-    /* Sub-category chips (RIGHT): outline + lighter weight */
+    /* Sub-category chips (RIGHT) */
     .chip{
       font-size: 11.5px;
       padding: 4px 9px;
@@ -449,7 +449,7 @@
       flex-wrap:wrap;
     }
 
-    /* Scroll reveal (subtle) */
+    /* Scroll reveal */
     .reveal{
       opacity: 0;
       transform: translateY(10px);
@@ -479,7 +479,7 @@
 </head>
 
 <body>
-  <!-- SVG sprite (inline icons, no external libs) -->
+  <!-- SVG sprite -->
   <svg width="0" height="0" style="position:absolute; left:-9999px; top:-9999px" aria-hidden="true" focusable="false">
     <defs>
       <!-- Home -->
@@ -500,27 +500,47 @@
           d="M12 2l1.2 4.3L17.5 7.5l-4.3 1.2L12 13l-1.2-4.3L6.5 7.5l4.3-1.2zM19 12l.9 3.2 3.1.8-3.1.9L19 20l-.9-3.1-3.1-.9 3.1-.8z"/>
       </symbol>
 
-      <!-- Research icon (flask) -->
-      <symbol id="i-flask" viewBox="0 0 24 24">
+      <!-- Mail -->
+      <symbol id="i-mail" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M10 2h4"/>
+          d="M4 6h16v12H4z"/>
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M10 2v6l-5.3 9.1A3 3 0 0 0 7.3 22h9.4a3 3 0 0 0 2.6-4.9L14 8V2"/>
-        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M8 14h8"/>
+          d="M4 7l8 6 8-6"/>
       </symbol>
 
-      <!-- Health icon (hospital cross) -->
-      <symbol id="i-hospital" viewBox="0 0 24 24">
+      <!-- Link -->
+      <symbol id="i-link" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M5 3h14a2 2 0 0 1 2 2v16H3V5a2 2 0 0 1 2-2z"/>
+          d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"/>
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M12 7v8"/>
-        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M8 11h8"/>
+          d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/>
       </symbol>
 
-      <!-- Graduation cap -->
+      <!-- Folder -->
+      <symbol id="i-folder" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 6h6l2 2h10v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      </symbol>
+
+      <!-- Briefcase -->
+      <symbol id="i-briefcase" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 7h18v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 12h18"/>
+      </symbol>
+
+      <!-- Tag (for chips) -->
+      <symbol id="i-tag" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M20 13l-7 7-11-11V2h7z"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M7.5 7.5h.01"/>
+      </symbol>
+
+      <!-- Education cap -->
       <symbol id="i-cap" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           d="M12 3L2 8l10 5 10-5z"/>
@@ -540,44 +560,37 @@
           d="M3 20h18"/>
       </symbol>
 
-      <!-- Mail -->
-      <symbol id="i-mail" viewBox="0 0 24 24">
+      <!-- Multimodal (layered) -->
+      <symbol id="i-layers" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M4 6h16v12H4z"/>
+          d="M12 3l9 5-9 5-9-5z"/>
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M4 7l8 6 8-6"/>
+          d="M3 12l9 5 9-5"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 16l9 5 9-5"/>
       </symbol>
 
-      <!-- Link -->
-      <symbol id="i-link" viewBox="0 0 24 24">
+      <!-- Digital Therapeutics (shield +) -->
+      <symbol id="i-shield-plus" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"/>
+          d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6z"/>
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/>
+          d="M12 9v6"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M9 12h6"/>
       </symbol>
 
-      <!-- Briefcase -->
-      <symbol id="i-briefcase" viewBox="0 0 24 24">
+      <!-- Research Interests (AI brain + gear) -->
+      <symbol id="i-ai-brain-gear" viewBox="0 0 24 24">
+        <!-- Brain outline -->
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"/>
+          d="M9 4a3 3 0 0 0-3 3v.2A3 3 0 0 0 4 10v1a3 3 0 0 0 2 2.8V16a3 3 0 0 0 3 3h2"/>
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M3 7h18v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          d="M15 4a3 3 0 0 1 3 3v.2A3 3 0 0 1 20 10v1a3 3 0 0 1-2 2.8V16a3 3 0 0 1-3 3h-2"/>
+        <!-- Simple "gear" at upper-right -->
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M3 12h18"/>
-      </symbol>
-
-      <!-- Folder -->
-      <symbol id="i-folder" viewBox="0 0 24 24">
-        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M3 6h6l2 2h10v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-      </symbol>
-
-      <!-- Tiny "tag" icon for chips -->
-      <symbol id="i-tag" viewBox="0 0 24 24">
-        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M20 13l-7 7-11-11V2h7z"/>
-        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M7.5 7.5h.01"/>
+          d="M18.2 6.8l.6-.4.9.9-.4.6.1.7.7.2.2 1.2-.7.2-.3.6.4.6-.9.9-.6-.4-.6.3-.2.7-1.2.2-.2-.7-.6-.3-.6.4-.9-.9.4-.6-.3-.6-.7-.2-.2-1.2.7-.2.3-.6-.4-.6.9-.9.6.4.6-.3.2-.7 1.2-.2.2.7z"/>
+        <circle cx="18.2" cy="9.0" r="1.0" fill="none" stroke="currentColor" stroke-width="2"/>
       </symbol>
     </defs>
   </svg>
@@ -667,14 +680,14 @@
 
           <section id="research-interests" class="reveal">
             <div class="section-title">
-              <svg class="icon" aria-hidden="true"><use href="#i-flask"></use></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-ai-brain-gear"></use></svg>
               Research Interests
             </div>
 
             <div class="list">
               <div class="item reveal">
                 <div class="item-title">
-                  <svg class="title-icon" aria-hidden="true"><use href="#i-flask"></use></svg>
+                  <svg class="title-icon" aria-hidden="true"><use href="#i-layers"></use></svg>
                   Multimodal
                   <span class="chip"><svg class="mini" aria-hidden="true"><use href="#i-tag"></use></svg>Natural Language Processing</span>
                   <span class="chip"><svg class="mini" aria-hidden="true"><use href="#i-tag"></use></svg>Computer Vision</span>
@@ -685,7 +698,7 @@
 
               <div class="item reveal">
                 <div class="item-title">
-                  <svg class="title-icon" aria-hidden="true"><use href="#i-hospital"></use></svg>
+                  <svg class="title-icon" aria-hidden="true"><use href="#i-shield-plus"></use></svg>
                   Digital Therapeutics
                   <span class="chip"><svg class="mini" aria-hidden="true"><use href="#i-tag"></use></svg>Mental Health</span>
                   <span class="chip"><svg class="mini" aria-hidden="true"><use href="#i-tag"></use></svg>Ophthalmology</span>
@@ -810,7 +823,6 @@
 
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // re-arm reveal observer after route change
       requestAnimationFrame(() => {
         document.querySelectorAll(".reveal").forEach(el => {
           el.classList.remove("in");
