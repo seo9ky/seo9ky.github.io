@@ -4,124 +4,314 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Minseok Kim</title>
-  <meta name="description" content="Minseok Kim | Multimodal Learning & Digital Therapeutics" />
+  <meta name="description" content="Minseok Kim | Multimodal & Digital Therapeutics" />
+
+  <!-- Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --text:#111827;
-      --muted:#4b5563;
-      --link:#0b57d0;
-      --border:#e5e7eb;
       --bg:#ffffff;
-      --card:#fafafa;
+      --bg-soft:#f6f8fb;
+
+      --surface:#ffffff;
+      --surface-alt:#f1f5ff;
+
+      --border:#e6ebf2;
+      --divider:#edf1f7;
+
+      --text:#111827;
+      --text-muted:#6b7280;
+      --text-soft:#94a3b8;
+
+      --primary:#2f6fed;
+      --primary-weak:#dce9ff;
+      --primary-border:#bfd6ff;
+
+      --highlight:#fde68a;
+
+      --shadow: 0 6px 20px rgba(17, 24, 39, 0.08);
+
+      --r-card: 16px;
+      --r-pill: 999px;
+      --r-soft: 12px;
+
+      --w-sidebar: 280px;
+      --w-avatar: 220px;
     }
+
     *{ box-sizing:border-box; }
+
+    html, body { height: 100%; }
+
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans KR", sans-serif;
       color:var(--text);
-      background:var(--bg);
-      line-height:1.6;
+      background:
+        radial-gradient(900px 420px at 18% 10%, rgba(47,111,237,0.08), rgba(255,255,255,0)),
+        radial-gradient(700px 360px at 80% 0%, rgba(47,111,237,0.06), rgba(255,255,255,0)),
+        var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
+
+    a{ color: var(--primary); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
     .wrap{
-      max-width: 980px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 52px 20px;
+      padding: 56px 22px;
     }
+
     .grid{
       display:flex;
-      gap:52px;
+      gap: 56px;
       align-items:flex-start;
     }
 
     .sidebar{
-      width: 260px;
-      flex: 0 0 260px;
+      width: var(--w-sidebar);
+      flex: 0 0 var(--w-sidebar);
       position: sticky;
-      top: 24px;
+      top: 28px;
       align-self: flex-start;
     }
 
-    /* Profile photo: keep original image ratio (no cropping), keep rounded corners */
+    .card{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-card);
+      box-shadow: var(--shadow);
+    }
+
+    .card-pad{ padding: 16px; }
+
+    /* Profile photo: keep original ratio, keep rounded corners */
     .avatar{
-      width: 210px;                 /* adjust width if you want bigger/smaller */
-      height: auto;                 /* keep original ratio */
-      border-radius: 16px;          /* keep rounding */
+      width: var(--w-avatar);
+      height: auto;
+      border-radius: var(--r-card);
       display: block;
       border: 1px solid var(--border);
       background: #fff;
-      box-shadow: 0 6px 20px rgba(17, 24, 39, 0.08);
-      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+      margin: 0 0 14px;
     }
 
     .name{
       font-size: 28px;
-      margin: 0 0 10px;
-      letter-spacing:-0.2px;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+      font-weight: 700;
     }
 
-    .card{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--card);
-      padding: 14px 14px;
-    }
-    .kv{
-      display:grid;
-      grid-template-columns: 70px 1fr;
-      gap: 8px 12px;
+    .subline{
+      margin: 0 0 14px;
+      color: var(--text-muted);
       font-size: 14px;
-      color: var(--muted);
     }
-    .kv b{
+
+    .subline em{
+      font-style: italic;
       color: var(--text);
       font-weight: 600;
     }
-    a{ color: var(--link); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
 
-    main{ flex: 1 1 auto; min-width: 0; }
+    .kv{
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 9px 12px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .kv b{
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .pills{
+      margin-top: 12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: var(--r-pill);
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text-muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .pill-dot{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: 0.9;
+    }
+
+    main{
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
     .hero{
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--divider);
+      border-radius: var(--r-card);
+      box-shadow: 0 10px 26px rgba(17,24,39,0.06);
+      backdrop-filter: blur(8px);
       margin-bottom: 18px;
     }
-    .hero h2{
+
+    .hero-title{
       font-size: 22px;
       margin: 0 0 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
+
     .hero p{
       margin: 0 0 10px;
-      color: var(--muted);
+      color: var(--text-muted);
+      font-size: 14.5px;
     }
+
+    .hero strong{
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .hero em{
+      font-style: italic;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .cta-row{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .btn:hover{ text-decoration: none; border-color: var(--primary-border); }
+    .btn-primary{
+      background: var(--text);
+      border-color: var(--text);
+      color: #fff;
+    }
+    .btn-primary:hover{ border-color: var(--text); opacity: 0.95; }
 
     section{
       margin-top: 22px;
       padding-top: 18px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--divider);
     }
-    section h3{
+
+    .section-title{
       font-size: 18px;
       margin: 0 0 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
-    ul{ margin: 8px 0 0 18px; padding:0; }
-    li{ margin: 7px 0; }
-    .item-title{ font-weight: 650; }
-    .item-meta{ color: var(--muted); font-size: 14px; margin-top: 2px; }
 
-    .badge-row{ margin-top: 10px; display:flex; flex-wrap:wrap; gap:8px; }
-    .badge{
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
+    .list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .item{
+      border: 1px solid var(--divider);
+      border-radius: 14px;
       background: #fff;
-      color: var(--muted);
+      padding: 12px 14px;
+    }
+
+    .item-title{
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 3px;
+      display:flex;
+      gap: 8px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .item-title em{
+      font-style: italic;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .item-meta{
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13.5px;
+    }
+
+    .meta-row{
+      margin-top: 6px;
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .chip{
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: var(--r-pill);
+      background: var(--surface-alt);
+      border: 1px solid var(--primary-border);
+      color: rgba(47,111,237,0.95);
+      font-weight: 600;
       white-space: nowrap;
+    }
+
+    .highlight{
+      display:inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: var(--highlight);
+      color: var(--text);
+      font-weight: 700;
     }
 
     footer{
       margin-top: 34px;
       padding-top: 14px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
+      border-top: 1px solid var(--divider);
+      color: var(--text-muted);
       font-size: 13px;
       display:flex;
       justify-content:space-between;
@@ -129,10 +319,10 @@
       flex-wrap:wrap;
     }
 
-    @media (max-width: 860px){
+    @media (max-width: 920px){
       .grid{ flex-direction:column; gap: 18px; }
       .sidebar{ width:auto; flex: 1 1 auto; position: static; }
-      .avatar{ width: 170px; border-radius: 14px; }
+      .avatar{ width: 190px; }
     }
   </style>
 </head>
@@ -140,13 +330,15 @@
 <body>
   <div class="wrap">
     <div class="grid">
-      <!-- Left -->
       <aside class="sidebar">
         <img class="avatar" src="./profile.jpg" alt="Profile photo" />
 
         <h1 class="name">Minseok Kim</h1>
+        <p class="subline">
+          Focused on <em>Multimodal</em> and <em>Digital Therapeutics</em>
+        </p>
 
-        <div class="card">
+        <div class="card card-pad">
           <div class="kv">
             <b>Email</b>
             <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
@@ -157,103 +349,111 @@
                 SKKU DSAIL
               </a>
             </span>
+
+            <b>GitHub</b>
+            <span><a href="https://github.com/seo9ky" target="_blank" rel="noopener noreferrer">github.com/seo9ky</a></span>
           </div>
 
-          <div class="badge-row" aria-label="keywords">
-            <span class="badge">Multimodal</span>
-            <span class="badge">Digital Therapeutics</span>
+          <div class="pills" aria-label="keywords">
+            <span class="pill"><span class="pill-dot"></span>Multimodal</span>
+            <span class="pill"><span class="pill-dot"></span>Digital Therapeutics</span>
           </div>
         </div>
       </aside>
 
-      <!-- Right -->
       <main>
-        <!-- Greeting -->
         <div class="hero">
-          <h2>Hello!</h2>
+          <div class="hero-title">Hello</div>
           <p>
-            I’m <b>Minseok Kim</b>, a researcher interested in building practical, human-centered AI systems.
-            My current focus is on <b>Multimodal</b> and <b>Digital Therapeutics</b>.
+            I’m <strong>Minseok Kim</strong>, a researcher interested in building <em>practical</em>, human-centered AI systems.
+            My current focus is on <strong>Multimodal</strong> learning and <strong>Digital Therapeutics</strong>.
           </p>
           <p>
-            If you’d like to collaborate or chat, feel free to reach out via email.
+            I aim to design systems that are <span class="highlight">reliable</span>, <span class="highlight">safe</span>, and <span class="highlight">useful</span> in real-world settings.
           </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:seo9ky@g.skku.edu">Email</a>
+            <a class="btn" href="https://github.com/seo9ky" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn" href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">Lab</a>
+          </div>
         </div>
 
-        <!-- Research Interests -->
         <section id="research-interests">
-          <h3>Research Interests</h3>
-          <ul>
-            <li>
-              <span class="item-title">Multimodal</span>
-              <div class="item-meta">Vision–language reasoning, multimodal representation, robust evaluation</div>
-            </li>
-            <li>
-              <span class="item-title">Digital Therapeutics</span>
-              <div class="item-meta">Reliable, safe, and personalized conversational AI for mental health applications</div>
-            </li>
-          </ul>
-        </section>
-
-        <!-- Education -->
-        <section id="education">
-          <h3>Education</h3>
-          <ul>
-            <li>
-              <span class="item-title">Sungkyunkwan University</span>, Seoul, Republic of Korea<br/>
-              <span class="item-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</span>
-            </li>
-            <li>
-              <span class="item-title">Sungkyunkwan University</span>, Seoul, Republic of Korea<br/>
-              <span class="item-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</span>
-            </li>
-          </ul>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects">
-          <h3>Projects</h3>
-          <ul>
-            <li>
-              <span class="item-title">Project Title #1</span>
-              <div class="item-meta">Short 1–2 line description of what you built/researched and the key outcome.</div>
-              <div class="item-meta">
-                Links:
-                <a href="#" target="_blank" rel="noopener noreferrer">paper</a> ·
-                <a href="#" target="_blank" rel="noopener noreferrer">code</a> ·
-                <a href="#" target="_blank" rel="noopener noreferrer">demo</a>
+          <div class="section-title">Research Interests</div>
+          <div class="list">
+            <div class="item">
+              <div class="item-title">
+                Multimodal <em>Learning</em>
+                <span class="chip">vision-language</span>
+                <span class="chip">representation</span>
+                <span class="chip">evaluation</span>
               </div>
-            </li>
-            <li>
-              <span class="item-title">Project Title #2</span>
-              <div class="item-meta">Short 1–2 line description. Add metrics/results if you have them.</div>
-              <div class="item-meta">
-                Links:
-                <a href="#" target="_blank" rel="noopener noreferrer">paper</a> ·
-                <a href="#" target="_blank" rel="noopener noreferrer">code</a>
+              <p class="item-meta">Vision–language reasoning, multimodal representation learning, and robust evaluation.</p>
+            </div>
+            <div class="item">
+              <div class="item-title">
+                Digital <em>Therapeutics</em>
+                <span class="chip">safety</span>
+                <span class="chip">personalization</span>
+                <span class="chip">dialogue</span>
               </div>
-            </li>
-          </ul>
-          <div class="item-meta" style="margin-top:10px;">
-            Tip: Replace the placeholders with your real projects. You can also add more items freely.
+              <p class="item-meta">Reliable and safe conversational AI for mental health and self-assessment applications.</p>
+            </div>
           </div>
         </section>
 
-        <!-- Experiences -->
+        <section id="education">
+          <div class="section-title">Education</div>
+          <div class="list">
+            <div class="item">
+              <div class="item-title">Sungkyunkwan University <em>Seoul, Republic of Korea</em></div>
+              <p class="item-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</p>
+            </div>
+            <div class="item">
+              <div class="item-title">Sungkyunkwan University <em>Seoul, Republic of Korea</em></div>
+              <p class="item-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects">
+          <div class="section-title">Projects</div>
+          <div class="list">
+            <div class="item">
+              <div class="item-title">Project Title #1 <em>Short tagline</em></div>
+              <p class="item-meta">One–two lines describing what you built/researched and the outcome.</p>
+              <div class="meta-row">
+                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">paper</a>
+                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">code</a>
+                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">demo</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title">Project Title #2 <em>Short tagline</em></div>
+              <p class="item-meta">One–two lines describing your contribution. Add metrics/results if available.</p>
+              <div class="meta-row">
+                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">paper</a>
+                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">code</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="experiences">
-          <h3>Experiences</h3>
-          <ul>
-            <li>
-              <span class="item-title">SKKU DSAIL</span> — Research Member
-              <div class="item-meta">Add 1–2 lines on what you did (topics, methods, responsibilities, outcomes).</div>
-              <div class="item-meta">Mar. 202X – Present</div>
-            </li>
-            <li>
-              <span class="item-title">Experience Title #2</span>
-              <div class="item-meta">Add 1–2 lines: role, tasks, impact.</div>
-              <div class="item-meta">YYYY – YYYY</div>
-            </li>
-          </ul>
+          <div class="section-title">Experiences</div>
+          <div class="list">
+            <div class="item">
+              <div class="item-title">SKKU DSAIL <em>Research Member</em></div>
+              <p class="item-meta">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
+              <p class="item-meta">Mar. 202X – Present</p>
+            </div>
+            <div class="item">
+              <div class="item-title">Experience Title #2 <em>Role</em></div>
+              <p class="item-meta">Add 1–2 lines: role, tasks, and impact.</p>
+              <p class="item-meta">YYYY – YYYY</p>
+            </div>
+          </div>
         </section>
 
         <footer>
