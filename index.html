@@ -4,63 +4,56 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Minseok Kim</title>
-  <meta name="description" content="Minseok Kim | Multimodal AI & Digital Therapeutics" />
+  <meta name="description" content="Minseok Kim | Multimodal · Digital Therapeutics" />
 
   <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg0:#f5f8ff;
-      --bg1:#eef4ff;
-
-      --card: rgba(255,255,255,.68);
-      --card2: rgba(255,255,255,.78);
-      --border: rgba(17,24,39,.08);
-
+      --ink:#0b1220;
       --text:#0f172a;
-      --muted:#556072;
-      --muted2:#6b768a;
+      --muted:#5b6475;
+      --muted2:#7b8598;
 
-      --blue:#2b6eea;
-      --blueSoft: rgba(43,110,234,.10);
+      --card: rgba(255,255,255,.86);
+      --card2: rgba(255,255,255,.72);
+      --stroke: rgba(15, 23, 42, .08);
 
-      --yellowSoft: rgba(255, 215, 90, .55);
-      --yellowText:#473300;
+      --blue:#2f6df6;
+      --blue2:#eaf1ff;
+      --blue3:#cfe0ff;
 
-      --shadow: 0 10px 28px rgba(15,23,42,.08);
-      --shadow2: 0 14px 42px rgba(15,23,42,.10);
+      --yellow:#ffd56b;
+      --yellow2:#fff2c3;
 
-      --r-xl: 18px;
-      --r-lg: 16px;
+      --shadow: 0 18px 40px rgba(15, 23, 42, .10);
+      --shadow2: 0 8px 18px rgba(15, 23, 42, .08);
 
-      --icon: rgba(15,23,42,.72);
-      --iconSoft: rgba(15,23,42,.55);
+      --r-xl: 22px;
+      --r-lg: 18px;
+      --r-md: 14px;
 
-      --max: 1080px;
-
-      /* NAV (distinct from background) */
-      --navBg: rgba(255,255,255,.78);
-      --navBorder: rgba(17,24,39,.10);
-      --navHighlight: rgba(43,110,234,.18);
+      --navH: 66px;
     }
 
     *{ box-sizing:border-box; }
     html, body{ height:100%; }
     body{
       margin:0;
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
       color:var(--text);
-      line-height:1.65;
       background:
-        radial-gradient(1200px 700px at 20% 10%, var(--bg1) 0%, transparent 55%),
-        radial-gradient(1200px 700px at 80% 40%, #f2f7ff 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg0) 0%, #f7faff 70%, #f6f9ff 100%);
+        radial-gradient(900px 520px at 20% 18%, rgba(47,109,246,.12), transparent 55%),
+        radial-gradient(820px 520px at 72% 22%, rgba(255,213,107,.12), transparent 60%),
+        radial-gradient(900px 620px at 52% 78%, rgba(47,109,246,.08), transparent 65%),
+        #f5f8ff;
+      overflow-x:hidden;
     }
 
-    a{ color:inherit; text-decoration:none; }
+    a{ color:var(--blue); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
     /* Navbar */
@@ -68,664 +61,692 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(14px);
-      background: var(--navBg);
-      border-bottom: 1px solid var(--navBorder);
-      box-shadow: 0 10px 26px rgba(15,23,42,.06);
+      height: var(--navH);
+      display:flex;
+      align-items:center;
+      border-bottom: 1px solid rgba(15, 23, 42, .06);
+      background: rgba(255,255,255,.62);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    /* subtle highlight line for premium look */
-    .nav::after{
-      content:"";
-      position:absolute;
-      left:0; right:0; bottom:-1px;
-      height: 2px;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        var(--navHighlight) 20%,
-        rgba(43,110,234,.10) 50%,
-        transparent 80%,
-        transparent 100%);
-      pointer-events:none;
-    }
-
     .nav-inner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 12px 18px;
+      width:min(1100px, calc(100% - 40px));
+      margin:0 auto;
       display:flex;
       align-items:center;
-      justify-content:flex-end; /* left side empty */
-      gap: 14px;
-      position: relative;
+      justify-content:flex-end;
+      gap:10px;
     }
 
-    .tabs{
-      display:flex;
-      gap: 10px;
+    .nav-pill{
+      display:inline-flex;
       align-items:center;
-    }
-    .tab{
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      padding: 9px 12px;
+      gap:8px;
+      padding:10px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(17,24,39,.10);
-      background: rgba(255,255,255,.70);
-      color: rgba(15,23,42,.85);
-      font-weight: 700;
+      border: 1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 8px 18px rgba(15,23,42,.06);
+      color: var(--text);
+      font-weight: 600;
       font-size: 13px;
-      box-shadow: 0 6px 16px rgba(15,23,42,.06);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      line-height: 1;
+      user-select:none;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
     }
-    .tab:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(15,23,42,.09);
-      background: rgba(255,255,255,.88);
-      text-decoration:none;
+    .nav-pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,.90); border-color: rgba(47,109,246,.18); text-decoration:none; }
+    .nav-pill.active{
+      background: rgba(47,109,246,.10);
+      border-color: rgba(47,109,246,.24);
+      color: #1e4fd6;
     }
-    .tab.active{
-      border-color: rgba(43,110,234,.24);
-      background: rgba(43,110,234,.11);
-      color: rgba(24,63,160,.95);
-    }
-    .tab svg{ width: 16px; height: 16px; }
 
     /* Layout */
     .wrap{
-      max-width: var(--max);
+      width:min(1100px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 22px 18px 64px;
+      padding: 28px 0 64px;
     }
+
     .grid{
       display:grid;
-      grid-template-columns: 300px 1fr; /* compact like older version */
-      gap: 26px;
+      grid-template-columns: 310px 1fr;
+      gap: 30px;
       align-items:start;
-      padding-top: 10px;
-    }
-
-    /* Left profile area */
-    .side{
-      position: sticky;
-      top: 78px;
-      align-self: start;
-    }
-
-    .photo{
-      width: 100%;
-      max-width: 280px;            /* reduce photo size */
-      border-radius: var(--r-xl);
-      overflow: hidden;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(17,24,39,.08);
-      box-shadow: var(--shadow);
-      margin-left: 0;
-    }
-    .photo img{
-      width: 100%;
-      height: auto;
-      display:block;
-    }
-
-    .name{
-      margin: 12px 0 6px;
-      font-size: 28px;            /* slightly smaller */
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .side-card{
-      margin-top: 10px;
-      background: var(--card);
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: var(--r-xl);
-      box-shadow: var(--shadow);
-      padding: 12px 12px;         /* reduce padding */
-    }
-
-    /* School row (moved back to profile card) */
-    .school-row{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      padding: 10px 10px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(17,24,39,.06);
-      margin-bottom: 10px;
-    }
-    .school-row img{
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-      flex: 0 0 auto;
-    }
-    .school-meta{
-      display:flex;
-      flex-direction:column;
-      gap: 1px;
-      min-width:0;
-    }
-    .school-meta .school{
-      font-size: 12.5px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .school-meta .place{
-      font-size: 12px;
-      color: var(--muted2);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* Icon-only contact rows */
-    .kv{
-      display:grid;
-      grid-template-columns: 20px 1fr;
-      gap: 8px 10px;
-      align-items:center;
-      color: var(--muted);
-      font-size: 13px;
-      padding: 2px 4px;
-    }
-    .kv a{
-      color: rgba(24,63,160,.95);
-      font-weight: 700;
-    }
-    .kv svg{ width: 16px; height: 16px; color: var(--iconSoft); }
-
-    .cat-row{
-      margin-top: 10px;
-      display:flex;
-      flex-direction:column;
-      gap: 8px;
-    }
-    .pill-big{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      width: fit-content;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: var(--blueSoft);
-      border: 1px solid rgba(43,110,234,.18);
-      color: rgba(24,63,160,.95);
-      font-weight: 800;
-      font-size: 12.5px;
-      letter-spacing: -0.01em;
-    }
-    .dot{
-      width: 8px; height: 8px;
-      border-radius: 999px;
-      background: rgba(43,110,234,.55);
-      box-shadow: 0 0 0 3px rgba(43,110,234,.12);
-    }
-
-    /* Right content */
-    .main{ min-width:0; }
-
-    /* Hero (no box) */
-    .hero{
-      padding: 6px 6px 14px;
-      margin-bottom: 12px;
-    }
-    .hero h2{
-      margin: 0 0 8px;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-    .hero p{
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 14.5px;
-      max-width: 72ch;
-    }
-    .hl{
-      display:inline-block;
-      padding: 1px 8px 2px;
-      border-radius: 999px;
-      background: var(--yellowSoft);
-      color: var(--yellowText);
-      font-weight: 800;
-      border: 1px solid rgba(71,51,0,.10);
-    }
-
-    .divider{
-      height: 1px;
-      background: rgba(17,24,39,.08);
-      margin: 14px 0 16px;
-    }
-
-    .section{ margin-top: 14px; }
-    .section-title{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -0.015em;
-      margin: 0 0 10px;
-    }
-    .section-title svg{ width: 18px; height: 18px; color: var(--icon); }
-
-    .stack{
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-    }
-
-    .card{
-      background: var(--card2);
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: var(--r-xl);
-      box-shadow: var(--shadow);
-      padding: 14px 14px;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      box-shadow: var(--shadow2);
-    }
-
-    .ri-head{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-    .ri-head .label{
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-    .ri-head .label svg{ width: 18px; height: 18px; color: var(--icon); }
-
-    .pill-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 8px;
-      margin-left: auto;
-      justify-content:flex-end;
-    }
-    .pill-small{
-      display:inline-flex;
-      align-items:center;
-      gap: 6px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: transparent;
-      border: 1px solid rgba(43,110,234,.20);
-      color: rgba(24,63,160,.90);
-      font-weight: 650;
-      font-size: 12px;
-      letter-spacing: -0.01em;
-    }
-    .pill-small svg{ width: 14px; height: 14px; color: rgba(24,63,160,.70); }
-
-    .desc{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13.5px;
-    }
-
-    .proj-title{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 14px;
-      margin: 0 0 4px;
-      letter-spacing: -0.01em;
-    }
-    .proj-title svg{ width: 18px; height: 18px; color: var(--icon); }
-
-    footer{
-      margin-top: 20px;
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap:wrap;
-      color: rgba(85,96,114,.95);
-      font-size: 12.5px;
-      padding: 10px 6px 0;
-    }
-
-    /* Scroll reveal */
-    .reveal{
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity .36s ease, transform .36s ease;
-      will-change: opacity, transform;
-    }
-    .reveal.show{
-      opacity: 1;
-      transform: translateY(0);
     }
 
     @media (max-width: 980px){
       .grid{ grid-template-columns: 1fr; }
-      .side{ position: static; }
-      .photo{ max-width: 360px; }
+    }
+
+    /* Cards */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--r-xl);
+      box-shadow: var(--shadow2);
+    }
+    .card-soft{
+      background: var(--card2);
+      border: 1px solid var(--stroke);
+      border-radius: var(--r-lg);
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
+    }
+
+    /* Sidebar */
+    .sidebar{
+      position: sticky;
+      top: calc(var(--navH) + 22px);
+    }
+
+    .profile{
+      padding: 18px 18px 16px;
+    }
+
+    .photo{
+      border-radius: var(--r-xl);
+      overflow:hidden;
+      background: rgba(15,23,42,.04);
+      border: 1px solid rgba(15,23,42,.06);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, .10);
+    }
+    .photo img{
+      display:block;
+      width:100%;
+      height:auto; /* no cropping */
+    }
+
+    .p-name{
+      margin: 14px 2px 8px;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    /* Premium school block */
+    .school{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(15,23,42,.06);
+      background: rgba(255,255,255,.62);
+    }
+    .school img{
+      width: 28px;
+      height: 28px;
+      border-radius: 999px; /* keeps the logo clean; no square frame */
+      display:block;
+    }
+    .school .s-title{
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    .school .s-sub{
+      margin-top: 2px;
+      font-size: 12px;
+      color: var(--muted2);
+      line-height: 1.15;
+    }
+
+    .contact{
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.76);
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+    .row + .row{ border-top: 1px dashed rgba(15,23,42,.10); }
+    .row a{ font-weight: 600; }
+
+    .icon{
+      width:18px; height:18px;
+      display:inline-flex;
+      align-items:center; justify-content:center;
+      color: rgba(15,23,42,.58);
+      flex: 0 0 auto;
+    }
+    .icon svg{
+      width:18px; height:18px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    /* Category chips (left) */
+    .chip-wrap{
+      margin-top: 12px;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .chip-cat{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width: fit-content;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(47,109,246,.10);
+      border: 1px solid rgba(47,109,246,.20);
+      color: #1f4fd4;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .dot{
+      width:8px; height:8px;
+      border-radius: 999px;
+      background: rgba(47,109,246,.55);
+      box-shadow: 0 0 0 3px rgba(47,109,246,.12);
+    }
+
+    /* Main content */
+    .page{
+      display:none;
+    }
+    .page.active{
+      display:block;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin: 18px 0 10px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .divider{
+      margin: 18px 0 12px;
+      height:1px;
+      background: linear-gradient(90deg, rgba(15,23,42,.10), rgba(15,23,42,.04), transparent);
+    }
+
+    .hello h2{
+      margin: 6px 0 10px;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .hello p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .hello{
+      padding: 4px 2px 2px;
+    }
+
+    /* Inline highlight (yellow) */
+    .hl{
+      display:inline-block;
+      padding: 1px 8px 2px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--yellow2), rgba(255,242,195,.65));
+      border: 1px solid rgba(255, 213, 107, .45);
+      color: #3a2a00;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* Interest cards */
+    .interest-card{
+      padding: 14px 16px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 14px;
+    }
+    .interest-left{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      min-width: 0;
+    }
+    .interest-name{
+      font-weight: 800;
+      color: var(--ink);
+      font-size: 14px;
+      letter-spacing: -0.01em;
+      margin: 0 0 6px;
+      line-height: 1.2;
+    }
+    .interest-desc{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* Sub-chips (right) */
+    .subchips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+      margin-top: 2px;
+    }
+    .chip-sub{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(47,109,246,.20);
+      background: rgba(234,241,255,.65);
+      color: #2553d8;
+      font-weight: 600;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .chip-sub .mini svg{
+      width:14px; height:14px;
+      stroke-width: 2;
+      color: rgba(37, 83, 216, .85);
+    }
+    .mini{
+      width:14px; height:14px;
+      display:inline-flex;
+      align-items:center; justify-content:center;
+      color: rgba(37,83,216,.85);
+      flex: 0 0 auto;
+    }
+
+    /* Projects */
+    .list{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .item{
+      padding: 14px 16px;
+    }
+    .item-head{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+    .item p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 24px;
+      color: var(--muted2);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap: 16px;
+      flex-wrap:wrap;
+      padding: 10px 2px 0;
+    }
+
+    /* Reveal */
+    .reveal{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Accessibility */
+    .sr-only{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
     }
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <div class="nav">
+  <!-- Navbar -->
+  <header class="nav" role="navigation" aria-label="Primary">
     <div class="nav-inner">
-      <!-- left side intentionally empty -->
-      <div class="tabs" role="navigation" aria-label="Primary">
-        <a class="tab" id="tab-home" href="#home" aria-label="Home">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M3 10.6 12 3l9 7.6v9.4a1.6 1.6 0 0 1-1.6 1.6H4.6A1.6 1.6 0 0 1 3 20V10.6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M9.2 21V14.3a1.4 1.4 0 0 1 1.4-1.4h2.8a1.4 1.4 0 0 1 1.4 1.4V21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-          Home
-        </a>
-        <a class="tab" id="tab-about" href="#about" aria-label="About">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 21a7.2 7.2 0 0 0-16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Z" stroke="currentColor" stroke-width="1.8"/>
-          </svg>
-          About
-        </a>
-      </div>
+      <a class="nav-pill" id="nav-home" href="#home" aria-label="Home">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>
+        </span>
+        Home
+      </a>
+      <a class="nav-pill" id="nav-about" href="#about" aria-label="About">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20 21a7 7 0 0 0-14 0"/><path d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"/></svg>
+        </span>
+        About
+      </a>
     </div>
-  </div>
+  </header>
 
   <div class="wrap">
     <div class="grid">
-      <!-- LEFT -->
-      <aside class="side reveal" data-reveal>
-        <div class="photo">
-          <img src="profile.jpg" alt="Profile photo of Minseok Kim">
-        </div>
+      <!-- Left Profile -->
+      <aside class="sidebar">
+        <div class="card profile reveal">
+          <div class="photo">
+            <!-- Put your original photo as-is (no cropping). -->
+            <img src="profile.jpg" alt="Profile photo of Minseok Kim">
+          </div>
 
-        <div class="name">Minseok Kim</div>
+          <div class="p-name">Minseok Kim</div>
 
-        <div class="side-card">
-          <!-- moved back here -->
-          <div class="school-row">
-            <img src="skku-logo.png" alt="Sungkyunkwan University logo" />
-            <div class="school-meta">
-              <div class="school">Sungkyunkwan University</div>
-              <div class="place">Seoul, Republic of Korea</div>
+          <!-- School block (premium) -->
+          <div class="school" aria-label="School">
+            <img src="skku-logo.png" alt="Sungkyunkwan University logo">
+            <div>
+              <div class="s-title">Sungkyunkwan University</div>
+              <div class="s-sub">Seoul, Republic of Korea</div>
             </div>
           </div>
 
-          <div class="kv" aria-label="contact">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4.5 7.5h15v9a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-              <path d="m5 8 7 6 7-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
+          <div class="contact" aria-label="Contact">
+            <div class="row">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+              </span>
+              <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
+            </div>
+            <div class="row">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 3h6"/><path d="M10 3v4a2 2 0 0 1-2 2H7"/><path d="M14 3v4a2 2 0 0 0 2 2h1"/><path d="M7 9h10"/><path d="M8 9 6 21h12l-2-12"/></svg>
+              </span>
+              <span style="font-weight:700;color:var(--ink);">DSAIL@SKKU</span>
+            </div>
 
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M10 3v6.2l-4.4 7.6A3.2 3.2 0 0 0 8.4 22h7.2a3.2 3.2 0 0 0 2.8-5.2L14 9.2V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M8.2 15.2h7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-            <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">DSAIL@SKKU</a>
-          </div>
-
-          <div class="cat-row" aria-label="primary interests">
-            <span class="pill-big"><span class="dot"></span>Multimodal</span>
-            <span class="pill-big"><span class="dot"></span>Digital Therapeutics</span>
+            <div class="chip-wrap" aria-label="Focus areas">
+              <span class="chip-cat"><span class="dot" aria-hidden="true"></span>Multimodal</span>
+              <span class="chip-cat"><span class="dot" aria-hidden="true"></span>Digital Therapeutics</span>
+            </div>
           </div>
         </div>
       </aside>
 
-      <!-- RIGHT -->
-      <main class="main">
+      <!-- Right Content -->
+      <main>
         <!-- HOME -->
-        <section id="home" class="reveal" data-reveal>
-          <div class="hero">
+        <section class="page active" id="page-home" aria-label="Home page">
+          <div class="hello reveal">
             <h2>Hello</h2>
             <p>
-              I’m Minseok Kim, studying Applied Artificial Intelligence at Sungkyunkwan University
-              (B.S. · M.S. · Ph.D. track), working at the intersection of Multimodal AI and Digital Therapeutics.
+              I’m Minseok Kim, studying <span style="font-weight:700;color:var(--ink);">Applied Artificial Intelligence</span> at
+              <span style="font-weight:700;color:var(--ink);">Sungkyunkwan University</span> (B.S., M.S., Ph.D. track),
+              working at the intersection of <span style="font-weight:700;color:var(--ink);">Multimodal</span> AI and
+              <span style="font-weight:700;color:var(--ink);">Digital Therapeutics</span>.
             </p>
             <p>
               My work spans Natural Language Processing, Computer Vision, and Audio, with applications in Mental Health,
               Ophthalmology, and Audiology.
             </p>
             <p>
-              I focus on building <span class="hl">reliable</span>, safe, and useful systems for real-world settings.
+              I focus on building <span class="hl">reliable</span>, <span class="hl">safe</span>, and <span class="hl">useful</span>
+              systems for real-world settings.
             </p>
           </div>
 
-          <div class="divider"></div>
+          <div class="divider reveal"></div>
 
-          <div class="section">
-            <h3 class="section-title">
-              <!-- AI brain+gear-ish icon -->
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9.2 4.8a3 3 0 0 1 5.6 0 2.6 2.6 0 0 1 2.6 3.1 2.6 2.6 0 0 1 1.4 4.2 2.6 2.6 0 0 1-1.4 4.2 2.6 2.6 0 0 1-2.6 3.1H9.2a2.6 2.6 0 0 1-2.6-3.1 2.6 2.6 0 0 1-1.4-4.2 2.6 2.6 0 0 1 1.4-4.2 2.6 2.6 0 0 1 2.6-3.1Z"
-                      stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M12 8.2v7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M9.6 10.4h4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M15.8 12.1a2.3 2.3 0 0 0 0 3.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <div class="section-title reveal">
+            <span class="icon" aria-hidden="true">
+              <!-- brain + gear (AI) -->
+              <svg viewBox="0 0 24 24">
+                <path d="M9 6a3 3 0 0 1 3-3 3 3 0 0 1 3 3"/>
+                <path d="M7 8a3 3 0 0 0-3 3v1a3 3 0 0 0 2 2.8V17a3 3 0 0 0 3 3"/>
+                <path d="M17 8a3 3 0 0 1 3 3v1a3 3 0 0 1-2 2.8V17a3 3 0 0 1-3 3"/>
+                <path d="M9 6v12"/><path d="M15 6v12"/>
+                <path d="M12 11.2a2 2 0 1 0 2 2"/>
+                <path d="M14 13.2h2"/><path d="M12 15.2v2"/>
               </svg>
-              Research Interests
-            </h3>
+            </span>
+            Research Interests
+          </div>
 
-            <div class="stack">
-              <div class="card reveal" data-reveal>
-                <div class="ri-head">
-                  <div class="label">
-                    <!-- layered icon -->
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <path d="M12 4 3.8 8.3 12 12.6l8.2-4.3L12 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                      <path d="M3.8 12.2 12 16.6l8.2-4.4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-                      <path d="M3.8 16.1 12 20.5l8.2-4.4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-                    </svg>
-                    Multimodal
-                  </div>
-
-                  <div class="pill-row">
-                    <span class="pill-small">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M10 6h10v10H10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                        <path d="M4 8h4v10H4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                      </svg>
-                      Natural Language Processing
-                    </span>
-                    <span class="pill-small">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                        <path d="M8 17v2m8-2v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                      </svg>
-                      Computer Vision
-                    </span>
-                    <span class="pill-small">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 4v16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                        <path d="M8.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                        <path d="M15.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                      </svg>
-                      Audio
-                    </span>
-                  </div>
+          <div class="list">
+            <!-- Multimodal -->
+            <div class="card-soft interest-card reveal">
+              <div class="interest-left">
+                <span class="icon" aria-hidden="true" style="margin-top:1px;">
+                  <!-- layered icon -->
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+                    <path d="M3 12l9 5 9-5"/>
+                    <path d="M3 16l9 5 9-5"/>
+                  </svg>
+                </span>
+                <div style="min-width:0;">
+                  <div class="interest-name">Multimodal</div>
+                  <p class="interest-desc">Learning and reasoning across modalities for robust, practical systems.</p>
                 </div>
-                <p class="desc">Learning and reasoning across modalities for robust, practical systems.</p>
               </div>
+              <div class="subchips" aria-label="Multimodal topics">
+                <span class="chip-sub">
+                  <span class="mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M8 10h8"/><path d="M8 14h6"/></svg>
+                  </span>
+                  Natural Language Processing
+                </span>
+                <span class="chip-sub">
+                  <span class="mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="M8 17l-2 3"/><path d="M16 17l2 3"/><path d="M9 11h6"/></svg>
+                  </span>
+                  Computer Vision
+                </span>
+                <span class="chip-sub">
+                  <span class="mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M8 7a4 4 0 0 1 8 0v10a4 4 0 0 1-8 0Z"/></svg>
+                  </span>
+                  Audio
+                </span>
+              </div>
+            </div>
 
-              <div class="card reveal" data-reveal>
-                <div class="ri-head">
-                  <div class="label">
-                    <!-- squarer shield + -->
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <path d="M12 3.8 19 6.8v6.1c0 4.7-3 7.6-7 9.2-4-1.6-7-4.5-7-9.2V6.8l7-3Z"
-                            stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                      <path d="M12 9.2v5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                      <path d="M9.2 12h5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
-                    Digital Therapeutics
-                  </div>
-
-                  <div class="pill-row">
-                    <span class="pill-small">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                      </svg>
-                      Mental Health
-                    </span>
-                    <span class="pill-small">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.8"/>
-                      </svg>
-                      Ophthalmology
-                    </span>
-                    <span class="pill-small">
-                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M13 5a6 6 0 0 0 0 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                        <path d="M16.5 8.3a4 4 0 0 1 0 7.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                        <path d="M20 12a2 2 0 0 1-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                      </svg>
-                      Audiology
-                    </span>
-                  </div>
+            <!-- Digital Therapeutics -->
+            <div class="card-soft interest-card reveal">
+              <div class="interest-left">
+                <span class="icon" aria-hidden="true" style="margin-top:1px;">
+                  <!-- shield + plus (more square) -->
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3 19 6v7c0 5-3.3 8-7 9-3.7-1-7-4-7-9V6l7-3Z"/>
+                    <path d="M12 9v6"/><path d="M9 12h6"/>
+                  </svg>
+                </span>
+                <div style="min-width:0;">
+                  <div class="interest-name">Digital Therapeutics</div>
+                  <p class="interest-desc">Human-centered AI for clinically meaningful and safe applications.</p>
                 </div>
-                <p class="desc">Human-centered AI for clinically meaningful and safe applications.</p>
+              </div>
+              <div class="subchips" aria-label="Digital therapeutics topics">
+                <span class="chip-sub">
+                  <span class="mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6.4-7 11-7 11Z"/></svg>
+                  </span>
+                  Mental Health
+                </span>
+                <span class="chip-sub">
+                  <span class="mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><path d="M12 15a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/></svg>
+                  </span>
+                  Ophthalmology
+                </span>
+                <span class="chip-sub">
+                  <span class="mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M7 13a5 5 0 0 1 0-10"/><path d="M7 3h2a7 7 0 0 1 0 14H7"/><path d="M14 11a3 3 0 0 1 0 6"/><path d="M14 17h2"/></svg>
+                  </span>
+                  Audiology
+                </span>
               </div>
             </div>
           </div>
 
-          <div class="section" style="margin-top:18px;">
-            <h3 class="section-title">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4.5 7.5h6l1.6 2h7.4v9.9a1.6 1.6 0 0 1-1.6 1.6H6.1A1.6 1.6 0 0 1 4.5 19V7.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M4.5 7.5V6.1A1.6 1.6 0 0 1 6.1 4.5h3.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-              Projects
-            </h3>
+          <div class="divider reveal"></div>
 
-            <div class="stack">
-              <div class="card reveal" data-reveal>
-                <div class="proj-title">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4.5 7.5h6l1.6 2h7.4v9.9a1.6 1.6 0 0 1-1.6 1.6H6.1A1.6 1.6 0 0 1 4.5 19V7.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                  </svg>
-                  Project Title #1
-                </div>
-                <p class="desc">One–two lines describing what you built/researched and the outcome.</p>
-              </div>
+          <div class="section-title reveal">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 7h16v14H4z"/><path d="M8 7V5h8v2"/></svg>
+            </span>
+            Projects
+          </div>
 
-              <div class="card reveal" data-reveal>
-                <div class="proj-title">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4.5 7.5h6l1.6 2h7.4v9.9a1.6 1.6 0 0 1-1.6 1.6H6.1A1.6 1.6 0 0 1 4.5 19V7.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                  </svg>
-                  Project Title #2
-                </div>
-                <p class="desc">One–two lines describing your contribution. Add metrics/results if available.</p>
+          <div class="list">
+            <div class="card item reveal">
+              <div class="item-head">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 7h6l2 2h8v10H4z"/></svg>
+                </span>
+                Project Title #1
               </div>
+              <p>One–two lines describing what you built/researched and the outcome.</p>
+            </div>
+
+            <div class="card item reveal">
+              <div class="item-head">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 7h6l2 2h8v10H4z"/></svg>
+                </span>
+                Project Title #2
+              </div>
+              <p>One–two lines describing your contribution. Add metrics/results if available.</p>
             </div>
           </div>
 
-          <footer class="reveal" data-reveal>
+          <footer class="reveal">
             <div>© <span id="year"></span> Minseok Kim</div>
             <div>Last updated: <span id="updated"></span></div>
           </footer>
         </section>
 
         <!-- ABOUT -->
-        <section id="about" class="reveal" data-reveal style="display:none;">
-          <div class="section">
-            <h3 class="section-title">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M2.6 9.5 12 4.8l9.4 4.7L12 14.2 2.6 9.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M6.5 11.4V16c0 1.7 2.6 3.2 5.5 3.2S17.5 17.7 17.5 16v-4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M21.4 9.5V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <section class="page" id="page-about" aria-label="About page">
+          <div class="section-title reveal">
+            <span class="icon" aria-hidden="true">
+              <!-- graduation cap -->
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/>
+                <path d="M6.5 10.5V16c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3v-5.5"/>
+                <path d="M21.5 9.5v5"/>
               </svg>
-              Education
-            </h3>
+            </span>
+            Education
+          </div>
 
-            <div class="stack">
-              <!-- M.S. first -->
-              <div class="card reveal" data-reveal>
-                <div class="proj-title">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M6 20V9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M18 20V9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M4 9.5 12 5l8 4.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                    <path d="M9 20v-6m3 6v-6m3 6v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <div class="list">
+            <!-- M.S. first -->
+            <div class="card item reveal">
+              <div class="item-head">
+                <span class="icon" aria-hidden="true">
+                  <!-- university / building -->
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 10 12 5l9 5"/>
+                    <path d="M5 10v9"/><path d="M9 10v9"/><path d="M15 10v9"/><path d="M19 10v9"/>
+                    <path d="M4 19h16"/>
                   </svg>
-                  Sungkyunkwan University
-                </div>
-                <p class="desc">Seoul, Republic of Korea</p>
-                <p class="desc">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</p>
+                </span>
+                Sungkyunkwan University
               </div>
+              <p>Seoul, Republic of Korea</p>
+              <p style="margin-top:6px;color:var(--muted);">
+                M.S. in Applied Artificial Intelligence · Mar. 2026 – Present
+              </p>
+            </div>
 
-              <div class="card reveal" data-reveal>
-                <div class="proj-title">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M6 20V9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M18 20V9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M4 9.5 12 5l8 4.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                    <path d="M9 20v-6m3 6v-6m3 6v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <div class="card item reveal">
+              <div class="item-head">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 10 12 5l9 5"/>
+                    <path d="M5 10v9"/><path d="M9 10v9"/><path d="M15 10v9"/><path d="M19 10v9"/>
+                    <path d="M4 19h16"/>
                   </svg>
-                  Sungkyunkwan University
-                </div>
-                <p class="desc">Seoul, Republic of Korea</p>
-                <p class="desc">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</p>
+                </span>
+                Sungkyunkwan University
               </div>
+              <p>Seoul, Republic of Korea</p>
+              <p style="margin-top:6px;color:var(--muted);">
+                B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026
+              </p>
             </div>
           </div>
 
-          <div class="divider"></div>
+          <div class="divider reveal"></div>
 
-          <div class="section">
-            <h3 class="section-title">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 7V5.8A1.8 1.8 0 0 1 10.8 4h2.4A1.8 1.8 0 0 1 15 5.8V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M5 7h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <div class="section-title reveal">
+            <span class="icon" aria-hidden="true">
+              <!-- briefcase -->
+              <svg viewBox="0 0 24 24">
+                <path d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"/>
+                <path d="M4 7h16v13H4z"/>
+                <path d="M4 12h16"/>
               </svg>
-              Experiences
-            </h3>
+            </span>
+            Experiences
+          </div>
 
-            <div class="stack">
-              <div class="card reveal" data-reveal>
-                <div class="proj-title">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M9 7V5.8A1.8 1.8 0 0 1 10.8 4h2.4A1.8 1.8 0 0 1 15 5.8V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M5 7h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <div class="list">
+            <div class="card item reveal">
+              <div class="item-head">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"/>
+                    <path d="M4 7h16v13H4z"/>
+                    <path d="M4 12h16"/>
                   </svg>
-                  DSAIL@SKKU
-                </div>
-                <p class="desc">Research Member · Mar. 202X – Present</p>
-                <p class="desc">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
+                </span>
+                DSAIL@SKKU
               </div>
+              <p>Research Member · Mar. 202X – Present</p>
+              <p style="margin-top:6px;color:var(--muted);">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
+            </div>
 
-              <div class="card reveal" data-reveal>
-                <div class="proj-title">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M9 7V5.8A1.8 1.8 0 0 1 10.8 4h2.4A1.8 1.8 0 0 1 15 5.8V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M5 7h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <div class="card item reveal">
+              <div class="item-head">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"/>
+                    <path d="M4 7h16v13H4z"/>
+                    <path d="M4 12h16"/>
                   </svg>
-                  Experience Title #2
-                </div>
-                <p class="desc">Role · YYYY – YYYY</p>
-                <p class="desc">Add 1–2 lines: role, tasks, impact.</p>
+                </span>
+                Experience Title #2
               </div>
+              <p>Role · YYYY – YYYY</p>
+              <p style="margin-top:6px;color:var(--muted);">Add 1–2 lines: role, tasks, impact.</p>
             </div>
           </div>
 
-          <footer class="reveal" data-reveal>
+          <footer class="reveal">
             <div>© <span id="year2"></span> Minseok Kim</div>
             <div>Last updated: <span id="updated2"></span></div>
           </footer>
@@ -735,60 +756,65 @@
   </div>
 
   <script>
-    // footer dates
+    // Footer dates
     const d = new Date();
-    const monthYear = d.toLocaleString("en-US", { month: "long", year: "numeric" });
+    const fmt = (dt) => dt.toLocaleString("en-US", { month: "long", year: "numeric" });
     document.getElementById("year").textContent = d.getFullYear();
-    document.getElementById("updated").textContent = monthYear;
+    document.getElementById("updated").textContent = fmt(d);
     document.getElementById("year2").textContent = d.getFullYear();
-    document.getElementById("updated2").textContent = monthYear;
+    document.getElementById("updated2").textContent = fmt(d);
 
-    // hash routing
-    const home = document.getElementById("home");
-    const about = document.getElementById("about");
-    const tabHome = document.getElementById("tab-home");
-    const tabAbout = document.getElementById("tab-about");
+    // Hash routing
+    const pages = {
+      home: document.getElementById("page-home"),
+      about: document.getElementById("page-about"),
+    };
+    const navHome = document.getElementById("nav-home");
+    const navAbout = document.getElementById("nav-about");
 
-    function setActive(hash){
-      const isAbout = (hash === "#about");
-      home.style.display = isAbout ? "none" : "block";
-      about.style.display = isAbout ? "block" : "none";
-      tabHome.classList.toggle("active", !isAbout);
-      tabAbout.classList.toggle("active", isAbout);
+    function setActive(route){
+      const r = (route === "about") ? "about" : "home";
+      for (const k of Object.keys(pages)){
+        pages[k].classList.toggle("active", k === r);
+      }
+      navHome.classList.toggle("active", r === "home");
+      navAbout.classList.toggle("active", r === "about");
       window.scrollTo({ top: 0, behavior: "instant" });
-      requestAnimationFrame(() => triggerReveal(true));
+      // trigger reveal recalculation (in case of page switch)
+      requestAnimationFrame(() => revealNow(true));
     }
 
-    window.addEventListener("hashchange", () => setActive(location.hash));
-    setActive(location.hash || "#home");
-
-    // scroll reveal
-    const targets = () => Array.from(document.querySelectorAll("[data-reveal]"));
-
-    function triggerReveal(force=false){
-      const vh = window.innerHeight || document.documentElement.clientHeight;
-      targets().forEach((el, idx) => {
-        if (el.offsetParent === null) return;
-        const rect = el.getBoundingClientRect();
-        const inView = rect.top < vh - 60;
-        if (inView || force){
-          el.style.transitionDelay = `${Math.min(idx*70, 260)}ms`;
-          el.classList.add("show");
-        }
-      });
+    function currentRoute(){
+      const h = (location.hash || "#home").replace("#", "").trim().toLowerCase();
+      return (h === "about") ? "about" : "home";
     }
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting){
-          e.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -10% 0px" });
+    window.addEventListener("hashchange", () => setActive(currentRoute()));
+    setActive(currentRoute());
 
-    targets().forEach(el => io.observe(el));
-    window.addEventListener("scroll", () => triggerReveal(false), { passive:true });
-    window.addEventListener("load", () => triggerReveal(true));
+    // Reveal on scroll (IntersectionObserver)
+    const revealEls = () => document.querySelectorAll(".page.active .reveal");
+    let io = null;
+
+    function revealNow(reset){
+      const els = revealEls();
+      if (reset){
+        els.forEach(el => el.classList.remove("in"));
+      }
+      if (io) io.disconnect();
+
+      io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting){
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.10, rootMargin: "0px 0px -10% 0px" });
+
+      els.forEach(el => io.observe(el));
+    }
+    revealNow(false);
   </script>
 </body>
 </html>
