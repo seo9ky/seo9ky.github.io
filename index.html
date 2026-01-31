@@ -9,13 +9,14 @@
   <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#ffffff;
 
-      --surface:#ffffff;
+      --surface: rgba(255,255,255,0.90);
+      --surface-solid:#ffffff;
       --surface-alt:#f1f5ff;
 
       --border:#e6ebf2;
@@ -29,7 +30,7 @@
 
       --highlight:#fde68a;
 
-      --shadow: 0 6px 20px rgba(17, 24, 39, 0.08);
+      --shadow: 0 8px 26px rgba(17, 24, 39, 0.08);
 
       --r-card: 16px;
       --r-pill: 999px;
@@ -74,7 +75,7 @@
     a{ color: var(--primary); text-decoration: none; }
     a:hover{ text-decoration: underline; }
 
-    /* Top nav */
+    /* Top nav (no duplicated title text) */
     .topnav{
       position: sticky;
       top: 0;
@@ -93,24 +94,8 @@
       padding: 0 var(--wrap-pad);
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:flex-end;
       gap: 14px;
-    }
-    .brand{
-      display:flex;
-      align-items:baseline;
-      gap: 10px;
-      white-space: nowrap;
-    }
-    .brand .brand-name{
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-    .brand .brand-sub{
-      font-size: 13px;
-      color: var(--text-muted);
-      font-style: italic;
-      font-weight: 600;
     }
     .navlinks{
       display:flex;
@@ -151,7 +136,7 @@
       margin-top: 6px;
     }
 
-    /* Sticky sidebar */
+    /* Sticky sidebar follows scroll */
     .sidebar{
       width: var(--w-sidebar);
       flex: 0 0 var(--w-sidebar);
@@ -165,6 +150,11 @@
       border: 1px solid var(--border);
       border-radius: var(--r-card);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+    .card-solid{
+      background: var(--surface-solid);
+      backdrop-filter: none;
     }
     .card-pad{ padding: 16px; }
 
@@ -176,20 +166,26 @@
       border: 1px solid var(--border);
       background: #fff;
       box-shadow: var(--shadow);
-      margin: 0 0 14px;
+      margin: 0 auto 14px;
+    }
+
+    /* Left block is centered for consistent vertical rhythm */
+    .left-center{
+      text-align: center;
     }
 
     .name{
-      font-size: 28px;
+      font-size: 24px;
       letter-spacing: -0.02em;
       margin: 0 0 12px;
       font-weight: 700;
     }
 
-    /* School logo + text row (NO square border/background around logo) */
+    /* School logo + text row (original logo, no square border/background) */
     .school-row{
       display:flex;
       align-items:center;
+      justify-content:center;
       gap: 10px;
       margin: 0 0 14px;
       color: var(--text-muted);
@@ -199,23 +195,22 @@
       width: 34px;
       height: 34px;
       display:block;
-
-      /* 핵심: 테두리/배경/사각형 박스 없음 */
       border: none;
       background: transparent;
       padding: 0;
       border-radius: 0;
-
       object-fit: contain;
+      opacity: 0.95;
       pointer-events: none;
       user-select: none;
     }
     .school-text{
       line-height: 1.25;
+      text-align: left;
     }
     .school-text b{
       color: var(--text);
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: -0.01em;
     }
 
@@ -226,10 +221,9 @@
       font-size: 14px;
       color: var(--text-muted);
     }
-
     .kv b{
       color: var(--text);
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .pills{
@@ -237,6 +231,7 @@
       display:flex;
       flex-wrap:wrap;
       gap: 8px;
+      justify-content:center;
     }
 
     .pill{
@@ -257,36 +252,29 @@
       min-width: 0;
     }
 
+    /* Hero now matches the same card system (no "separate" look) */
     .hero{
-      padding: 18px 20px;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid var(--divider);
-      border-radius: var(--r-card);
-      box-shadow: 0 10px 26px rgba(17,24,39,0.06);
-      backdrop-filter: blur(8px);
+      padding: 16px 18px;
       margin-bottom: 18px;
     }
-
     .hero-title{
-      font-size: 22px;
-      margin: 0 0 10px;
+      font-size: 18px;
+      margin: 0 0 8px;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
-
     .hero p{
       margin: 0 0 10px;
       color: var(--text-muted);
       font-size: 14.5px;
     }
+    .hero p:last-child{ margin-bottom: 0; }
 
-    .hero strong{
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .hero em{
-      font-style: italic;
+    .highlight{
+      display:inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: var(--highlight);
       color: var(--text);
       font-weight: 600;
     }
@@ -298,7 +286,7 @@
     }
 
     .section-title{
-      font-size: 18px;
+      font-size: 16px;
       margin: 0 0 10px;
       font-weight: 700;
       letter-spacing: -0.01em;
@@ -314,26 +302,22 @@
     }
 
     .item{
-      border: 1px solid var(--divider);
+      border: 1px solid var(--border);
       border-radius: 14px;
-      background: #fff;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
       padding: 12px 14px;
     }
 
     .item-title{
       font-weight: 700;
       letter-spacing: -0.01em;
-      margin: 0 0 3px;
+      margin: 0 0 5px;
       display:flex;
       gap: 8px;
       align-items: baseline;
       flex-wrap: wrap;
-    }
-
-    .item-title em{
-      font-style: italic;
-      font-weight: 600;
-      color: var(--text);
     }
 
     .item-meta{
@@ -353,15 +337,6 @@
       white-space: nowrap;
     }
 
-    .highlight{
-      display:inline-block;
-      padding: 2px 8px;
-      border-radius: 10px;
-      background: var(--highlight);
-      color: var(--text);
-      font-weight: 700;
-    }
-
     footer{
       margin-top: 34px;
       padding-top: 14px;
@@ -374,11 +349,11 @@
       flex-wrap:wrap;
     }
 
-    /* Scroll reveal */
+    /* Scroll reveal (subtle) */
     .reveal{
       opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 550ms ease, transform 550ms ease;
+      transform: translateY(10px);
+      transition: opacity 450ms ease, transform 450ms ease;
       will-change: opacity, transform;
     }
     .reveal.in{
@@ -397,9 +372,12 @@
       .grid{ flex-direction:column; gap: 18px; }
       .sidebar{ width:auto; flex: 1 1 auto; position: static; top: auto; }
       .avatar{ width: 190px; }
-      .brand .brand-sub{ display:none; }
-
       .school-logo{ width: 32px; height: 32px; }
+      .pills{ justify-content:flex-start; }
+      .left-center{ text-align:left; }
+      .avatar{ margin: 0 0 14px; }
+      .school-row{ justify-content:flex-start; }
+      .school-text{ text-align:left; }
     }
   </style>
 </head>
@@ -407,11 +385,6 @@
 <body>
   <header class="topnav">
     <div class="inner">
-      <div class="brand">
-        <div class="brand-name">Minseok Kim</div>
-        <div class="brand-sub">Multimodal · Digital Therapeutics</div>
-      </div>
-
       <nav class="navlinks" aria-label="Primary navigation">
         <a class="navbtn" id="nav-home" href="#home" aria-current="page">Home</a>
         <a class="navbtn" id="nav-about" href="#about">About</a>
@@ -422,12 +395,11 @@
   <div class="wrap">
     <div class="grid">
       <!-- Left -->
-      <aside class="sidebar">
+      <aside class="sidebar left-center">
         <img class="avatar reveal" src="./profile.jpg" alt="Profile photo" />
 
         <h1 class="name reveal">Minseok Kim</h1>
 
-        <!-- School logo + text (original logo, no square border) -->
         <div class="school-row reveal">
           <img class="school-logo" src="./skku-logo.png" alt="Sungkyunkwan University logo" />
           <div class="school-text">
@@ -436,7 +408,7 @@
           </div>
         </div>
 
-        <div class="card card-pad reveal">
+        <div class="card card-solid card-pad reveal">
           <div class="kv">
             <b>Email</b>
             <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
@@ -460,14 +432,16 @@
       <main>
         <!-- HOME -->
         <div id="page-home" class="page active">
-          <div class="hero reveal">
+          <div class="card hero reveal">
             <div class="hero-title">Hello</div>
             <p>
-              I’m <strong>Minseok Kim</strong>, a researcher interested in building <em>practical</em>, human-centered AI systems.
-              My current focus is on <strong>Multimodal</strong> learning and <strong>Digital Therapeutics</strong>.
+              I’m Minseok Kim, a researcher working at the intersection of Multimodal AI and Digital Therapeutics.
             </p>
             <p>
-              I aim to design systems that are <span class="highlight">reliable</span>, <span class="highlight">safe</span>, and <span class="highlight">useful</span> in real-world settings.
+              My work spans Natural Language Processing, Computer Vision, and Audio, with applications in Mental Health, Ophthalmology, and Audiology.
+            </p>
+            <p>
+              I aim to build systems that are <span class="highlight">reliable</span>, <span class="highlight">safe</span>, and <span class="highlight">useful</span> in real-world settings.
             </p>
           </div>
 
@@ -476,21 +450,22 @@
             <div class="list">
               <div class="item reveal">
                 <div class="item-title">
-                  Multimodal <em>Learning</em>
-                  <span class="chip">vision-language</span>
-                  <span class="chip">representation</span>
-                  <span class="chip">evaluation</span>
+                  Multimodal
+                  <span class="chip">Natural Language Processing</span>
+                  <span class="chip">Computer Vision</span>
+                  <span class="chip">Audio</span>
                 </div>
-                <p class="item-meta">Vision–language reasoning, multimodal representation learning, and robust evaluation.</p>
+                <p class="item-meta">Learning and reasoning across modalities for robust, practical systems.</p>
               </div>
+
               <div class="item reveal">
                 <div class="item-title">
-                  Digital <em>Therapeutics</em>
-                  <span class="chip">safety</span>
-                  <span class="chip">personalization</span>
-                  <span class="chip">dialogue</span>
+                  Digital Therapeutics
+                  <span class="chip">Mental Health</span>
+                  <span class="chip">Ophthalmology</span>
+                  <span class="chip">Audiology</span>
                 </div>
-                <p class="item-meta">Reliable and safe conversational AI for mental health and self-assessment applications.</p>
+                <p class="item-meta">Human-centered AI for clinically meaningful and safe applications.</p>
               </div>
             </div>
           </section>
@@ -499,11 +474,11 @@
             <div class="section-title">Projects</div>
             <div class="list">
               <div class="item reveal">
-                <div class="item-title">Project Title #1 <em>Short tagline</em></div>
+                <div class="item-title">Project Title #1</div>
                 <p class="item-meta">One–two lines describing what you built/researched and the outcome.</p>
               </div>
               <div class="item reveal">
-                <div class="item-title">Project Title #2 <em>Short tagline</em></div>
+                <div class="item-title">Project Title #2</div>
                 <p class="item-meta">One–two lines describing your contribution. Add metrics/results if available.</p>
               </div>
             </div>
@@ -516,11 +491,13 @@
             <div class="section-title">Education</div>
             <div class="list">
               <div class="item reveal">
-                <div class="item-title">Sungkyunkwan University <em>Seoul, Republic of Korea</em></div>
+                <div class="item-title">Sungkyunkwan University</div>
+                <p class="item-meta">Seoul, Republic of Korea</p>
                 <p class="item-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</p>
               </div>
               <div class="item reveal">
-                <div class="item-title">Sungkyunkwan University <em>Seoul, Republic of Korea</em></div>
+                <div class="item-title">Sungkyunkwan University</div>
+                <p class="item-meta">Seoul, Republic of Korea</p>
                 <p class="item-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</p>
               </div>
             </div>
@@ -530,14 +507,14 @@
             <div class="section-title">Experiences</div>
             <div class="list">
               <div class="item reveal">
-                <div class="item-title">SKKU-DSAIL <em>Research Member</em></div>
+                <div class="item-title">SKKU-DSAIL</div>
+                <p class="item-meta">Research Member · Mar. 202X – Present</p>
                 <p class="item-meta">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
-                <p class="item-meta">Mar. 202X – Present</p>
               </div>
               <div class="item reveal">
-                <div class="item-title">Experience Title #2 <em>Role</em></div>
+                <div class="item-title">Experience Title #2</div>
+                <p class="item-meta">Role · YYYY – YYYY</p>
                 <p class="item-meta">Add 1–2 lines: role, tasks, and impact.</p>
-                <p class="item-meta">YYYY – YYYY</p>
               </div>
             </div>
           </section>
@@ -574,6 +551,7 @@
 
       window.scrollTo({ top: 0, behavior: "smooth" });
 
+      // re-arm reveal observer after route change
       requestAnimationFrame(() => {
         document.querySelectorAll(".reveal").forEach(el => {
           el.classList.remove("in");
