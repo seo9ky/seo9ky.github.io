@@ -1,43 +1,53 @@
-/* =========================
-   Design Tokens
-   ========================= */
+/* =========================================================
+   1) Design Tokens (색/그림자/라운드/간격) - 전체 테마의 기준
+   - 유지보수 포인트: 전체 톤 바꾸고 싶으면 여기만 먼저 조정
+   ========================================================= */
 :root{
   /* Glassy Blue + Soft Yellow */
   --bg-base: #edf4ff;
-  --bg-blue: rgba(98, 158, 255, 0.20);
-  --bg-yellow: rgba(255, 215, 102, 0.16);
-  --card: rgba(255, 255, 255, 0.62);
-  --card-strong: rgba(255, 255, 255, 0.74);
-  --border: rgba(30, 64, 175, 0.10);
-  --border-strong: rgba(30, 64, 175, 0.14);
 
+  /* 카드/배경에서 쓰는 소프트 톤 */
+  --card: rgba(255, 255, 255, 0.62);
+  --border: rgba(30, 64, 175, 0.10);
+
+  /* 텍스트 */
   --text: #0f172a;
   --muted: rgba(15, 23, 42, 0.68);
   --muted2: rgba(15, 23, 42, 0.52);
 
-  --accent: #3b72ff;          /* blue */
+  /* 포인트 컬러 */
+  --accent: #3b72ff;                 /* blue */
   --accent-soft: rgba(59,114,255,0.12);
-  --accent-warm: #f6c453;     /* yellow */
+  --accent-warm-soft: rgba(255, 215, 102, 0.18);  /* yellow bg */
+  --accent-warm-border: rgba(246, 196, 83, 0.22);
 
+  /* 그림자 */
   --shadow: 0 18px 60px rgba(15, 23, 42, 0.10);
   --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
   --shadow-tiny: 0 6px 16px rgba(15, 23, 42, 0.07);
 
+  /* 라운드 */
   --r-xl: 26px;
   --r-lg: 18px;
-  --r-md: 14px;
 
+  /* 블러 */
   --blur: 18px;
 
+  /* 레이아웃 */
   --container: 1040px;
   --gap: 26px;
+
+  /* 얇은 divider (오른쪽 카드들의 얇은 선과 동일한 느낌) */
+  --divider: 1px solid rgba(30,64,175,0.08);
 }
 
-/* =========================
-   Base
-   ========================= */
+
+/* =========================================================
+   2) Base (전역 기본 스타일)
+   ========================================================= */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
+
 body{
   margin:0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -46,7 +56,17 @@ body{
   overflow-x:hidden;
 }
 
-/* Background: calmer glass with subtle blue + yellow */
+/* 링크 기본 */
+a{
+  color: var(--accent);
+  text-decoration:none;
+}
+a:hover{ text-decoration:underline; }
+
+/* =========================================================
+   3) Background (고정 글래스 배경)
+   - 필요 시 여기서 그라디언트 강도 조절
+   ========================================================= */
 .bg{
   position:fixed;
   inset:0;
@@ -58,7 +78,7 @@ body{
     linear-gradient(180deg, rgba(255,255,255,0.60), rgba(255,255,255,0.08));
 }
 
-/* subtle grain */
+/* 약한 그레인(질감) */
 .bg::after{
   content:"";
   position:absolute;
@@ -71,24 +91,24 @@ body{
   mix-blend-mode: overlay;
 }
 
-a{
-  color: var(--accent);
-  text-decoration:none;
-}
-a:hover{ text-decoration:underline; }
 
+/* =========================================================
+   4) Container / Layout
+   ========================================================= */
 .container{
   width:min(var(--container), calc(100% - 40px));
   margin:0 auto;
   padding:34px 0 64px;
 }
 
+/* 상단 네비: 우측 정렬 */
 .topnav{
   display:flex;
   justify-content:flex-end;
   margin-bottom:20px;
 }
 
+/* pill 형태 네비 */
 .navpill{
   display:inline-flex;
   gap:10px;
@@ -111,18 +131,21 @@ a:hover{ text-decoration:underline; }
   font-weight:600;
   font-size:14px;
 }
-.navpill a svg{ width:16px; height:16px; }
 
-/* active nav button uses the old Projects yellow */
+/* Lucide 아이콘 크기: 네비용 */
+.navpill a svg{
+  width:16px;
+  height:16px;
+}
+
+/* active nav: 기존 Projects 노란 배경을 여기로 이동 */
 .navpill a.active{
-  background: rgba(255, 215, 102, 0.18);
-  border: 1px solid rgba(246, 196, 83, 0.22);
+  background: var(--accent-warm-soft);
+  border:1px solid var(--accent-warm-border);
   color: rgba(15,23,42,0.92);
 }
 
-/* =========================
-   Layout
-   ========================= */
+/* 좌측 프로필 + 우측 콘텐츠 레이아웃 */
 .layout{
   display:grid;
   grid-template-columns: 300px 1fr;
@@ -130,20 +153,22 @@ a:hover{ text-decoration:underline; }
   align-items:start;
 }
 
+/* 반응형: 작은 화면에서는 한 컬럼 */
 @media (max-width: 980px){
   .layout{ grid-template-columns: 1fr; }
   .profile-wrap{ position:static !important; top:auto !important; }
 }
 
-/* Sticky profile card */
+/* 프로필 카드 스티키 */
 .profile-wrap{
   position: sticky;
   top: 26px;
 }
 
-/* =========================
-   Cards
-   ========================= */
+
+/* =========================================================
+   5) Card 공통 컴포넌트
+   ========================================================= */
 .card{
   background: var(--card);
   border: 1px solid var(--border);
@@ -164,17 +189,40 @@ a:hover{ text-decoration:underline; }
   letter-spacing:-0.02em;
   margin:0 0 12px;
 }
-.card-title svg{ width:18px; height:18px; opacity:0.78; }
 
+/* Card title 아이콘 */
+.card-title svg{
+  width:18px;
+  height:18px;
+  opacity:0.78;
+}
+
+/* 섹션 간격 */
 .section-gap{ margin-top:18px; }
 
-/* =========================
-   Profile Card
-   ========================= */
+
+/* =========================================================
+   6) Divider (얇은 선) - 프로젝트/interest에서 쓰던 로직을 공통화
+   - "오른쪽 박스들 얇은 선"과 동일한 느낌을 유지
+   ========================================================= */
+.divider{
+  border-top: var(--divider);
+}
+
+/* 프로필 카드에서 contacts 좌우 padding(20px)에 맞춘 divider */
+.divider-inset{
+  margin:16px 20px;
+}
+
+
+/* =========================================================
+   7) Profile Card (좌측 카드)
+   ========================================================= */
 .profile{
   padding: 20px 18px;
 }
 
+/* 프로필 사진 */
 .profile .photo{
   width:100%;
   border-radius: var(--r-lg);
@@ -189,22 +237,25 @@ a:hover{ text-decoration:underline; }
   display:block;
 }
 
+/* 이름: 구조상 h2 사용 (접근성 + 의미) */
 .profile .name{
   margin:20px 0 18px;
   font-size:32px;
   font-weight:700;
   letter-spacing:-0.03em;
-  text-align:center;
+  text-align:center; /* 좌측 정렬 원하면 left로 변경 가능 */
 }
 
+/* 연락처 래퍼 */
 .profile .contacts{
   display:flex;
   flex-direction:column;
   gap:10px;
   margin-top:18px;
-  padding:0 20px;
+  padding:0 20px; /* divider-inset과 맞추는 핵심 포인트 */
 }
 
+/* 연락처 한 줄 */
 .contact-row{
   display:flex;
   align-items:center;
@@ -214,12 +265,18 @@ a:hover{ text-decoration:underline; }
   font-size:14px;
   position: relative;
 }
+
+/* 아이콘 크기 고정 + 줄어듦 방지
+   - 이메일 복사 버튼 도입 후 텍스트 길이에 의해 아이콘이 "찌그러지는" 현상 방지 */
 .contact-row svg{
   width:16px;
   height:16px;
-  flex: 0 0 16px;
   opacity:0.85;
+  flex: 0 0 16px;      /* 고정 폭 */
+  flex-shrink: 0;       /* 절대 줄지 않게 */
 }
+
+/* 연락처 링크 스타일 */
 .contact-row a{
   color: var(--muted2);
   font-weight:700;
@@ -227,10 +284,11 @@ a:hover{ text-decoration:underline; }
 }
 .contact-row a:hover{ text-decoration:underline; }
 
-/* =========================
-   Email copy (text-only)
-   ========================= */
-.copy-email{
+
+/* =========================================================
+   8) Copy-to-Clipboard 버튼 (이메일 텍스트 클릭 복사)
+   ========================================================= */
+.copy-text{
   padding:0;
   border:0;
   background:transparent;
@@ -243,14 +301,18 @@ a:hover{ text-decoration:underline; }
   text-align:left;
   line-height:1.2;
 }
-.copy-email:hover{ text-decoration: underline; }
-.copy-email:focus-visible{
+
+/* hover 시 링크처럼 보이게 */
+.copy-text:hover{ text-decoration: underline; }
+
+/* 키보드 접근성(탭 이동) 시 포커스 링 */
+.copy-text:focus-visible{
   outline: 2px solid rgba(59,114,255,0.25);
   outline-offset: 3px;
   border-radius: 6px;
 }
 
-/* Small inline "Copied!" toast */
+/* Copied! 토스트 */
 .copy-toast{
   margin-left:8px;
   font-size:12px;
@@ -267,14 +329,18 @@ a:hover{ text-decoration:underline; }
   transform: translateY(0);
 }
 
-/* =========================
-   School block
-   ========================= */
+
+/* =========================================================
+   9) School Link (프로필 하단 학교)
+   ========================================================= */
 .school-link{
   display:flex;
   gap:12px;
   align-items:center;
-  margin-top:20px;
+
+  /* divider가 공간을 담당하므로 margin-top은 0이 더 깔끔 */
+  margin-top:0;
+
   padding:12px 12px;
   border-radius: 16px;
   background: rgba(255,255,255,0.55);
@@ -286,6 +352,7 @@ a:hover{ text-decoration:underline; }
   background: rgba(255,255,255,0.68);
   text-decoration:none;
 }
+
 .school-logo{
   width:44px;
   height:44px;
@@ -303,6 +370,7 @@ a:hover{ text-decoration:underline; }
   object-fit:contain;
   display:block;
 }
+
 .school-meta{
   display:flex;
   flex-direction:column;
@@ -320,9 +388,10 @@ a:hover{ text-decoration:underline; }
   margin-top:2px;
 }
 
-/* =========================
-   Hero
-   ========================= */
+
+/* =========================================================
+   10) Hero (오른쪽 상단 인사 카드)
+   ========================================================= */
 .hero{
   padding:22px 24px;
 }
@@ -339,23 +408,29 @@ a:hover{ text-decoration:underline; }
   max-width: 70ch;
 }
 
-/* =========================
-   Interest rows
-   ========================= */
+
+/* =========================================================
+   11) Interests (Research Interests)
+   - 기존 얇은 선 로직: row 간 border-top
+   ========================================================= */
 .interests .row{
   display:grid;
   grid-template-columns: 1fr auto;
   gap:18px;
   padding:18px 0;
-  border-top:1px solid rgba(30,64,175,0.08);
+  border-top: var(--divider);
 }
-.interests .row:first-child{ border-top:none; padding-top:0; }
+.interests .row:first-child{
+  border-top:none;
+  padding-top:0;
+}
 .interests .row:last-child{ padding-bottom:0; }
 
 .row-left{
   display:flex;
   gap:12px;
 }
+
 .badge-ic{
   width:34px;
   height:34px;
@@ -367,7 +442,13 @@ a:hover{ text-decoration:underline; }
   justify-content:center;
   flex:0 0 auto;
 }
-.badge-ic svg{ width:18px; height:18px; opacity:0.85; }
+
+/* 배지 아이콘 */
+.badge-ic svg{
+  width:18px;
+  height:18px;
+  opacity:0.85;
+}
 
 .row-left .title{
   font-weight:700;
@@ -383,6 +464,7 @@ a:hover{ text-decoration:underline; }
   max-width: 54ch;
 }
 
+/* Pills */
 .pills{
   display:grid;
   gap:10px;
@@ -391,9 +473,7 @@ a:hover{ text-decoration:underline; }
 .pills.two-cols{
   grid-template-columns: repeat(2, max-content);
 }
-.pills.one-col{
-  grid-template-columns: max-content;
-}
+
 .pill{
   display:inline-flex;
   align-items:center;
@@ -408,21 +488,27 @@ a:hover{ text-decoration:underline; }
   font-size:13px;
   white-space:nowrap;
 }
-.pill svg{ width:16px; height:16px; opacity:0.78; }
+.pill svg{
+  width:16px;
+  height:16px;
+  opacity:0.78;
+}
 
-/* =========================
-   Projects
-   ========================= */
+
+/* =========================================================
+   12) Projects
+   - item 간 얇은 선(오른쪽 박스 로직 유지)
+   - 아이콘 배경은 파란색(다른 아이콘들과 동일)
+   ========================================================= */
 .projects .item{
   display:flex;
   gap:12px;
   padding:16px 0;
-  border-top:1px solid rgba(30,64,175,0.08);
+  border-top: var(--divider);
 }
 .projects .item:first-child{ border-top:none; padding-top:0; }
 .projects .item:last-child{ padding-bottom:0; }
 
-/* Projects icons now match the same blue as other icons */
 .proj-ic{
   width:34px;
   height:34px;
@@ -434,7 +520,11 @@ a:hover{ text-decoration:underline; }
   justify-content:center;
   flex:0 0 auto;
 }
-.proj-ic svg{ width:18px; height:18px; opacity:0.82; }
+.proj-ic svg{
+  width:18px;
+  height:18px;
+  opacity:0.82;
+}
 
 .projects .name{
   margin:0;
@@ -449,14 +539,15 @@ a:hover{ text-decoration:underline; }
   max-width: 78ch;
 }
 
-/* =========================
-   About: education/experience
-   ========================= */
+
+/* =========================================================
+   13) About: listcard (Education/Experience)
+   ========================================================= */
 .listcard .entry{
   display:flex;
   gap:12px;
   padding:16px 0;
-  border-top:1px solid rgba(30,64,175,0.08);
+  border-top: var(--divider);
 }
 .listcard .entry:first-child{ border-top:none; padding-top:0; }
 .listcard .entry:last-child{ padding-bottom:0; }
@@ -472,7 +563,11 @@ a:hover{ text-decoration:underline; }
   justify-content:center;
   flex:0 0 auto;
 }
-.entry-ic svg{ width:18px; height:18px; opacity:0.85; }
+.entry-ic svg{
+  width:18px;
+  height:18px;
+  opacity:0.85;
+}
 
 .entry .headline{
   margin:0;
