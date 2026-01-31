@@ -6,7 +6,6 @@
   <title>Minseok Kim</title>
   <meta name="description" content="Minseok Kim | Multimodal & Digital Therapeutics" />
 
-  <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -36,14 +35,15 @@
 
       --r-card: 16px;
       --r-pill: 999px;
-      --r-soft: 12px;
+
+      --wrap-max: 1040px;
+      --wrap-pad: 22px;
 
       --w-sidebar: 280px;
       --w-avatar: 220px;
     }
 
     *{ box-sizing:border-box; }
-
     html, body { height: 100%; }
 
     body{
@@ -63,9 +63,9 @@
     a:hover{ text-decoration: underline; }
 
     .wrap{
-      max-width: 1040px;
+      max-width: var(--wrap-max);
       margin: 0 auto;
-      padding: 56px 22px;
+      padding: 56px var(--wrap-pad);
     }
 
     .grid{
@@ -74,12 +74,19 @@
       align-items:flex-start;
     }
 
-    .sidebar{
+    /* Spacer keeps layout width while the sidebar is fixed */
+    .sidebar-col{
       width: var(--w-sidebar);
       flex: 0 0 var(--w-sidebar);
-      position: sticky;
+    }
+
+    .sidebar{
+      width: var(--w-sidebar);
+      position: fixed;
       top: 28px;
-      align-self: flex-start;
+      left: 50%;
+      margin-left: calc(-1 * (var(--wrap-max) / 2) + var(--wrap-pad));
+      z-index: 10;
     }
 
     .card{
@@ -145,22 +152,14 @@
     .pill{
       display:inline-flex;
       align-items:center;
-      gap: 6px;
       padding: 5px 10px;
       border-radius: var(--r-pill);
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text-muted);
+      background: var(--surface-alt);
+      border: 1px solid var(--primary-border);
+      color: rgba(47,111,237,0.95);
       font-size: 12px;
+      font-weight: 600;
       white-space: nowrap;
-    }
-
-    .pill-dot{
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--primary);
-      opacity: 0.9;
     }
 
     main{
@@ -319,9 +318,24 @@
       flex-wrap:wrap;
     }
 
+    /* If viewport is narrower than the wrap max, anchor sidebar to padding */
+    @media (max-width: 1080px){
+      .sidebar{
+        left: var(--wrap-pad);
+        margin-left: 0;
+      }
+    }
+
+    /* Mobile: disable fixed sidebar and stack */
     @media (max-width: 920px){
       .grid{ flex-direction:column; gap: 18px; }
-      .sidebar{ width:auto; flex: 1 1 auto; position: static; }
+      .sidebar-col{ width:auto; flex: 1 1 auto; }
+      .sidebar{
+        position: static;
+        width: auto;
+        left: auto;
+        margin-left: 0;
+      }
       .avatar{ width: 190px; }
     }
   </style>
@@ -330,36 +344,38 @@
 <body>
   <div class="wrap">
     <div class="grid">
-      <aside class="sidebar">
-        <img class="avatar" src="./profile.jpg" alt="Profile photo" />
+      <div class="sidebar-col">
+        <aside class="sidebar">
+          <img class="avatar" src="./profile.jpg" alt="Profile photo" />
 
-        <h1 class="name">Minseok Kim</h1>
-        <p class="subline">
-          Focused on <em>Multimodal</em> and <em>Digital Therapeutics</em>
-        </p>
+          <h1 class="name">Minseok Kim</h1>
+          <p class="subline">
+            Focused on <em>Multimodal</em> and <em>Digital Therapeutics</em>
+          </p>
 
-        <div class="card card-pad">
-          <div class="kv">
-            <b>Email</b>
-            <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
+          <div class="card card-pad">
+            <div class="kv">
+              <b>Email</b>
+              <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
 
-            <b>Lab</b>
-            <span>
-              <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
-                SKKU DSAIL
-              </a>
-            </span>
+              <b>Lab</b>
+              <span>
+                <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
+                  SKKU DSAIL
+                </a>
+              </span>
 
-            <b>GitHub</b>
-            <span><a href="https://github.com/seo9ky" target="_blank" rel="noopener noreferrer">github.com/seo9ky</a></span>
+              <b>GitHub</b>
+              <span><a href="https://github.com/seo9ky" target="_blank" rel="noopener noreferrer">github.com/seo9ky</a></span>
+            </div>
+
+            <div class="pills" aria-label="keywords">
+              <span class="pill">Multimodal</span>
+              <span class="pill">Digital Therapeutics</span>
+            </div>
           </div>
-
-          <div class="pills" aria-label="keywords">
-            <span class="pill"><span class="pill-dot"></span>Multimodal</span>
-            <span class="pill"><span class="pill-dot"></span>Digital Therapeutics</span>
-          </div>
-        </div>
-      </aside>
+        </aside>
+      </div>
 
       <main>
         <div class="hero">
@@ -444,7 +460,7 @@
           <div class="section-title">Experiences</div>
           <div class="list">
             <div class="item">
-              <div class="item-title">SKKU DSAIL <em>Research Member</em></div>
+              <div class="item-title">SKKU-DSAIL <em>Research Member</em></div>
               <p class="item-meta">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
               <p class="item-meta">Mar. 202X – Present</p>
             </div>
