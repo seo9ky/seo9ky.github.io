@@ -214,7 +214,7 @@ a:hover{ text-decoration:underline; }
 .contact-row svg{
   width:16px;
   height:16px;
-  opacity:0.70;
+  opacity:0.85;
 }
 .contact-row a{
   color: var(--muted2);
