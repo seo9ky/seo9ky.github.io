@@ -57,7 +57,7 @@
       overflow-x: hidden;
     }
 
-    /* Full-page background that stays consistent throughout scroll */
+    /* Full-page background */
     body::before{
       content:"";
       position: fixed;
@@ -151,7 +151,7 @@
       margin-top: 6px;
     }
 
-    /* Sticky sidebar (moves with scroll but stays visible) */
+    /* Sticky sidebar */
     .sidebar{
       width: var(--w-sidebar);
       flex: 0 0 var(--w-sidebar);
@@ -182,8 +182,37 @@
     .name{
       font-size: 28px;
       letter-spacing: -0.02em;
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       font-weight: 700;
+    }
+
+    /* School logo block */
+    .school-row{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .school-logo{
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      display:block;
+      object-fit: contain;
+      padding: 4px;
+      box-shadow: 0 6px 18px rgba(17,24,39,0.06);
+    }
+    .school-text{
+      line-height: 1.25;
+    }
+    .school-text b{
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     .kv{
@@ -341,7 +370,7 @@
       flex-wrap:wrap;
     }
 
-    /* Scroll reveal effect */
+    /* Scroll reveal */
     .reveal{
       opacity: 0;
       transform: translateY(14px);
@@ -356,7 +385,7 @@
       .reveal{ opacity: 1; transform: none; transition: none; }
     }
 
-    /* About page visibility */
+    /* Pages */
     .page{ display: none; }
     .page.active{ display: block; }
 
@@ -392,6 +421,15 @@
 
         <h1 class="name reveal">Minseok Kim</h1>
 
+        <!-- School logo added here -->
+        <div class="school-row reveal">
+          <img class="school-logo" src="./skku-logo.jpg" alt="Sungkyunkwan University logo" />
+          <div class="school-text">
+            <b>Sungkyunkwan University</b><br>
+            Seoul, Republic of Korea
+          </div>
+        </div>
+
         <div class="card card-pad reveal">
           <div class="kv">
             <b>Email</b>
@@ -414,7 +452,7 @@
 
       <!-- Right -->
       <main>
-        <!-- HOME PAGE -->
+        <!-- HOME -->
         <div id="page-home" class="page active">
           <div class="hero reveal">
             <div class="hero-title">Hello</div>
@@ -466,7 +504,7 @@
           </section>
         </div>
 
-        <!-- ABOUT PAGE -->
+        <!-- ABOUT -->
         <div id="page-about" class="page">
           <section id="education" class="reveal" style="border-top:none; padding-top:0; margin-top:0;">
             <div class="section-title">Education</div>
@@ -514,7 +552,7 @@
     document.getElementById("updated").textContent =
       d.toLocaleString("en-US", { month: "long", year: "numeric" });
 
-    // Simple router (Home / About) using hash
+    // Router (Home / About) using hash
     const navHome = document.getElementById("nav-home");
     const navAbout = document.getElementById("nav-about");
     const pageHome = document.getElementById("page-home");
@@ -528,10 +566,8 @@
       navHome.setAttribute("aria-current", isHome ? "page" : "false");
       navAbout.setAttribute("aria-current", !isHome ? "page" : "false");
 
-      // scroll to top on page switch (feels like navigation)
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // re-trigger reveal observation for newly shown items
       requestAnimationFrame(() => {
         document.querySelectorAll(".reveal").forEach(el => {
           el.classList.remove("in");
@@ -546,7 +582,7 @@
     }
     window.addEventListener("hashchange", route);
 
-    // Scroll reveal effect using IntersectionObserver
+    // Scroll reveal effect
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -558,7 +594,6 @@
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-    // Initial route
     route();
   </script>
 </body>
