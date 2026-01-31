@@ -324,7 +324,7 @@ a:hover{ text-decoration:underline; }
 .badge-ic svg{ width:18px; height:18px; opacity:0.85; }
 
 .row-left .title{
-  font-weight:900;
+  font-weight:700;
   margin:0;
   font-size:16px;
   letter-spacing:-0.02em;
@@ -337,7 +337,6 @@ a:hover{ text-decoration:underline; }
   max-width: 54ch;
 }
 
-/* pills: tag-like, not button-like */
 .pills{
   display:grid;
   gap:10px;
@@ -357,7 +356,7 @@ a:hover{ text-decoration:underline; }
   border-radius:999px;
   background: rgba(255,255,255,0.55);
   border: 1px solid rgba(30,64,175,0.12);
-  box-shadow:none; /* important: not button */
+  box-shadow:none;
   color: rgba(15,23,42,0.78);
   font-weight:800;
   font-size:13px;
@@ -392,7 +391,7 @@ a:hover{ text-decoration:underline; }
 
 .projects .name{
   margin:0;
-  font-weight:950;
+  font-weight:700;
   letter-spacing:-0.02em;
 }
 .projects .summary{
@@ -430,14 +429,14 @@ a:hover{ text-decoration:underline; }
 
 .entry .headline{
   margin:0;
-  font-weight:950;
+  font-weight:700;
   letter-spacing:-0.02em;
   font-size:15px;
 }
 .entry .sub{
   margin:4px 0 0;
   color: var(--muted2);
-  font-weight:700;
+  font-weight:600;
   font-size:12.5px;
 }
 .entry .meta{
