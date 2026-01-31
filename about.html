@@ -4,202 +4,208 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Minseok Kim — About</title>
-  <link rel="stylesheet" href="./styles.css"/>
+  <link rel="stylesheet" href="assets/site.css"/>
 </head>
 <body>
-  <!-- Transparent navbar: buttons only -->
-  <nav class="nav" aria-label="Primary">
-    <a href="./index.html">
-      <span class="icon" aria-hidden="true">
-        <svg class="i" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>
-      </span>
-      Home
-    </a>
-    <a class="active" href="./about.html" aria-current="page">
-      <span class="icon" aria-hidden="true">
-        <svg class="i" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/></svg>
-      </span>
-      About
-    </a>
-  </nav>
+  <div class="container">
+    <header class="nav">
+      <div class="nav-inner">
+        <nav class="nav-actions" aria-label="Primary">
+          <a class="nav-btn" href="index.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M3 10.5 12 3l9 7.5"></path>
+              <path d="M5 9.5V21h14V9.5"></path>
+            </svg>
+            Home
+          </a>
+          <a class="nav-btn is-active" href="about.html" aria-current="page">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M20 21a8 8 0 0 0-16 0"></path>
+              <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"></path>
+            </svg>
+            About
+          </a>
+        </nav>
+      </div>
+    </header>
 
-  <div class="top-space"></div>
-
-  <main class="container">
-    <div class="layout">
-      <!-- Left: Profile card (same as Home for consistency) -->
-      <aside class="sidebar">
-        <section class="card profile" aria-label="Profile">
-          <div class="avatar">
-            <img src="./assets/profile.jpg" alt="Profile photo"/>
+    <main class="page">
+      <!-- LEFT: same profile card -->
+      <aside class="profile-wrap">
+        <section class="card profile reveal">
+          <div class="profile-photo">
+            <img src="assets/profile.jpg" alt="Profile photo"/>
           </div>
 
-          <div class="profile-title">
-            <h1>Minseok Kim</h1>
-            <div class="profile-sub" aria-label="Primary fields">
-              <span>Multimodal</span><span class="dot"></span><span>Digital Therapeutics</span>
-            </div>
+          <div class="profile-head">
+            <div class="name-school">
+              <h1 class="name">Minseok Kim</h1>
 
-            <div class="school-block" aria-label="Affiliation">
-              <div class="school-logo" aria-hidden="true">
-                <img src="./assets/skku-logo.png" alt=""/>
-              </div>
-              <div class="school-text">
-                <div class="name">Sungkyunkwan University</div>
-                <div class="loc">Seoul, Republic of Korea</div>
+              <div class="school-badge">
+                <img src="assets/skku-logo.png" alt="SKKU logo"/>
+                <div>
+                  <div class="school-title">Sungkyunkwan University</div>
+                  <div class="school-sub">Seoul, Republic of Korea</div>
+                </div>
               </div>
             </div>
 
-            <div class="contact" aria-label="Contacts">
-              <a href="mailto:seo9ky@g.skku.edu">
-                <span class="icon" aria-hidden="true">
-                  <svg class="i" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
-                </span>
-                seo9ky@g.skku.edu
-              </a>
+            <div class="profile-meta">
+              <div class="meta-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M4 6h16v12H4z"></path>
+                  <path d="m4 7 8 6 8-6"></path>
+                </svg>
+                <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
+              </div>
 
-              <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg class="i" viewBox="0 0 24 24">
-                    <path d="M3 21h18"/>
-                    <path d="M6 21V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14"/>
-                    <path d="M9 9h1"/><path d="M9 12h1"/><path d="M9 15h1"/>
-                    <path d="M14 9h1"/><path d="M14 12h1"/><path d="M14 15h1"/>
-                  </svg>
-                </span>
-                DSAIL@SKKU
-              </a>
+              <div class="meta-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M3 21h18"></path>
+                  <path d="M5 21V7l7-4 7 4v14"></path>
+                  <path d="M9 21v-6h6v6"></path>
+                  <path d="M9 10h.01M12 10h.01M15 10h.01"></path>
+                </svg>
+                <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
+                  DSAIL@SKKU
+                </a>
+              </div>
             </div>
 
-            <div class="pills" aria-label="Main categories">
-              <div class="pill-main"><span class="mini-dot" aria-hidden="true"></span>Multimodal</div>
-              <div class="pill-main"><span class="mini-dot" aria-hidden="true"></span>Digital Therapeutics</div>
+            <div class="primary-tags">
+              <span class="tag-primary"><span class="dot"></span>Multimodal</span>
+              <span class="tag-primary"><span class="dot"></span>Digital Therapeutics</span>
             </div>
           </div>
         </section>
       </aside>
 
-      <!-- Right: About content -->
-      <section class="main" aria-label="About content">
-        <section class="section">
-          <h3 class="h-title">
-            <span class="icon" aria-hidden="true">
-              <!-- Mortarboard -->
-              <svg class="i" viewBox="0 0 24 24">
-                <path d="M22 10 12 5 2 10l10 5 10-5z"/>
-                <path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/>
-              </svg>
-            </span>
+      <!-- RIGHT: About content -->
+      <section class="main">
+        <section class="card panel reveal">
+          <div class="h2">
+            <!-- Graduation cap -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
+              <path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"></path>
+            </svg>
             Education
-          </h3>
+          </div>
 
-          <div class="grid">
-            <!-- M.S. first -->
-            <div class="card info-card">
-              <div class="left">
-                <span class="icon" aria-hidden="true">
-                  <!-- University building -->
-                  <svg class="i" viewBox="0 0 24 24">
-                    <path d="M3 21h18"/>
-                    <path d="M4 10h16"/>
-                    <path d="M6 10v11"/><path d="M10 10v11"/><path d="M14 10v11"/><path d="M18 10v11"/>
-                    <path d="M12 3 3 8h18L12 3z"/>
-                  </svg>
-                </span>
-                <div>
-                  <p class="title">Sungkyunkwan University</p>
-                  <p class="desc">
-                    <span class="small">Seoul, Republic of Korea</span><br/>
-                    M.S. in Applied Artificial Intelligence · Mar. 2026 – Present
-                  </p>
-                </div>
+          <div class="interest-card">
+            <div class="row-left">
+              <div class="icon-badge" aria-hidden="true">
+                <!-- university / building -->
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M3 21h18"></path>
+                  <path d="M4 10h16"></path>
+                  <path d="M6 10V6l6-3 6 3v4"></path>
+                  <path d="M6 21V10"></path>
+                  <path d="M10 21V10"></path>
+                  <path d="M14 21V10"></path>
+                  <path d="M18 21V10"></path>
+                </svg>
               </div>
-            </div>
-
-            <div class="card info-card">
-              <div class="left">
-                <span class="icon" aria-hidden="true">
-                  <svg class="i" viewBox="0 0 24 24">
-                    <path d="M3 21h18"/>
-                    <path d="M4 10h16"/>
-                    <path d="M6 10v11"/><path d="M10 10v11"/><path d="M14 10v11"/><path d="M18 10v11"/>
-                    <path d="M12 3 3 8h18L12 3z"/>
-                  </svg>
-                </span>
-                <div>
-                  <p class="title">Sungkyunkwan University</p>
-                  <p class="desc">
-                    <span class="small">Seoul, Republic of Korea</span><br/>
-                    B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026
-                  </p>
-                </div>
+              <div>
+                <p class="title">Sungkyunkwan University</p>
+                <p class="desc">Seoul, Republic of Korea</p>
+                <p class="desc" style="margin-top:6px;">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</p>
               </div>
             </div>
           </div>
 
-          <div class="divider" role="presentation"></div>
+          <div class="interest-card">
+            <div class="row-left">
+              <div class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M3 21h18"></path>
+                  <path d="M4 10h16"></path>
+                  <path d="M6 10V6l6-3 6 3v4"></path>
+                  <path d="M6 21V10"></path>
+                  <path d="M10 21V10"></path>
+                  <path d="M14 21V10"></path>
+                  <path d="M18 21V10"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="title">Sungkyunkwan University</p>
+                <p class="desc">Seoul, Republic of Korea</p>
+                <p class="desc" style="margin-top:6px;">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</p>
+              </div>
+            </div>
+          </div>
 
-          <h3 class="h-title">
-            <span class="icon" aria-hidden="true">
-              <!-- Briefcase -->
-              <svg class="i" viewBox="0 0 24 24">
-                <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                <path d="M3 7h18v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                <path d="M3 12h18"/>
-              </svg>
-            </span>
+          <div class="hr"></div>
+
+          <div class="h2" style="margin-top: 2px;">
+            <!-- briefcase -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M10 6h4"></path>
+              <path d="M10 6V5a2 2 0 0 1 2-2 2 2 0 0 1 2 2v1"></path>
+              <rect x="4" y="6" width="16" height="14" rx="2"></rect>
+              <path d="M4 12h16"></path>
+            </svg>
             Experiences
-          </h3>
-
-          <div class="grid">
-            <div class="card info-card">
-              <div class="left">
-                <span class="icon" aria-hidden="true">
-                  <!-- Organization/building -->
-                  <svg class="i" viewBox="0 0 24 24">
-                    <path d="M3 21h18"/>
-                    <path d="M6 21V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14"/>
-                    <path d="M9 9h1"/><path d="M9 12h1"/><path d="M9 15h1"/>
-                    <path d="M14 9h1"/><path d="M14 12h1"/><path d="M14 15h1"/>
-                  </svg>
-                </span>
-                <div>
-                  <p class="title">DSAIL@SKKU</p>
-                  <p class="desc">
-                    <span class="small">Research Member · Mar. 202X – Present</span><br/>
-                    Add 1–2 lines: topics, methods, responsibilities, and outcomes.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="card info-card">
-              <div class="left">
-                <span class="icon" aria-hidden="true">
-                  <svg class="i" viewBox="0 0 24 24">
-                    <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                    <path d="M3 7h18v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                    <path d="M3 12h18"/>
-                  </svg>
-                </span>
-                <div>
-                  <p class="title">Experience Title #2</p>
-                  <p class="desc">
-                    <span class="small">Role · YYYY – YYYY</span><br/>
-                    Add 1–2 lines: role, tasks, impact.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <footer class="footer" aria-label="Footer">
-              <div>© 2026 Minseok Kim</div>
-              <div>Last updated: January 2026</div>
-            </footer>
           </div>
+
+          <div class="interest-card">
+            <div class="row-left">
+              <div class="icon-badge" aria-hidden="true" style="background: rgba(47,107,255,.10);">
+                <!-- org/building -->
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M3 21h18"></path>
+                  <path d="M5 21V7l7-4 7 4v14"></path>
+                  <path d="M9 10h.01M12 10h.01M15 10h.01"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="title">DSAIL@SKKU</p>
+                <p class="desc">Research Member · Mar. 202X – Present</p>
+                <p class="desc" style="margin-top:6px;">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="interest-card">
+            <div class="row-left">
+              <div class="icon-badge" aria-hidden="true">
+                <!-- org/building -->
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M3 21h18"></path>
+                  <path d="M5 21V7l7-4 7 4v14"></path>
+                  <path d="M9 10h.01M12 10h.01M15 10h.01"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="title">Experience Title #2</p>
+                <p class="desc">Role · YYYY – YYYY</p>
+                <p class="desc" style="margin-top:6px;">Add 1–2 lines: role, tasks, impact.</p>
+              </div>
+            </div>
+          </div>
+
+          <footer class="footer">
+            <span>© 2026 Minseok Kim</span>
+            <span>Last updated: January 2026</span>
+          </footer>
         </section>
       </section>
-    </div>
-  </main>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const els = Array.from(document.querySelectorAll('.reveal'));
+      const io = new IntersectionObserver((entries)=>{
+        for(const e of entries){
+          if(e.isIntersecting){
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        }
+      }, { threshold: 0.12 });
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
 </body>
 </html>
