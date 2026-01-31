@@ -40,7 +40,19 @@
           <div class="contacts">
             <div class="contact-row">
               <i data-lucide="mail"></i>
-              <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
+
+              <!-- click-to-copy (no mailto, so mail app will NOT open) -->
+              <button
+                class="copy-email"
+                type="button"
+                data-copy="seo9ky@g.skku.edu"
+                aria-label="Copy email address"
+                title="Click to copy"
+              >
+                seo9ky@g.skku.edu
+              </button>
+
+              <span class="copy-toast" aria-live="polite" aria-atomic="true">Copied!</span>
             </div>
 
             <div class="contact-row">
@@ -147,6 +159,33 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
+
+    // Email: click-to-copy only (prevents mail app)
+    (function () {
+      const btn = document.querySelector(".copy-email[data-copy]");
+      const toast = document.querySelector(".copy-toast");
+      if (!btn) return;
+
+      let t = null;
+      btn.addEventListener("click", async () => {
+        const text = btn.getAttribute("data-copy") || "";
+        try {
+          await navigator.clipboard.writeText(text);
+          if (toast) {
+            toast.classList.add("show");
+            clearTimeout(t);
+            t = setTimeout(() => toast.classList.remove("show"), 900);
+          }
+        } catch (e) {
+          // Fallback (very rare): select text for manual copy
+          const sel = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(btn);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
