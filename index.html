@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>seo9ky</title>
+  <meta name="description" content="seo9ky | Multimodal Learning & Digital Therapeutics" />
+  <style>
+    :root{
+      --text:#111827;
+      --muted:#4b5563;
+      --link:#0b57d0;
+      --border:#e5e7eb;
+      --bg:#ffffff;
+      --card:#fafafa;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 52px 20px;
+    }
+    .grid{
+      display:flex;
+      gap:52px;
+      align-items:flex-start;
+    }
+    .sidebar{
+      width: 260px;
+      flex: 0 0 260px;
+      position: sticky;
+      top: 24px;
+      align-self: flex-start;
+    }
+    .name{
+      font-size: 28px;
+      margin: 0 0 6px;
+      letter-spacing:-0.2px;
+    }
+    .tagline{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .card{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--card);
+      padding: 14px 14px;
+    }
+    .kv{
+      display:grid;
+      grid-template-columns: 70px 1fr;
+      gap: 8px 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .kv b{
+      color: var(--text);
+      font-weight: 600;
+    }
+    a{ color: var(--link); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    main{ flex: 1 1 auto; min-width: 0; }
+    .hero{
+      margin-bottom: 18px;
+    }
+    .hero h2{
+      font-size: 22px;
+      margin: 0 0 10px;
+    }
+    .hero p{
+      margin: 0 0 10px;
+      color: var(--muted);
+    }
+
+    section{
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    section h3{
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+    ul{ margin: 8px 0 0 18px; padding:0; }
+    li{ margin: 7px 0; }
+    .item-title{ font-weight: 650; }
+    .item-meta{ color: var(--muted); font-size: 14px; margin-top: 2px; }
+    .badge-row{ margin-top: 8px; display:flex; flex-wrap:wrap; gap:8px; }
+    .badge{
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    footer{
+      margin-top: 34px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 860px){
+      .grid{ flex-direction:column; gap: 18px; }
+      .sidebar{ width:auto; flex: 1 1 auto; position: static; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="grid">
+      <!-- Left -->
+      <aside class="sidebar">
+        <h1 class="name">seo9ky</h1>
+        <p class="tagline">Multimodal Learning · Digital Therapeutics</p>
+
+        <div class="card">
+          <div class="kv">
+            <b>Email</b>
+            <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
+
+            <b>GitHub</b>
+            <span><a href="https://github.com/seo9ky">github.com/seo9ky</a></span>
+
+            <b>Lab</b>
+            <span>
+              <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
+                Data Science Lab
+              </a>
+            </span>
+          </div>
+
+          <div class="badge-row" aria-label="keywords">
+            <span class="badge">Multimodal</span>
+            <span class="badge">Digital Therapeutics</span>
+            <span class="badge">Applied AI</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right -->
+      <main>
+        <!-- Greeting -->
+        <div class="hero">
+          <h2>Hello!</h2>
+          <p>
+            I’m <b>seo9ky</b>, a researcher interested in building practical, human-centered AI systems.
+            My current focus is on <b>Multimodal Learning</b> and <b>Digital Therapeutics</b>.
+          </p>
+          <p>
+            If you’d like to collaborate or chat, feel free to reach out via email.
+          </p>
+        </div>
+
+        <!-- Research Interests -->
+        <section id="research-interests">
+          <h3>Research Interests</h3>
+          <ul>
+            <li><span class="item-title">Multimodal Learning</span>
+              <div class="item-meta">Vision–language reasoning, multimodal representation, robust evaluation</div>
+            </li>
+            <li><span class="item-title">Digital Therapeutics</span>
+              <div class="item-meta">Reliable, safe, and personalized conversational AI for mental health applications</div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+          <h3>Education</h3>
+          <ul>
+            <li>
+              <span class="item-title">Sungkyunkwan University</span>, Seoul, Republic of Korea<br/>
+              <span class="item-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</span>
+            </li>
+            <li>
+              <span class="item-title">Sungkyunkwan University</span>, Seoul, Republic of Korea<br/>
+              <span class="item-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+          <h3>Projects</h3>
+          <ul>
+            <li>
+              <span class="item-title">Project Title #1</span>
+              <div class="item-meta">Short 1–2 line description of what you built/researched and the key outcome.</div>
+              <div class="item-meta">
+                Links:
+                <a href="#" target="_blank" rel="noopener noreferrer">paper</a> ·
+                <a href="#" target="_blank" rel="noopener noreferrer">code</a> ·
+                <a href="#" target="_blank" rel="noopener noreferrer">demo</a>
+              </div>
+            </li>
+            <li>
+              <span class="item-title">Project Title #2</span>
+              <div class="item-meta">Short 1–2 line description. Add metrics/results if you have them.</div>
+              <div class="item-meta">
+                Links:
+                <a href="#" target="_blank" rel="noopener noreferrer">paper</a> ·
+                <a href="#" target="_blank" rel="noopener noreferrer">code</a>
+              </div>
+            </li>
+          </ul>
+          <div class="item-meta" style="margin-top:10px;">
+            Tip: Replace the placeholders with your real projects. You can also add more items freely.
+          </div>
+        </section>
+
+        <!-- Experiences -->
+        <section id="experiences">
+          <h3>Experiences</h3>
+          <ul>
+            <li>
+              <span class="item-title">Data Science Lab</span> — Research Member
+              <div class="item-meta">Add 1–2 lines on what you did (topics, methods, responsibilities, outcomes).</div>
+              <div class="item-meta">Mar. 202X – Present</div>
+            </li>
+            <li>
+              <span class="item-title">Experience Title #2</span>
+              <div class="item-meta">Add 1–2 lines: role, tasks, impact.</div>
+              <div class="item-meta">YYYY – YYYY</div>
+            </li>
+          </ul>
+        </section>
+
+        <footer>
+          <div>© <span id="year"></span> seo9ky</div>
+          <div>Last updated: <span id="updated"></span></div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const d = new Date();
+    document.getElementById("year").textContent = d.getFullYear();
+    document.getElementById("updated").textContent =
+      d.toLocaleString("en-US", { month: "long", year: "numeric" });
+  </script>
+</body>
+</html>
