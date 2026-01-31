@@ -32,6 +32,7 @@
       gap:52px;
       align-items:flex-start;
     }
+
     .sidebar{
       width: 260px;
       flex: 0 0 260px;
@@ -39,6 +40,20 @@
       top: 24px;
       align-self: flex-start;
     }
+
+    /* ✅ Profile photo (rounded-rectangle “card” feel) */
+    .avatar{
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(17, 24, 39, 0.08);
+      margin-bottom: 14px;
+    }
+
     .name{
       font-size: 28px;
       margin: 0 0 6px;
@@ -121,6 +136,7 @@
     @media (max-width: 860px){
       .grid{ flex-direction:column; gap: 18px; }
       .sidebar{ width:auto; flex: 1 1 auto; position: static; }
+      .avatar{ width: 160px; height: 160px; border-radius: 14px; }
     }
   </style>
 </head>
@@ -130,6 +146,9 @@
     <div class="grid">
       <!-- Left -->
       <aside class="sidebar">
+        <!-- ✅ Make sure profile.jpg is in the repo root -->
+        <img class="avatar" src="./profile.jpg" alt="Profile photo" />
+
         <h1 class="name">seo9ky</h1>
         <p class="tagline">Multimodal Learning · Digital Therapeutics</p>
 
@@ -175,10 +194,12 @@
         <section id="research-interests">
           <h3>Research Interests</h3>
           <ul>
-            <li><span class="item-title">Multimodal Learning</span>
+            <li>
+              <span class="item-title">Multimodal Learning</span>
               <div class="item-meta">Vision–language reasoning, multimodal representation, robust evaluation</div>
             </li>
-            <li><span class="item-title">Digital Therapeutics</span>
+            <li>
+              <span class="item-title">Digital Therapeutics</span>
               <div class="item-meta">Reliable, safe, and personalized conversational AI for mental health applications</div>
             </li>
           </ul>
