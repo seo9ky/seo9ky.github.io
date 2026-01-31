@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Minseok Kim</title>
 
+  <!-- 폰트: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -13,11 +14,14 @@
 </head>
 
 <body>
-  <div class="bg"></div>
+  <!-- 배경 글래스 그라디언트 -->
+  <div class="bg" aria-hidden="true"></div>
 
   <div class="container">
-    <div class="topnav">
+    <!-- 상단 네비게이션: index/about 공통 구조 -->
+    <nav class="topnav" aria-label="Primary">
       <div class="navpill">
+        <!-- active 클래스만 페이지별로 다르게 -->
         <a class="active" href="./index.html">
           <i data-lucide="home"></i> Home
         </a>
@@ -25,25 +29,31 @@
           <i data-lucide="user"></i> About
         </a>
       </div>
-    </div>
+    </nav>
 
     <div class="layout">
-      <!-- Left: Profile -->
+      <!-- ===== Left: Profile (index/about 공통) ===== -->
       <aside class="profile-wrap">
-        <div class="card profile">
+        <section class="card profile" aria-label="Profile">
           <div class="photo">
             <img src="./assets/profile.jpg" alt="Profile photo">
           </div>
 
-          <div class="name">Minseok Kim</div>
+          <h2 class="name">Minseok Kim</h2>
 
-          <div class="contacts">
+          <!-- 연락처 영역 -->
+          <div class="contacts" aria-label="Contacts">
+            <!-- 이메일: mailto 제거, 클릭 시 복사만 -->
             <div class="contact-row">
               <i data-lucide="mail"></i>
 
-              <!-- click-to-copy (no mailto, so mail app will NOT open) -->
+              <!-- 
+                버튼으로 구현: 
+                - a(mailto)로 만들면 클릭 시 메일 앱이 열릴 수 있음
+                - button은 복사 기능에 더 적합 + 접근성(키보드/스크린리더) 좋음
+              -->
               <button
-                class="copy-email"
+                class="copy-text"
                 type="button"
                 data-copy="seo9ky@g.skku.edu"
                 aria-label="Copy email address"
@@ -52,15 +62,21 @@
                 seo9ky@g.skku.edu
               </button>
 
+              <!-- 복사 완료 토스트 -->
               <span class="copy-toast" aria-live="polite" aria-atomic="true">Copied!</span>
             </div>
 
+            <!-- 랩실 링크는 외부 링크 유지 -->
             <div class="contact-row">
               <i data-lucide="building-2"></i>
               <a href="https://dsail.skku.edu" target="_blank" rel="noopener">DSAIL@SKKU</a>
             </div>
           </div>
 
+          <!-- Profile Divider: 오른쪽 박스들 얇은 선과 동일한 로직 -->
+          <div class="divider divider-inset" aria-hidden="true"></div>
+
+          <!-- 학교 링크 -->
           <a class="school-link" href="https://www.skku.edu/skku/index.do" target="_blank" rel="noopener">
             <span class="school-logo">
               <img src="./assets/skku-logo.png" alt="Sungkyunkwan University">
@@ -70,34 +86,40 @@
               <span class="loc">Seoul, Republic of Korea</span>
             </span>
           </a>
-        </div>
+        </section>
       </aside>
 
-      <!-- Right: Main content -->
+      <!-- ===== Right: Main content ===== -->
       <main>
         <!-- Hero -->
-        <section class="card hero">
+        <section class="card hero" aria-label="Intro">
           <div class="card-inner">
             <h1>Hello!</h1>
             <p>I’m Minseok Kim, an AI researcher at Sungkyunkwan University.</p>
-            <p>I study Natural Language Processing, Computer Vision, and Speech Processing, focusing on reliable evaluation, clear reasoning, and responsible deployment.</p>
+            <p>
+              I study Natural Language Processing, Computer Vision, and Speech Processing,
+              focusing on reliable evaluation, clear reasoning, and responsible deployment.
+            </p>
           </div>
         </section>
 
         <!-- Research Interests -->
-        <section class="card section-gap interests">
+        <section class="card section-gap interests" aria-label="Research Interests">
           <div class="card-inner">
             <div class="card-title">
               <i data-lucide="flask-conical"></i>
               Research Interests
             </div>
 
+            <!-- row 1 -->
             <div class="row">
               <div class="row-left">
                 <div class="badge-ic"><i data-lucide="layers"></i></div>
                 <div>
                   <p class="title">Multimodal</p>
-                  <p class="desc">Learning and reasoning across text, image, and audio for robust generalization and dependable real world behavior.</p>
+                  <p class="desc">
+                    Learning and reasoning across text, image, and audio for robust generalization and dependable real world behavior.
+                  </p>
                 </div>
               </div>
 
@@ -108,12 +130,16 @@
               </div>
             </div>
 
+            <!-- row 2 -->
             <div class="row">
               <div class="row-left">
+                <!-- Digital Therapeutics: lucide에서 하트+의료 느낌 가장 적합한 아이콘 -->
                 <div class="badge-ic"><i data-lucide="heart-pulse"></i></div>
                 <div>
                   <p class="title">Digital Therapeutics</p>
-                  <p class="desc">Designing clinically meaningful AI that is safety focused, evidence aware, and evaluated with transparent, reproducible protocols.</p>
+                  <p class="desc">
+                    Designing clinically meaningful AI that is safety focused, evidence aware, and evaluated with transparent, reproducible protocols.
+                  </p>
                 </div>
               </div>
 
@@ -127,7 +153,7 @@
         </section>
 
         <!-- Projects -->
-        <section class="card section-gap projects">
+        <section class="card section-gap projects" aria-label="Projects">
           <div class="card-inner">
             <div class="card-title">
               <i data-lucide="folder"></i>
@@ -138,7 +164,9 @@
               <div class="proj-ic"><i data-lucide="bot"></i></div>
               <div>
                 <p class="name">MIND</p>
-                <p class="summary">Developing a mental health chatbot with safety aware conversation design and reliable response behavior.</p>
+                <p class="summary">
+                  Developing a mental health chatbot with safety aware conversation design and reliable response behavior.
+                </p>
               </div>
             </div>
 
@@ -146,7 +174,9 @@
               <div class="proj-ic"><i data-lucide="help-circle"></i></div>
               <div>
                 <p class="name">BiasQA</p>
-                <p class="summary">Building an LLM bias benchmark dataset for question answering to measure stereotypes and evaluate mitigation methods.</p>
+                <p class="summary">
+                  Building an LLM bias benchmark dataset for question answering to measure stereotypes and evaluate mitigation methods.
+                </p>
               </div>
             </div>
           </div>
@@ -155,18 +185,29 @@
     </div>
   </div>
 
-  <!-- Lucide icons (standard set) -->
+  <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
   <script>
+    /**
+     * 공통 초기화
+     * - lucide.createIcons()는 i[data-lucide]를 svg로 변환
+     * - 복사 기능은 index/about 모두 동일하게 동작
+     */
     lucide.createIcons();
 
-    // Email: click-to-copy only (prevents mail app)
+    /**
+     * Click-to-copy (공통)
+     * - .copy-text[data-copy] 버튼을 클릭하면 clipboard에 복사
+     * - mailto를 쓰지 않으므로 메일 앱이 열리지 않음
+     */
     (function () {
-      const btn = document.querySelector(".copy-email[data-copy]");
+      const btn = document.querySelector(".copy-text[data-copy]");
       const toast = document.querySelector(".copy-toast");
       if (!btn) return;
 
       let t = null;
+
       btn.addEventListener("click", async () => {
         const text = btn.getAttribute("data-copy") || "";
         try {
@@ -177,7 +218,7 @@
             t = setTimeout(() => toast.classList.remove("show"), 900);
           }
         } catch (e) {
-          // Fallback (very rare): select text for manual copy
+          // 아주 드물게 clipboard 권한이 막힌 경우: 텍스트 선택으로 대체
           const sel = window.getSelection();
           const range = document.createRange();
           range.selectNodeContents(btn);
