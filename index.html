@@ -1,240 +1,217 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minseok Kim</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minseok Kim</title>
+    <link rel="stylesheet" href="styles.css" />
 
-<body>
-  <!-- Icon sprite (inline, no external deps) -->
-  <svg class="icon-sprite" aria-hidden="true">
-    <symbol id="i-home" viewBox="0 0 24 24">
-      <path d="M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5H15v-6h-6v6H4.5A1.5 1.5 0 0 1 3 19.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="i-user" viewBox="0 0 24 24">
-      <path d="M12 12a4.2 4.2 0 1 0-4.2-4.2A4.2 4.2 0 0 0 12 12Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
-      <path d="M4.5 20a7.5 7.5 0 0 1 15 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24">
-      <path d="M4.5 7.5h15A1.5 1.5 0 0 1 21 9v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18V9a1.5 1.5 0 0 1 1.5-1.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M4.8 9.2 12 14l7.2-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="i-building" viewBox="0 0 24 24">
-      <path d="M4 21V4.5A1.5 1.5 0 0 1 5.5 3h9A1.5 1.5 0 0 1 16 4.5V21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M16 10.5h2A1.5 1.5 0 0 1 19.5 12V21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M7 7h2M7 10h2M7 13h2M11 7h2M11 10h2M11 13h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="i-uni" viewBox="0 0 24 24">
-      <path d="M12 3 3 7.5 12 12l9-4.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M6 10.2V15c0 1.8 2.7 3.5 6 3.5s6-1.7 6-3.5v-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="i-flask" viewBox="0 0 24 24">
-      <path d="M10 3v5.5l-4.8 8.2A3.5 3.5 0 0 0 8.2 22h7.6a3.5 3.5 0 0 0 3-5.3L14 8.5V3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M9 13h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="i-layers" viewBox="0 0 24 24">
-      <path d="M12 3 3 8l9 5 9-5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M3 12l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M3 16l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="i-heartpulse" viewBox="0 0 24 24">
-      <path d="M12 21s-7.5-4.8-9.7-9.2A5.6 5.6 0 0 1 12 5.9a5.6 5.6 0 0 1 9.7 5.9C19.5 16.2 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M3.8 12h4l1.3-2.6 2.1 6 1.6-3.4H20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="i-folder" viewBox="0 0 24 24">
-      <path d="M3.5 6.5h6l2 2h9A1.5 1.5 0 0 1 22 10v9.5A1.5 1.5 0 0 1 20.5 21h-17A1.5 1.5 0 0 1 2 19.5V8A1.5 1.5 0 0 1 3.5 6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-    </symbol>
+    <!-- Standard icon set (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
 
-    <!-- pill icons -->
-    <symbol id="i-text" viewBox="0 0 24 24">
-      <path d="M5 7h14M5 12h10M5 17h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="i-image" viewBox="0 0 24 24">
-      <path d="M5 6.5h14A1.5 1.5 0 0 1 20.5 8v10A1.5 1.5 0 0 1 19 19.5H5A1.5 1.5 0 0 1 3.5 18V8A1.5 1.5 0 0 1 5 6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M8.2 14.5 10.6 12l2.2 2.2 2.2-2.2 3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M9 10a1.2 1.2 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="i-audio" viewBox="0 0 24 24">
-      <path d="M6 10v4M9 8v8M12 6v12M15 8v8M18 10v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="i-heart" viewBox="0 0 24 24">
-      <path d="M12 21s-7.5-4.8-9.7-9.2A5.6 5.6 0 0 1 12 5.9a5.6 5.6 0 0 1 9.7 5.9C19.5 16.2 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="i-eye" viewBox="0 0 24 24">
-      <path d="M2.2 12s3.6-7 9.8-7 9.8 7 9.8 7-3.6 7-9.8 7-9.8-7-9.8-7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
-    </symbol>
-    <symbol id="i-ear" viewBox="0 0 24 24">
-      <path d="M12 20.5c-2.6 0-4.5-2-4.5-4.6 0-2.1 1.5-3.2 2.4-4.1.8-.8 1.4-1.6 1.4-2.8A2.9 2.9 0 0 0 8.4 6.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      <path d="M15.7 17.5c1.2-1.1 2-2.6 2-4.5A5.7 5.7 0 0 0 12 7.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </symbol>
-  </svg>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
 
-  <!-- Top navigation aligned to content width -->
-  <header class="topbar" role="banner">
-    <div class="topbar-inner">
-      <nav class="nav" aria-label="Primary">
-        <a class="nav-pill is-active" href="index.html">
-          <svg class="icon"><use href="#i-home"></use></svg>
-          <span>Home</span>
-        </a>
-        <a class="nav-pill" href="about.html">
-          <svg class="icon"><use href="#i-user"></use></svg>
-          <span>About</span>
-        </a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container" role="main">
-    <div class="layout">
-      <!-- Left / Sticky profile -->
-      <aside class="sidebar">
-        <section class="profile-card" aria-label="Profile">
-          <div class="profile-photo-wrap">
-            <img class="profile-photo" src="assets/profile.jpg" alt="Profile photo of Minseok Kim" />
-          </div>
-
-          <h1 class="profile-name">Minseok Kim</h1>
-
-          <div class="contact-list" aria-label="Contacts">
-            <a class="contact-item link" href="mailto:seo9ky@g.skku.edu">
-              <svg class="icon"><use href="#i-mail"></use></svg>
-              <span>seo9ky@g.skku.edu</span>
-            </a>
-            <a class="contact-item link" href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener">
-              <svg class="icon"><use href="#i-building"></use></svg>
-              <span>DSAIL@SKKU</span>
-            </a>
-          </div>
-
-          <!-- Clickable school block -->
-          <a class="school-link" href="https://www.skku.edu/skku/index.do" target="_blank" rel="noopener" aria-label="Open Sungkyunkwan University website">
-            <img class="school-logo" src="assets/skku-logo.png" alt="Sungkyunkwan University logo" />
-            <div class="school-text">
-              <div class="school-name">Sungkyunkwan University</div>
-              <div class="school-loc">Seoul, Republic of Korea</div>
-            </div>
+    <div class="page">
+      <!-- Top Navigation -->
+      <header class="topnav">
+        <nav class="nav">
+          <a class="nav-btn is-active" href="index.html" aria-current="page">
+            <i data-lucide="home" class="ico"></i>
+            <span>Home</span>
           </a>
-        </section>
-      </aside>
+          <a class="nav-btn" href="about.html">
+            <i data-lucide="user" class="ico"></i>
+            <span>About</span>
+          </a>
+        </nav>
+      </header>
 
-      <!-- Right / Content -->
-      <section class="content">
-        <section class="card hero">
-          <div class="hero-title">Hello!</div>
-          <p>
-            I’m Minseok Kim, studying <strong>Applied Artificial Intelligence</strong> at
-            <strong>Sungkyunkwan University</strong> (B.S., M.S., Ph.D. track), working at the intersection of
-            <strong>Multimodal AI</strong> and <strong>Digital Therapeutics</strong>.
-          </p>
-          <p>
-            My work spans Natural Language Processing, Computer Vision, and Audio, with applications in Mental Health,
-            Ophthalmology, and Audiology.
-          </p>
-          <p class="hero-last">
-            I focus on building reliable, safe, and useful systems for real-world settings.
-          </p>
-        </section>
+      <div class="layout">
+        <!-- Left Sticky Profile Card -->
+        <aside class="sidebar">
+          <section class="profile-card" aria-label="Profile">
+            <div class="avatar-wrap">
+              <img
+                class="avatar"
+                src="assets/profile.jpg"
+                alt="Profile photo of Minseok Kim"
+                loading="eager"
+              />
+            </div>
 
-        <!-- Research Interests -->
-        <section class="section">
-          <div class="section-header">
-            <svg class="icon"><use href="#i-flask"></use></svg>
-            <h2>Research Interests</h2>
-          </div>
+            <h1 class="name">Minseok Kim</h1>
 
-          <div class="card section-card">
-            <div class="interest-row">
-              <div class="interest-left">
-                <span class="interest-badge" aria-hidden="true">
-                  <svg class="icon"><use href="#i-layers"></use></svg>
-                </span>
-                <div class="interest-meta">
-                  <div class="interest-title">Multimodal</div>
-                  <div class="interest-desc">Learning and reasoning across modalities for robust, practical systems.</div>
+            <div class="contacts" aria-label="Contacts">
+              <a class="contact-item link-blue" href="mailto:seo9ky@g.skku.edu">
+                <i data-lucide="mail" class="ico"></i>
+                <span>seo9ky@g.skku.edu</span>
+              </a>
+
+              <a class="contact-item link-blue" href="https://dsail.skku.edu/" target="_blank" rel="noreferrer">
+                <i data-lucide="globe" class="ico"></i>
+                <span>DSAIL@SKKU</span>
+              </a>
+            </div>
+
+            <!-- Clickable school block (no “logo-only box”) -->
+            <a
+              class="school-link"
+              href="https://www.skku.edu/skku/index.do"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit Sungkyunkwan University website"
+            >
+              <img class="school-logo" src="assets/skku-logo.png" alt="SKKU logo" />
+              <div class="school-text">
+                <div class="school-name">Sungkyunkwan University</div>
+                <div class="school-meta">Seoul, Republic of Korea</div>
+              </div>
+              <i data-lucide="arrow-up-right" class="ico school-arrow" aria-hidden="true"></i>
+            </a>
+          </section>
+        </aside>
+
+        <!-- Right Content -->
+        <main class="content">
+          <!-- Greeting -->
+          <section class="card hero" aria-label="Greeting">
+            <h2 class="hero-title">Hello!</h2>
+            <p class="hero-lead">
+              I’m Minseok Kim, studying <strong>Applied Artificial Intelligence</strong> at
+              <strong>Sungkyunkwan University</strong> (B.S., M.S., Ph.D. track). I build
+              dependable ML systems at the intersection of <strong>multimodal AI</strong> and
+              <strong>digital therapeutics</strong>.
+            </p>
+            <p class="hero-text">
+              My work spans <strong>Natural Language Processing</strong>, <strong>Computer Vision</strong>, and
+              <strong>Audio</strong>, with applications in mental health, ophthalmology, and audiology.
+              I care about practical research: robust evaluation, clear reasoning, and responsible deployment.
+            </p>
+          </section>
+
+          <!-- Research Interests -->
+          <section class="section">
+            <h2 class="section-title">
+              <i data-lucide="layers" class="ico"></i>
+              <span>Research Interests</span>
+            </h2>
+
+            <div class="card block">
+              <!-- Multimodal -->
+              <div class="row">
+                <div class="row-head">
+                  <div class="row-icon">
+                    <i data-lucide="layers-3" class="ico"></i>
+                  </div>
+                  <div class="row-title-wrap">
+                    <div class="row-title">Multimodal</div>
+                    <div class="row-desc">
+                      Learning representations and reasoning across text, vision, and audio—designed for robustness,
+                      alignment, and reliable generalization in real-world settings.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pill-grid" aria-label="Multimodal tags">
+                  <span class="pill">
+                    <i data-lucide="text" class="ico pill-ico"></i>
+                    Natural Language Processing
+                  </span>
+                  <span class="pill">
+                    <i data-lucide="camera" class="ico pill-ico"></i>
+                    Computer Vision
+                  </span>
+                  <span class="pill">
+                    <i data-lucide="mic" class="ico pill-ico"></i>
+                    Audio
+                  </span>
                 </div>
               </div>
 
-              <!-- two-line fixed grid -->
-              <div class="pill-grid" aria-label="Multimodal sub-areas">
-                <span class="pill">
-                  <svg class="pill-ic"><use href="#i-text"></use></svg>
-                  Natural Language Processing
-                </span>
-                <span class="pill">
-                  <svg class="pill-ic"><use href="#i-image"></use></svg>
-                  Computer Vision
-                </span>
-                <span class="pill">
-                  <svg class="pill-ic"><use href="#i-audio"></use></svg>
-                  Audio
-                </span>
-              </div>
-            </div>
+              <div class="divider"></div>
 
-            <div class="divider"></div>
+              <!-- Digital Therapeutics -->
+              <div class="row">
+                <div class="row-head">
+                  <div class="row-icon">
+                    <i data-lucide="shield-check" class="ico"></i>
+                  </div>
+                  <div class="row-title-wrap">
+                    <div class="row-title">Digital Therapeutics</div>
+                    <div class="row-desc">
+                      Building clinically meaningful AI that is safe by design—grounded in evidence, sensitive to bias,
+                      and evaluated with rigorous, transparent protocols.
+                    </div>
+                  </div>
+                </div>
 
-            <div class="interest-row">
-              <div class="interest-left">
-                <span class="interest-badge" aria-hidden="true">
-                  <svg class="icon"><use href="#i-heartpulse"></use></svg>
-                </span>
-                <div class="interest-meta">
-                  <div class="interest-title">Digital Therapeutics</div>
-                  <div class="interest-desc">Human-centered AI for clinically meaningful and safe applications.</div>
+                <div class="pill-grid" aria-label="Digital Therapeutics tags">
+                  <span class="pill">
+                    <i data-lucide="brain" class="ico pill-ico"></i>
+                    Mental Health
+                  </span>
+                  <span class="pill">
+                    <i data-lucide="eye" class="ico pill-ico"></i>
+                    Ophthalmology
+                  </span>
+                  <span class="pill">
+                    <i data-lucide="ear" class="ico pill-ico"></i>
+                    Audiology
+                  </span>
                 </div>
               </div>
-
-              <div class="pill-grid" aria-label="Digital therapeutics domains">
-                <span class="pill">
-                  <svg class="pill-ic"><use href="#i-heart"></use></svg>
-                  Mental Health
-                </span>
-                <span class="pill">
-                  <svg class="pill-ic"><use href="#i-eye"></use></svg>
-                  Ophthalmology
-                </span>
-                <span class="pill">
-                  <svg class="pill-ic"><use href="#i-ear"></use></svg>
-                  Audiology
-                </span>
-              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <!-- Projects -->
-        <section class="section">
-          <div class="section-header">
-            <svg class="icon"><use href="#i-folder"></use></svg>
-            <h2>Projects</h2>
-          </div>
+          <!-- Projects -->
+          <section class="section">
+            <h2 class="section-title">
+              <i data-lucide="folder" class="ico"></i>
+              <span>Projects</span>
+            </h2>
 
-          <div class="card section-card">
-            <div class="list-item">
-              <div class="list-title">Project Title #1</div>
-              <div class="list-desc">One–two lines describing what you built/researched and the outcome.</div>
+            <div class="card block">
+              <article class="item">
+                <div class="item-title">
+                  <i data-lucide="sparkles" class="ico"></i>
+                  <span>MIND</span>
+                </div>
+                <p class="item-text">
+                  A multimodal digital therapeutics direction focusing on reliable sensing/understanding and
+                  intervention-ready outputs. Emphasis on robustness, human-centered evaluation, and safety constraints.
+                </p>
+              </article>
+
+              <div class="divider"></div>
+
+              <article class="item">
+                <div class="item-title">
+                  <i data-lucide="scale" class="ico"></i>
+                  <span>BiasQA</span>
+                </div>
+                <p class="item-text">
+                  A bias-aware QA and evaluation pipeline: constructing challenging prompts, measuring stereotype leakage,
+                  and designing mitigation strategies (prompting + evaluation) with reproducible reporting.
+                </p>
+              </article>
             </div>
+          </section>
 
-            <div class="divider"></div>
-
-            <div class="list-item">
-              <div class="list-title">Project Title #2</div>
-              <div class="list-desc">One–two lines describing your contribution. Add metrics/results if available.</div>
+          <!-- Footer (right content area only) -->
+          <footer class="footer">
+            <div class="footer-row">
+              <span>© 2026 Minseok Kim</span>
+              <span>Last updated: January 2026</span>
             </div>
-          </div>
-        </section>
-
-        <!-- Footer (inside right content area) -->
-        <footer class="content-footer" role="contentinfo">
-          <span>© Minseok Kim</span>
-          <span>Last updated: January 2026</span>
-        </footer>
-      </section>
+          </footer>
+        </main>
+      </div>
     </div>
-  </main>
-</body>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
 </html>
