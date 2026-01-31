@@ -5,675 +5,723 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Minseok Kim</title>
 
-  <!-- Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-
-  <!-- Lucide (standard icon set) -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
     :root{
-      --bg0:#f6f9ff;
-      --bg1:#f4f7ff;
+      --bg0:#f6f8ff;
+      --bg1:#f8fbff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --card:rgba(255,255,255,.78);
+      --card2:rgba(255,255,255,.66);
+      --stroke:rgba(15,23,42,.10);
+      --shadow: 0 18px 45px rgba(2,6,23,.10);
+      --shadow2: 0 10px 26px rgba(2,6,23,.08);
+      --brand:#2f5cff;
+      --pill:#edf2ff;
+      --pillStroke:#d7e1ff;
 
-      --card: rgba(255,255,255,.78);
-      --stroke: rgba(15,23,42,.10);
+      --hl-bg: rgba(252, 211, 77, .35);  /* yellow highlight */
+      --hl-stroke: rgba(252, 211, 77, .45);
+      --hl-ink:#7a4b00;
 
-      --text:#0f172a;
-      --muted:#475569;
-      --muted2:#64748b;
-
-      --shadow-soft: 0 10px 28px rgba(2,6,23,.08);
-      --radius: 18px;
-
-      --accent:#2563eb;
-      --accent-soft: rgba(37,99,235,.10);
-
-      --hl:#fde68a;
-      --hl-stroke:#f3d16a;
-
-      --nav-h: 72px;
-      --max: 1100px;
-      --gap: 32px;
+      --radius:22px;
+      --radius2:16px;
+      --maxw: 1100px;
+      --navH: 76px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    /* Reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo","Noto Sans KR", "Malgun Gothic", sans-serif;
+      color:var(--ink);
+      background: radial-gradient(1200px 800px at 18% 15%, rgba(99, 102, 241, .12), transparent 60%),
+                  radial-gradient(1000px 700px at 78% 28%, rgba(251, 191, 36, .10), transparent 55%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    /* subtle glass noise */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
       background:
-        radial-gradient(900px 520px at 20% 22%, rgba(37,99,235,.18), transparent 60%),
-        radial-gradient(760px 520px at 78% 30%, rgba(251,191,36,.14), transparent 60%),
-        radial-gradient(880px 560px at 46% 80%, rgba(99,102,241,.12), transparent 65%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      background-attachment: fixed;
-      line-height: 1.55;
+        radial-gradient(1200px 900px at 20% 20%, rgba(59,130,246,.10), transparent 60%),
+        radial-gradient(900px 700px at 85% 25%, rgba(245,158,11,.10), transparent 55%);
+      mix-blend-mode:normal;
+      opacity:.9;
+      z-index:-1;
     }
 
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    /* ===== Navbar (NOW: transparent, no separation) ===== */
-    .navbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      height: var(--nav-h);
-      display:flex;
-      align-items:center;
-
-      /* remove separation feel */
-      background: transparent;
-      border-bottom: none;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-    .nav-inner{
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap: 10px;
-    }
-
-    /* Only keep the right floating buttons */
-    .nav-pill{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      padding: 6px;
-      border-radius: 999px;
-
-      /* subtle floating chip, but not "bar" */
-      border: 1px solid rgba(15,23,42,.08);
-      background: rgba(255,255,255,.45);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 10px 26px rgba(2,6,23,.08);
-    }
-    .nav-btn{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      color: var(--text);
-      font-weight: 650;
-      font-size: 14px;
-      background: transparent;
-      cursor:pointer;
-      user-select:none;
-      transition: background .15s ease, border-color .15s ease, transform .15s ease;
-    }
-    .nav-btn i{ width:16px; height:16px; }
-    .nav-btn:hover{
-      background: rgba(2,6,23,.04);
-      transform: translateY(-1px);
-    }
-    .nav-btn.active{
-      background: var(--accent-soft);
-      border-color: rgba(37,99,235,.22);
-      color: #1e40af;
-    }
+    a{color:inherit}
+    a:hover{color:var(--brand)}
+    .muted{color:var(--muted)}
 
     /* Layout */
     .wrap{
-      width: min(var(--max), calc(100% - 40px));
-      margin: 22px auto 48px;
-    }
-    .layout{
-      display:grid;
-      grid-template-columns: 340px 1fr;
-      gap: var(--gap);
-      align-items:start;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding: calc(var(--navH) + 26px) 18px 56px;
     }
 
-    /* Sidebar sticky */
-    .sidebar-sticky{
-      position: sticky;
-      top: calc(var(--nav-h) + 18px);
+    .grid{
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap: 22px;
+      align-items:start;
     }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .profileWrap{position:static !important}
+      .navRight{right:14px}
+      .wrap{padding-top: calc(var(--navH) + 18px)}
+    }
+
+    /* Navbar (transparent, only right buttons visible) */
+    .nav{
+      position:fixed;
+      top:0; left:0; right:0;
+      height:var(--navH);
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding: 0 18px;
+      z-index:50;
+      background: transparent; /* important: no bar separation */
+    }
+    .navRight{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .navBtn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 26px rgba(2,6,23,.06);
+      color: rgba(15,23,42,.84);
+      font-weight: 600;
+      text-decoration:none;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .navBtn:hover{transform: translateY(-1px); background: rgba(255,255,255,.68); border-color: rgba(15,23,42,.14)}
+    .navBtn.active{
+      background: rgba(47,92,255,.10);
+      border-color: rgba(47,92,255,.20);
+      color: rgba(25,55,190,.95);
+    }
+    .navIcon{width:18px;height:18px;display:inline-block}
 
     /* Cards */
     .card{
-      border-radius: var(--radius);
-      border: 1px solid var(--stroke);
       background: var(--card);
-      box-shadow: var(--shadow-soft);
-      overflow:hidden;
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
-    .card-inner{ padding: 18px; }
+    .cardInner{padding:18px}
+    .card2{
+      background: var(--card2);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
 
-    /* ===== Profile (improved harmony) ===== */
-    .photo{
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      border-radius: 16px;
-      overflow:hidden;
-      border: 1px solid rgba(15,23,42,.10);
-      background: rgba(2,6,23,.03);
-      box-shadow: 0 14px 32px rgba(2,6,23,.10);
+    /* Profile (left sticky) */
+    .profileWrap{
+      position: sticky;
+      top: calc(var(--navH) + 18px);
     }
-    .photo img{
+    .avatar{
       width:100%;
-      height:100%;
-      object-fit: cover;
-      object-position: center;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.35);
+      box-shadow: 0 14px 34px rgba(2,6,23,.10);
+    }
+    .avatar img{
+      width:100%;
       display:block;
     }
-
-    /* Name block: clearer hierarchy & placement */
-    .name-block{
-      margin-top: 14px;
-      text-align: left;
-    }
     .name{
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: -0.03em;
+      margin: 14px 2px 6px;
+      font-size: 34px;
+      line-height:1.08;
+      letter-spacing:-.02em;
       font-weight: 800;
-      line-height: 1.12;
     }
-    .name-sub{
-      margin-top: 6px;
+    .subtitle{
+      margin: 0 2px 14px;
       font-size: 13px;
-      color: var(--muted2);
+      color: var(--muted);
       font-weight: 600;
     }
 
-    /* University chip inside card (premium feel) */
-    .uni{
+    /* School row (premium) */
+    .schoolRow{
       display:flex;
       align-items:center;
-      gap: 10px;
-      padding: 10px 12px;
-      border: 1px solid rgba(15,23,42,.08);
+      gap:12px;
+      padding: 12px 12px;
       border-radius: 14px;
-      background: rgba(255,255,255,.68);
-      margin-top: 12px;
+      background: rgba(255,255,255,.60);
+      border: 1px solid rgba(15,23,42,.08);
+      box-shadow: 0 10px 22px rgba(2,6,23,.06);
+      margin-bottom: 12px;
     }
-    .uni img{
-      width: 26px;
-      height: 26px;
+    .schoolLogo{
+      width:28px; height:28px;
       border-radius: 999px;
-      display:block;
+      overflow:hidden;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(15,23,42,.08);
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
     }
-    .uni .u1{
+    .schoolLogo img{width:100%; height:100%; object-fit:cover; display:block}
+    .schoolText{line-height:1.15}
+    .schoolName{
       font-weight: 750;
-      font-size: 13.2px;
-      line-height: 1.15;
+      font-size: 13px;
+      letter-spacing:-.01em;
     }
-    .uni .u2{
-      font-size: 12.3px;
-      color: var(--muted2);
-      line-height: 1.15;
-      margin-top: 2px;
-    }
-
-    .meta{
-      margin-top: 12px;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-    .meta-row{
-      display:flex;
-      align-items:center;
-      gap: 10px;
+    .schoolLoc{
+      font-size: 12px;
       color: var(--muted);
-      font-weight: 650;
-      font-size: 13.5px;
-    }
-    .meta-row i{
-      width: 16px;
-      height: 16px;
-      color: rgba(15,23,42,.65);
-    }
-    .meta-row a{
-      font-weight: 700;
-      color: var(--accent);
+      margin-top:2px;
     }
 
-    .cat-pills{
-      margin-top: 14px;
+    /* Contact rows */
+    .rows{display:flex; flex-direction:column; gap:10px; margin: 12px 2px 14px;}
+    .row{
+      display:flex; align-items:center; gap:10px;
+      font-size: 14px;
+      color: rgba(15,23,42,.86);
+      text-decoration:none;
+    }
+    .row .ico{
+      width:18px;height:18px; flex: 0 0 auto;
+      color: rgba(15,23,42,.72);
+    }
+    .row .value{
+      font-weight: 650;
+      color: rgba(15,23,42,.86);
+    }
+    .row:hover .value{color: var(--brand)}
+    .row:hover .ico{color: var(--brand)}
+
+    /* Left category pills (big categories) */
+    .catPills{
       display:flex;
       flex-direction:column;
-      gap: 10px;
+      gap:10px;
+      margin-top: 8px;
     }
-    .pill-cat{
+    .catPill{
       display:inline-flex;
       align-items:center;
-      gap: 10px;
+      gap:10px;
       padding: 10px 12px;
       border-radius: 999px;
-      background: rgba(37,99,235,.10);
-      border: 1px solid rgba(37,99,235,.26);
+      border: 1px solid rgba(47,92,255,.20);
+      background: rgba(47,92,255,.08);
+      color: rgba(25,55,190,.94);
+      font-weight: 750;
       width: fit-content;
       max-width: 100%;
       box-shadow: 0 10px 22px rgba(2,6,23,.06);
     }
-    .pill-cat .dot{
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(37,99,235,.70);
-      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
-      flex: 0 0 auto;
-    }
-    .pill-cat span{
-      font-weight: 800;
-      font-size: 13.2px;
-      color: #1e3a8a;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: rgba(47,92,255,.55);
+      box-shadow: 0 0 0 3px rgba(47,92,255,.12);
+      flex:0 0 auto;
     }
 
-    /* Content column */
-    .content{ min-width: 0; }
+    /* Right content */
+    .section{display:none}
+    .section.active{display:block}
+    .heroTitle{
+      font-size: 38px;
+      line-height:1.08;
+      margin: 8px 0 10px;
+      font-weight: 850;
+      letter-spacing:-.02em;
+    }
+    .para{
+      margin:0;
+      color: rgba(15,23,42,.78);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .para + .para{margin-top: 10px}
 
-    .section{ margin-bottom: 20px; }
-
-    .h1{
-      font-size: 34px;
-      letter-spacing: -0.03em;
-      font-weight: 820;
-      margin: 6px 0 10px;
-    }
-    .p{
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 15.5px;
-    }
-    .divider{
-      height: 1px;
-      background: rgba(15,23,42,.08);
-      margin: 18px 0 16px;
-    }
-
-    .section-title{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-weight: 820;
-      letter-spacing: -0.01em;
-      margin: 14px 0 10px;
-    }
-    .section-title i{ width: 18px; height: 18px; color: rgba(15,23,42,.70); }
-
-    /* Research Interests icon: "two cross stars" 느낌 (표준 아이콘 2개 조합) */
-    .title-sparkles{
-      position: relative;
-      width: 18px; height: 18px;
-      display:inline-block;
-      flex: 0 0 auto;
-    }
-    .title-sparkles i{
-      position:absolute;
-      inset:0;
-      width: 18px; height: 18px;
-      color: rgba(15,23,42,.72);
-    }
-    .title-sparkles .mini{
-      width: 10px; height: 10px;
-      left: -4px; top: 10px;
-      opacity: .9;
-      transform: rotate(-10deg);
-    }
-
-    /* Highlight chips */
+    /* Highlight words (yellow) */
     .hl{
       display:inline-block;
-      padding: 2px 8px;
+      padding: 2px 10px;
       border-radius: 999px;
-      background: rgba(253,230,138,.65);
-      border: 1px solid rgba(243,209,106,.75);
+      background: var(--hl-bg);
+      border: 1px solid var(--hl-stroke);
+      color: var(--hl-ink);
       font-weight: 800;
-      color: #7a5200;
+      line-height: 1.35;
+      transform: translateY(-1px);
+      margin: 0 2px;
+      white-space:nowrap;
     }
 
-    /* Interest cards */
-    .interest{
-      padding: 14px 16px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(15,23,42,.08);
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 14px 36px rgba(2,6,23,.07);
+    .divider{
+      margin: 18px 0;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(15,23,42,.10), transparent);
     }
-    .interest + .interest{ margin-top: 12px; }
-    .interest-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 14px;
-    }
-    .interest-left{
+
+    .h2{
       display:flex;
       align-items:center;
-      gap: 10px;
-      min-width: 0;
+      gap:10px;
+      margin: 16px 0 10px;
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: -.01em;
     }
-    .interest-left i{ width: 18px; height: 18px; color: rgba(15,23,42,.72); flex:0 0 auto; }
-    .interest-left .t{
-      font-weight: 820;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .h2 .ico{width:18px;height:18px;color: rgba(15,23,42,.80)}
+
+    .interestCard{
+      padding: 16px 16px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
     }
-    .interest-desc{
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 14px;
+    .interestLeft{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      min-width: 220px;
+    }
+    .interestTitle{
+      font-weight: 850;
+      font-size: 15px;
+      margin:0;
+      letter-spacing:-.01em;
+    }
+    .interestDesc{
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: rgba(15,23,42,.70);
+      line-height: 1.6;
+      max-width: 420px;
+    }
+    .interestIco{
+      width:18px;height:18px;color: rgba(15,23,42,.78);
+      margin-top: 2px;
+      flex: 0 0 auto;
     }
 
-    /* Detail pills */
-    .pills{
+    /* Right sub-pills (sub categories) */
+    .tags{
       display:flex;
       flex-wrap:wrap;
-      gap: 8px;
+      gap:10px;
       justify-content:flex-end;
+      max-width: 340px;
     }
-    .pill{
+    .tag{
       display:inline-flex;
       align-items:center;
-      gap: 6px;
-      padding: 7px 10px;
+      gap:8px;
+      padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(37,99,235,.07);
-      border: 1px solid rgba(37,99,235,.18);
-      color: #1d4ed8;
+      border: 1px solid rgba(47,92,255,.18);
+      background: rgba(255,255,255,.55);
+      color: rgba(25,55,190,.92);
       font-weight: 700;
       font-size: 12.5px;
-      white-space: nowrap;
+      box-shadow: 0 10px 22px rgba(2,6,23,.05);
+      white-space:nowrap;
     }
-    .pill i{
-      width: 14px;
-      height: 14px;
-      color: rgba(29,78,216,.85);
-    }
+    .tag svg{width:16px;height:16px;color: rgba(25,55,190,.92)}
 
-    /* Projects / About cards */
-    .item{
-      padding: 14px 16px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(15,23,42,.08);
-      background: rgba(255,255,255,.74);
-      box-shadow: 0 14px 36px rgba(2,6,23,.06);
-    }
-    .item + .item{ margin-top: 12px; }
-    .item-title{
+    .listCard{
+      padding: 16px 16px;
       display:flex;
-      align-items:center;
-      gap: 10px;
-      font-weight: 820;
-      margin-bottom: 4px;
-      letter-spacing: -0.01em;
+      gap:12px;
+      align-items:flex-start;
     }
-    .item-title i{ width: 18px; height: 18px; color: rgba(15,23,42,.65); }
-    .item-sub{
-      color: var(--muted);
-      font-size: 14px;
-      margin: 0;
+    .listIco{width:18px;height:18px;color: rgba(15,23,42,.78); margin-top: 2px; flex:0 0 auto}
+    .listTitle{
+      font-weight: 850; margin: 0;
+      font-size: 15px; letter-spacing:-.01em;
     }
-    .item-meta{
-      margin-top: 8px;
+    .listMeta{
+      margin: 6px 0 0;
       font-size: 13px;
-      color: var(--muted2);
+      color: rgba(15,23,42,.72);
+      line-height: 1.6;
     }
 
-    /* Page switching */
-    .page{ display:none; }
-    .page.active{ display:block; }
-
-    /* Reveal effect (safe) */
-    .reveal{ opacity: 1; transform: none; }
-    html.js .reveal{
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity .55s ease, transform .55s ease;
-      will-change: opacity, transform;
-    }
-    html.js .reveal.visible{
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Ensure profile card never hidden */
-    .profile-card{ opacity: 1 !important; transform: none !important; }
-
-    .footer{
+    /* Footer (always reachable + shows on both pages) */
+    footer{
+      margin-top: 22px;
+      padding-top: 14px;
       display:flex;
       justify-content:space-between;
-      gap: 16px;
-      color: var(--muted2);
+      align-items:center;
+      gap:10px;
+      color: rgba(15,23,42,.55);
       font-size: 12.5px;
-      margin-top: 18px;
-      padding: 8px 2px 0;
+    }
+    @media (max-width: 720px){
+      footer{flex-direction:column; align-items:flex-start}
     }
 
-    @media (max-width: 980px){
-      .layout{ grid-template-columns: 1fr; }
-      .sidebar-sticky{ position: static; }
-      .h1{ font-size: 30px; }
-      .pills{ justify-content:flex-start; }
+    /* Reveal on scroll */
+    .reveal{
+      opacity:0;
+      transform: translateY(10px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.on{
+      opacity:1;
+      transform:none;
     }
   </style>
 </head>
 
 <body>
-  <!-- Navbar (transparent) -->
-  <header class="navbar">
-    <div class="nav-inner">
-      <div class="nav-pill" role="navigation" aria-label="Primary">
-        <button class="nav-btn active" data-target="home" type="button">
-          <i data-lucide="home"></i>
-          <span>Home</span>
-        </button>
-        <button class="nav-btn" data-target="about" type="button">
-          <i data-lucide="user"></i>
-          <span>About</span>
-        </button>
-      </div>
+  <!-- NAV (transparent; only right buttons) -->
+  <nav class="nav" aria-label="Primary">
+    <div class="navRight">
+      <a class="navBtn" href="#home" id="navHome" aria-label="Home">
+        <!-- Heroicons: home -->
+        <svg class="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 10.5 12 3l9 7.5"></path>
+          <path d="M5.5 9.9V21h13V9.9"></path>
+        </svg>
+        Home
+      </a>
+      <a class="navBtn" href="#about" id="navAbout" aria-label="About">
+        <!-- Heroicons: user -->
+        <svg class="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 21a8 8 0 1 0-16 0"></path>
+          <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12z"></path>
+        </svg>
+        About
+      </a>
     </div>
-  </header>
+  </nav>
 
   <main class="wrap">
-    <div class="layout">
-      <!-- Sidebar -->
-      <aside>
-        <div class="sidebar-sticky">
-          <div class="card profile-card">
-            <div class="card-inner">
-              <div class="photo" aria-label="Profile photo">
-                <img src="profile.jpg" alt="Profile photo of Minseok Kim" />
-              </div>
+    <div class="grid">
+      <!-- LEFT: PROFILE -->
+      <aside class="profileWrap">
+        <div class="card">
+          <div class="cardInner">
+            <div class="avatar">
+              <!-- Replace with your actual profile image path -->
+              <img src="profile.jpg" alt="Profile photo" />
+            </div>
 
-              <div class="name-block">
-                <h2 class="name">Minseok Kim</h2>
-                <div class="name-sub">Multimodal · Digital Therapeutics</div>
-              </div>
+            <h1 class="name">Minseok Kim</h1>
+            <p class="subtitle">Multimodal · Digital Therapeutics</p>
 
-              <div class="uni" aria-label="University">
+            <!-- School (moved back to card) -->
+            <div class="schoolRow" aria-label="Affiliation">
+              <div class="schoolLogo" aria-hidden="true">
+                <!-- Use your PNG: skku-logo.png -->
                 <img src="skku-logo.png" alt="Sungkyunkwan University logo" />
-                <div>
-                  <div class="u1">Sungkyunkwan University</div>
-                  <div class="u2">Seoul, Republic of Korea</div>
-                </div>
               </div>
-
-              <div class="meta" aria-label="Contacts">
-                <div class="meta-row">
-                  <i data-lucide="mail"></i>
-                  <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
-                </div>
-
-                <!-- Lab link (FIX: make it clickable) -->
-                <div class="meta-row">
-                  <!-- simpler triangular flask icon -->
-                  <i data-lucide="flask-conical"></i>
-                  <!-- CHANGE THIS URL to your real lab page -->
-                  <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener">DSAIL@SKKU</a>
-                </div>
+              <div class="schoolText">
+                <div class="schoolName">Sungkyunkwan University</div>
+                <div class="schoolLoc">Seoul, Republic of Korea</div>
               </div>
+            </div>
 
-              <div class="cat-pills" aria-label="Focus categories">
-                <div class="pill-cat"><span class="dot"></span><span>Multimodal</span></div>
-                <div class="pill-cat"><span class="dot"></span><span>Digital Therapeutics</span></div>
-              </div>
+            <div class="rows" aria-label="Contact links">
+              <a class="row" href="mailto:seo9ky@g.skku.edu">
+                <!-- Heroicons: envelope -->
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 6h16v12H4z"></path>
+                  <path d="m4 7 8 6 8-6"></path>
+                </svg>
+                <span class="value">seo9ky@g.skku.edu</span>
+              </a>
+
+              <!-- Organization icon + correct link -->
+              <a class="row" href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener">
+                <!-- Heroicons: building-office-2 (organization) -->
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 21h18"></path>
+                  <path d="M5 21V7a2 2 0 0 1 2-2h3"></path>
+                  <path d="M14 5h3a2 2 0 0 1 2 2v14"></path>
+                  <path d="M9 21V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v16"></path>
+                  <path d="M7.5 10h1.5M7.5 13h1.5M7.5 16h1.5"></path>
+                  <path d="M15 10h1.5M15 13h1.5M15 16h1.5"></path>
+                </svg>
+                <span class="value">DSAIL@SKKU</span>
+              </a>
+            </div>
+
+            <!-- Big category pills (left) -->
+            <div class="catPills" aria-label="Primary interests">
+              <div class="catPill"><span class="dot"></span>Multimodal</div>
+              <div class="catPill"><span class="dot"></span>Digital Therapeutics</div>
             </div>
           </div>
         </div>
       </aside>
 
-      <!-- Content -->
-      <section class="content">
+      <!-- RIGHT: CONTENT -->
+      <section>
         <!-- HOME -->
-        <div id="page-home" class="page active" aria-label="Home page">
-          <div class="section reveal">
-            <div class="h1">Hello</div>
-            <p class="p">
+        <div id="home" class="section active">
+          <div class="reveal">
+            <div class="heroTitle">Hello</div>
+            <p class="para">
               I’m Minseok Kim, studying <b>Applied Artificial Intelligence</b> at <b>Sungkyunkwan University</b>
-              (B.S., M.S., Ph.D. track), working at the intersection of <b>Multimodal</b> AI and <b>Digital Therapeutics</b>.
+              (B.S., M.S., Ph.D. track), working at the intersection of <b>Multimodal AI</b> and <b>Digital Therapeutics</b>.
             </p>
-            <p class="p">
-              My work spans Natural Language Processing, Computer Vision, and Audio, with applications in
-              Mental Health, Ophthalmology, and Audiology.
+            <p class="para">
+              My work spans Natural Language Processing, Computer Vision, and Audio, with applications in Mental Health,
+              Ophthalmology, and Audiology.
             </p>
-            <p class="p">
+            <p class="para">
               I focus on building <span class="hl">reliable</span>, <span class="hl">safe</span>, and <span class="hl">useful</span> systems for real-world settings.
             </p>
 
             <div class="divider"></div>
 
-            <div class="section-title">
-              <!-- standard icons only: sparkles + small sparkles = "2 cross-stars" 느낌 -->
-              <span class="title-sparkles" aria-hidden="true">
-                <i data-lucide="sparkles"></i>
-                <i class="mini" data-lucide="sparkles"></i>
-              </span>
-              <span>Research Interests</span>
+            <div class="h2">
+              <!-- Research Interests icon (beaker / triangular flask) -->
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 2v6l-5.2 9.1A3 3 0 0 0 7.4 21h9.2a3 3 0 0 0 2.6-4.4L14 8V2"></path>
+                <path d="M9 8h6"></path>
+                <path d="M8.2 14h7.6"></path>
+              </svg>
+              Research Interests
             </div>
 
-            <div class="interest">
-              <div class="interest-head">
-                <div class="interest-left">
-                  <i data-lucide="layers"></i>
-                  <div class="t">Multimodal</div>
-                </div>
-                <div class="pills" aria-label="Multimodal details">
-                  <span class="pill"><i data-lucide="text"></i>Natural Language Processing</span>
-                  <span class="pill"><i data-lucide="image"></i>Computer Vision</span>
-                  <span class="pill"><i data-lucide="audio-lines"></i>Audio</span>
+            <div class="card2 interestCard reveal" style="margin-top:10px">
+              <div class="interestLeft">
+                <!-- Multimodal icon (layers) -->
+                <svg class="interestIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3 3 8l9 5 9-5-9-5Z"></path>
+                  <path d="M3 12l9 5 9-5"></path>
+                  <path d="M3 16l9 5 9-5"></path>
+                </svg>
+                <div>
+                  <p class="interestTitle">Multimodal</p>
+                  <p class="interestDesc">Learning and reasoning across modalities for robust, practical systems.</p>
                 </div>
               </div>
-              <div class="interest-desc">
-                Learning and reasoning across modalities for robust, practical systems.
+
+              <div class="tags" aria-label="Multimodal sub-areas">
+                <span class="tag">
+                  <!-- Document/Text icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 3h7l3 3v15H7z"></path>
+                    <path d="M14 3v4h4"></path>
+                    <path d="M9 12h6M9 15h6"></path>
+                  </svg>
+                  Natural Language Processing
+                </span>
+                <span class="tag">
+                  <!-- Image icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 6h16v12H4z"></path>
+                    <path d="m8 14 2-2 3 3 2-2 3 3"></path>
+                    <path d="M9 10h.01"></path>
+                  </svg>
+                  Computer Vision
+                </span>
+                <span class="tag">
+                  <!-- Audio icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 18V6l8-2v16"></path>
+                    <path d="M7 18a2 2 0 1 0 4 0 2 2 0 1 0-4 0Z"></path>
+                    <path d="M15 16a2 2 0 1 0 4 0 2 2 0 1 0-4 0Z"></path>
+                  </svg>
+                  Audio
+                </span>
               </div>
             </div>
 
-            <div class="interest">
-              <div class="interest-head">
-                <div class="interest-left">
-                  <i data-lucide="shield-plus"></i>
-                  <div class="t">Digital Therapeutics</div>
-                </div>
-                <div class="pills" aria-label="Digital Therapeutics details">
-                  <span class="pill"><i data-lucide="heart-pulse"></i>Mental Health</span>
-                  <span class="pill"><i data-lucide="eye"></i>Ophthalmology</span>
-                  <span class="pill"><i data-lucide="ear"></i>Audiology</span>
+            <div class="card2 interestCard reveal" style="margin-top:14px">
+              <div class="interestLeft">
+                <!-- Digital Therapeutics icon (shield-check – standard) -->
+                <svg class="interestIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3l8 4v6c0 5-3.4 8.7-8 9-4.6-.3-8-4-8-9V7l8-4z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                <div>
+                  <p class="interestTitle">Digital Therapeutics</p>
+                  <p class="interestDesc">Human-centered AI for clinically meaningful and safe applications.</p>
                 </div>
               </div>
-              <div class="interest-desc">
-                Human-centered AI for clinically meaningful and safe applications.
+
+              <div class="tags" aria-label="Digital Therapeutics sub-areas">
+                <span class="tag">
+                  <!-- Heart icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 21s-7-4.6-9.5-9A5.6 5.6 0 0 1 12 6a5.6 5.6 0 0 1 9.5 6c-2.5 4.4-9.5 9-9.5 9z"></path>
+                  </svg>
+                  Mental Health
+                </span>
+                <span class="tag">
+                  <!-- Eye icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path>
+                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                  </svg>
+                  Ophthalmology
+                </span>
+                <span class="tag">
+                  <!-- Ear icon (simple) -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 13a6 6 0 1 1 12 0c0 3-2 4-2 6a3 3 0 0 1-6 0"></path>
+                    <path d="M10 18a1.5 1.5 0 0 0 3 0c0-2 2-3 2-5a3 3 0 1 0-6 0"></path>
+                  </svg>
+                  Audiology
+                </span>
               </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="section-title">
-              <i data-lucide="folder"></i>
-              <span>Projects</span>
+            <div class="h2">
+              <!-- Projects icon (folder) -->
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 7h6l2 2h10v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              </svg>
+              Projects
             </div>
 
-            <div class="item">
-              <div class="item-title">
-                <i data-lucide="folder-git-2"></i>
-                <span>Project Title #1</span>
+            <div class="card2 listCard reveal" style="margin-top:10px">
+              <svg class="listIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 6h16"></path><path d="M4 12h10"></path><path d="M4 18h16"></path>
+              </svg>
+              <div>
+                <p class="listTitle">Project Title #1</p>
+                <p class="listMeta">One–two lines describing what you built/researched and the outcome.</p>
               </div>
-              <p class="item-sub">One–two lines describing what you built/researched and the outcome.</p>
             </div>
 
-            <div class="item">
-              <div class="item-title">
-                <i data-lucide="folder-git-2"></i>
-                <span>Project Title #2</span>
+            <div class="card2 listCard reveal" style="margin-top:12px">
+              <svg class="listIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 6h16"></path><path d="M4 12h10"></path><path d="M4 18h16"></path>
+              </svg>
+              <div>
+                <p class="listTitle">Project Title #2</p>
+                <p class="listMeta">One–two lines describing your contribution. Add metrics/results if available.</p>
               </div>
-              <p class="item-sub">One–two lines describing your contribution. Add metrics/results if available.</p>
             </div>
+
+            <!-- Footer for Home (fix: previously not reachable due to height/overflow issues) -->
+            <footer class="reveal">
+              <div>© 2026 Minseok Kim</div>
+              <div>Last updated: January 2026</div>
+            </footer>
           </div>
         </div>
 
         <!-- ABOUT -->
-        <div id="page-about" class="page" aria-label="About page">
-          <div class="section reveal">
-            <div class="section-title">
-              <i data-lucide="graduation-cap"></i>
-              <span>Education</span>
+        <div id="about" class="section">
+          <div class="reveal">
+            <div class="h2" style="margin-top:6px">
+              <!-- Education icon (academic cap) -->
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 10l10-5 10 5-10 5-10-5z"></path>
+                <path d="M6 12v6c0 1 3 3 6 3s6-2 6-3v-6"></path>
+              </svg>
+              Education
             </div>
 
-            <div class="item">
-              <div class="item-title">
-                <i data-lucide="school"></i>
-                <span>Sungkyunkwan University</span>
+            <div class="card2 listCard reveal" style="margin-top:10px">
+              <!-- University icon (building) -->
+              <svg class="listIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 21h18"></path>
+                <path d="M5 21V8l7-3 7 3v13"></path>
+                <path d="M9 10h.01M12 10h.01M15 10h.01"></path>
+                <path d="M9 13h.01M12 13h.01M15 13h.01"></path>
+                <path d="M9 16h.01M12 16h.01M15 16h.01"></path>
+              </svg>
+              <div>
+                <p class="listTitle">Sungkyunkwan University</p>
+                <p class="listMeta">Seoul, Republic of Korea<br/>M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</p>
               </div>
-              <p class="item-sub">Seoul, Republic of Korea</p>
-              <div class="item-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</div>
             </div>
 
-            <div class="item">
-              <div class="item-title">
-                <i data-lucide="school"></i>
-                <span>Sungkyunkwan University</span>
+            <div class="card2 listCard reveal" style="margin-top:12px">
+              <svg class="listIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 21h18"></path>
+                <path d="M5 21V8l7-3 7 3v13"></path>
+                <path d="M9 10h.01M12 10h.01M15 10h.01"></path>
+                <path d="M9 13h.01M12 13h.01M15 13h.01"></path>
+                <path d="M9 16h.01M12 16h.01M15 16h.01"></path>
+              </svg>
+              <div>
+                <p class="listTitle">Sungkyunkwan University</p>
+                <p class="listMeta">Seoul, Republic of Korea<br/>B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</p>
               </div>
-              <p class="item-sub">Seoul, Republic of Korea</p>
-              <div class="item-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="section-title">
-              <i data-lucide="briefcase"></i>
-              <span>Experiences</span>
+            <div class="h2">
+              <!-- Experiences icon (briefcase) -->
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 6V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"></path>
+                <path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"></path>
+                <path d="M4 13h16"></path>
+              </svg>
+              Experiences
             </div>
 
-            <div class="item">
-              <div class="item-title">
-                <i data-lucide="building-2"></i>
-                <span>DSAIL@SKKU</span>
+            <div class="card2 listCard reveal" style="margin-top:10px">
+              <svg class="listIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 6V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"></path>
+                <path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"></path>
+                <path d="M4 13h16"></path>
+              </svg>
+              <div>
+                <p class="listTitle">DSAIL@SKKU</p>
+                <p class="listMeta">Research Member · Mar. 202X – Present<br/>Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
               </div>
-              <div class="item-meta">Research Member · Mar. 202X – Present</div>
-              <p class="item-sub">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
             </div>
 
-            <div class="item">
-              <div class="item-title">
-                <i data-lucide="briefcase"></i>
-                <span>Experience Title #2</span>
+            <div class="card2 listCard reveal" style="margin-top:12px">
+              <svg class="listIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 6V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"></path>
+                <path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"></path>
+                <path d="M4 13h16"></path>
+              </svg>
+              <div>
+                <p class="listTitle">Experience Title #2</p>
+                <p class="listMeta">Role · YYYY – YYYY<br/>Add 1–2 lines: role, tasks, impact.</p>
               </div>
-              <div class="item-meta">Role · YYYY – YYYY</div>
-              <p class="item-sub">Add 1–2 lines: role, tasks, impact.</p>
             </div>
 
-            <div class="footer">
+            <footer class="reveal">
               <div>© 2026 Minseok Kim</div>
               <div>Last updated: January 2026</div>
-            </div>
+            </footer>
           </div>
         </div>
       </section>
@@ -681,57 +729,48 @@
   </main>
 
   <script>
-    document.documentElement.classList.add('js');
+    // Simple hash router (Home/About)
+    function showSection(hash){
+      const home = document.getElementById('home');
+      const about = document.getElementById('about');
+      const navHome = document.getElementById('navHome');
+      const navAbout = document.getElementById('navAbout');
 
-    // Standard icons only
-    lucide.createIcons({ attrs: { "stroke-width": "2" } });
+      const target = (hash === '#about') ? 'about' : 'home';
+      home.classList.toggle('active', target === 'home');
+      about.classList.toggle('active', target === 'about');
 
-    // Page switcher (Home/About)
-    const buttons = document.querySelectorAll('.nav-btn');
-    const pages = {
-      home: document.getElementById('page-home'),
-      about: document.getElementById('page-about'),
-    };
+      navHome.classList.toggle('active', target === 'home');
+      navAbout.classList.toggle('active', target === 'about');
 
-    function setActivePage(key){
-      Object.values(pages).forEach(p => p.classList.remove('active'));
-      pages[key].classList.add('active');
-      buttons.forEach(b => b.classList.toggle('active', b.dataset.target === key));
-      history.replaceState(null, '', '#' + key);
+      // Scroll reset so pages don't feel "cut off"
+      window.scrollTo({ top: 0, behavior: 'auto' });
 
-      // reset reveals on page switch
-      requestAnimationFrame(() => {
-        document.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'));
-        observeReveals();
+      // Re-run reveal tracking after route change
+      requestAnimationFrame(trackReveal);
+    }
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('on');
+      });
+    }, { threshold: 0.12 });
+
+    function trackReveal(){
+      document.querySelectorAll('.section.active .reveal').forEach(el=>{
+        if(!el.__obs){
+          io.observe(el);
+          el.__obs = true;
+        }
       });
     }
 
-    buttons.forEach(btn => btn.addEventListener('click', () => setActivePage(btn.dataset.target)));
-
-    // initial from hash
-    const initial = (location.hash || '#home').replace('#','');
-    if (pages[initial]) setActivePage(initial);
-
-    // Reveal
-    let io;
-    function observeReveals(){
-      if (io) io.disconnect();
-      const els = document.querySelectorAll('.page.active .reveal');
-
-      if (!('IntersectionObserver' in window)) {
-        els.forEach(el => el.classList.add('visible'));
-        return;
-      }
-
-      io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
-
-      els.forEach(el => io.observe(el));
-    }
-    observeReveals();
+    window.addEventListener('hashchange', ()=> showSection(location.hash));
+    window.addEventListener('load', ()=>{
+      showSection(location.hash || '#home');
+      trackReveal();
+    });
   </script>
 </body>
 </html>
