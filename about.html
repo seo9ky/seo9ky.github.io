@@ -28,7 +28,7 @@
     </nav>
 
     <div class="layout">
-      <!-- ===== Left: Profile (index와 동일) ===== -->
+      <!-- Left: Profile (shared) -->
       <aside class="profile-wrap">
         <section class="card profile" aria-label="Profile">
           <div class="photo">
@@ -41,7 +41,7 @@
             <div class="contact-row">
               <i data-lucide="mail"></i>
 
-              <!-- About도 동일하게 click-to-copy 적용 -->
+              <!-- Click-to-copy only (no mailto) -->
               <button
                 class="copy-text"
                 type="button"
@@ -76,9 +76,8 @@
         </section>
       </aside>
 
-      <!-- ===== Right: About content ===== -->
+      <!-- Right: About content -->
       <main>
-        <!-- Education -->
         <section class="card listcard" aria-label="Education">
           <div class="card-inner">
             <div class="card-title">
@@ -106,7 +105,6 @@
           </div>
         </section>
 
-        <!-- Experiences -->
         <section class="card listcard section-gap" aria-label="Experiences">
           <div class="card-inner">
             <div class="card-title">
@@ -130,36 +128,8 @@
     </div>
   </div>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-
-    // index.html과 동일한 복사 로직 (중복이지만 페이지별 독립 동작)
-    (function () {
-      const btn = document.querySelector(".copy-text[data-copy]");
-      const toast = document.querySelector(".copy-toast");
-      if (!btn) return;
-
-      let t = null;
-
-      btn.addEventListener("click", async () => {
-        const text = btn.getAttribute("data-copy") || "";
-        try {
-          await navigator.clipboard.writeText(text);
-          if (toast) {
-            toast.classList.add("show");
-            clearTimeout(t);
-            t = setTimeout(() => toast.classList.remove("show"), 900);
-          }
-        } catch (e) {
-          const sel = window.getSelection();
-          const range = document.createRange();
-          range.selectNodeContents(btn);
-          sel.removeAllRanges();
-          sel.addRange(range);
-        }
-      });
-    })();
-  </script>
+  <!-- Scripts -->
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="./main.js"></script>
 </body>
 </html>
