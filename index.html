@@ -41,13 +41,14 @@
       align-self: flex-start;
     }
 
-    /* Profile photo (rounded-rectangle “card” feel) */
+    /* Profile photo (3:4 ratio, rounded-rectangle card feel) */
     .avatar{
-      width: 200px;
-      height: 200px;
+      width: 210px;
+      aspect-ratio: 3 / 4;
+      height: auto;
       border-radius: 16px;
       object-fit: cover;
-      object-position: 50% 0%; /* top-center: reduce top-of-face cropping */
+      object-position: 50% 0%;
       display: block;
       border: 1px solid var(--border);
       background: #fff;
@@ -137,7 +138,7 @@
     @media (max-width: 860px){
       .grid{ flex-direction:column; gap: 18px; }
       .sidebar{ width:auto; flex: 1 1 auto; position: static; }
-      .avatar{ width: 160px; height: 160px; border-radius: 14px; }
+      .avatar{ width: 170px; border-radius: 14px; }
     }
   </style>
 </head>
@@ -157,13 +158,10 @@
             <b>Email</b>
             <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
 
-            <b>GitHub</b>
-            <span><a href="https://github.com/seo9ky">github.com/seo9ky</a></span>
-
             <b>Lab</b>
             <span>
               <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
-                Data Science Lab
+                SKKU DSAIL
               </a>
             </span>
           </div>
@@ -171,7 +169,6 @@
           <div class="badge-row" aria-label="keywords">
             <span class="badge">Multimodal</span>
             <span class="badge">Digital Therapeutics</span>
-            <span class="badge">Applied AI</span>
           </div>
         </div>
       </aside>
@@ -254,7 +251,7 @@
           <h3>Experiences</h3>
           <ul>
             <li>
-              <span class="item-title">Data Science Lab</span> — Research Member
+              <span class="item-title">SKKU DSAIL</span> — Research Member
               <div class="item-meta">Add 1–2 lines on what you did (topics, methods, responsibilities, outcomes).</div>
               <div class="item-meta">Mar. 202X – Present</div>
             </li>
