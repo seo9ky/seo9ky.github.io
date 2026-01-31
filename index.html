@@ -94,8 +94,55 @@
       padding: 0 var(--wrap-pad);
       display:flex;
       align-items:center;
-      justify-content:flex-end;
+      justify-content: space-between;
       gap: 14px;
+    }
+
+    /* Left side of nav (to reduce "empty top-left") */
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .site-mark{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 22px rgba(17,24,39,0.06);
+      white-space: nowrap;
+    }
+    .mark-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--primary-600);
+      box-shadow: 0 0 0 4px rgba(47,111,237,0.12);
+      flex: 0 0 auto;
+    }
+    .mark-text{
+      display:flex;
+      flex-direction: column;
+      line-height: 1.2;
+      min-width: 0;
+    }
+    .mark-text .t1{
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .mark-text .t2{
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
     }
 
     .navlinks{
@@ -227,20 +274,24 @@
       letter-spacing: -0.01em;
     }
 
-    .kv{
+    /* Icon-only rows (left card) */
+    .kv-compact{
       display: grid;
-      grid-template-columns: 26px 56px 1fr;
+      grid-template-columns: 22px 1fr;
       gap: 10px 10px;
+      align-items: center;
       font-size: 14px;
       color: var(--text-muted);
-      align-items: center;
     }
-    .kv .k{
-      color: var(--text);
+    .kv-compact .v{
       font-weight: 600;
+      color: var(--text);
       letter-spacing: -0.01em;
     }
-    .kv .v a{ font-weight: 600; }
+    .kv-compact .v a{
+      font-weight: 700;
+      color: var(--primary-600);
+    }
 
     /* Primary category pills (LEFT) */
     .primary-pills{
@@ -293,17 +344,20 @@
       margin: 0 0 10px;
       color: var(--text-muted);
       font-size: 15px;
-      max-width: 64ch;
+      max-width: 70ch;
     }
     .intro p:last-child{ margin-bottom: 0; }
 
-    .highlight{
+    /* More natural, less "boxed" emphasis */
+    .key{
       display:inline-block;
-      padding: 2px 8px;
+      padding: 1px 6px;
       border-radius: 10px;
-      background: rgba(253, 230, 138, 0.95);
-      color: var(--text);
-      font-weight: 600;
+      background: rgba(47,111,237,0.10);
+      border: 1px solid rgba(47,111,237,0.14);
+      color: rgba(47,111,237,0.95);
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     section{
@@ -368,9 +422,9 @@
       font-size: 11.5px;
       padding: 4px 9px;
       border-radius: var(--r-pill);
-      background: transparent;               /* outline */
+      background: rgba(255,255,255,0.55);
       border: 1px solid rgba(191, 214, 255, 0.9);
-      color: rgba(47,111,237,0.90);
+      color: rgba(47,111,237,0.92);
       font-weight: 600;
       white-space: nowrap;
       display:inline-flex;
@@ -419,6 +473,7 @@
       .sidebar{ width:auto; flex: 1 1 auto; position: static; top: auto; }
       .avatar{ width: 190px; }
       .school-logo{ width: 32px; height: 32px; }
+      .topnav .inner{ justify-content: space-between; }
     }
   </style>
 </head>
@@ -432,26 +487,59 @@
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>
       </symbol>
+
       <!-- About -->
       <symbol id="i-user" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0-4-4a4 4 0 0 0 4 4z"/>
       </symbol>
+
       <!-- Spark -->
       <symbol id="i-spark" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           d="M12 2l1.2 4.3L17.5 7.5l-4.3 1.2L12 13l-1.2-4.3L6.5 7.5l4.3-1.2zM19 12l.9 3.2 3.1.8-3.1.9L19 20l-.9-3.1-3.1-.9 3.1-.8z"/>
       </symbol>
-      <!-- Grid/Layers -->
-      <symbol id="i-layers" viewBox="0 0 24 24">
+
+      <!-- Research icon (flask) -->
+      <symbol id="i-flask" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M12 2l9 5-9 5-9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/>
-      </symbol>
-      <!-- Shield/Heart (simple) -->
-      <symbol id="i-shield" viewBox="0 0 24 24">
+          d="M10 2h4"/>
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M12 2l8 4v6c0 5-3.5 9-8 10C7.5 21 4 17 4 12V6z"/>
+          d="M10 2v6l-5.3 9.1A3 3 0 0 0 7.3 22h9.4a3 3 0 0 0 2.6-4.9L14 8V2"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M8 14h8"/>
       </symbol>
+
+      <!-- Health icon (hospital cross) -->
+      <symbol id="i-hospital" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M5 3h14a2 2 0 0 1 2 2v16H3V5a2 2 0 0 1 2-2z"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M12 7v8"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M8 11h8"/>
+      </symbol>
+
+      <!-- Graduation cap -->
+      <symbol id="i-cap" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M12 3L2 8l10 5 10-5z"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M6 10v6c0 1.7 2.7 3 6 3s6-1.3 6-3v-6"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M22 8v8"/>
+      </symbol>
+
+      <!-- University/building -->
+      <symbol id="i-university" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M12 3L2 8l10 5 10-5z"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M4 10v10M8 10v10M12 10v10M16 10v10M20 10v10"/>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          d="M3 20h18"/>
+      </symbol>
+
       <!-- Mail -->
       <symbol id="i-mail" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -459,6 +547,7 @@
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           d="M4 7l8 6 8-6"/>
       </symbol>
+
       <!-- Link -->
       <symbol id="i-link" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -466,13 +555,7 @@
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/>
       </symbol>
-      <!-- Book -->
-      <symbol id="i-book" viewBox="0 0 24 24">
-        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 0-3 3z"/>
-        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          d="M4 19V7a3 3 0 0 1 3-3h12"/>
-      </symbol>
+
       <!-- Briefcase -->
       <symbol id="i-briefcase" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -482,11 +565,13 @@
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           d="M3 12h18"/>
       </symbol>
+
       <!-- Folder -->
       <symbol id="i-folder" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           d="M3 6h6l2 2h10v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
       </symbol>
+
       <!-- Tiny "tag" icon for chips -->
       <symbol id="i-tag" viewBox="0 0 24 24">
         <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -499,6 +584,16 @@
 
   <header class="topnav">
     <div class="inner">
+      <div class="nav-left">
+        <div class="site-mark" aria-label="Status">
+          <span class="mark-dot" aria-hidden="true"></span>
+          <div class="mark-text">
+            <div class="t1">Now</div>
+            <div class="t2">Research · Multimodal × DTx</div>
+          </div>
+        </div>
+      </div>
+
       <nav class="navlinks" aria-label="Primary navigation">
         <a class="navbtn" id="nav-home" href="#home" aria-current="page">
           <svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg>
@@ -529,13 +624,11 @@
         </div>
 
         <div class="card card-solid card-pad reveal">
-          <div class="kv">
+          <div class="kv-compact" aria-label="Contact">
             <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
-            <div class="k">Email</div>
             <div class="v"><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></div>
 
             <svg class="icon" aria-hidden="true"><use href="#i-link"></use></svg>
-            <div class="k">Lab</div>
             <div class="v">
               <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
                 SKKU-DSAIL
@@ -559,27 +652,29 @@
               <svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg>
               Hello
             </h2>
+
             <p>
-              I’m Minseok Kim, a researcher working at the intersection of Multimodal AI and Digital Therapeutics.
+              I’m Minseok Kim, studying Applied Artificial Intelligence at Sungkyunkwan University
+              (B.S. · M.S. · Ph.D. track), working at the intersection of Multimodal AI and Digital Therapeutics.
             </p>
             <p>
               My work spans Natural Language Processing, Computer Vision, and Audio, with applications in Mental Health, Ophthalmology, and Audiology.
             </p>
             <p>
-              I aim to build systems that are <span class="highlight">reliable</span>, <span class="highlight">safe</span>, and <span class="highlight">useful</span> in real-world settings.
+              I focus on building <span class="key">reliable</span> and <span class="key">safe</span> systems that remain <span class="key">useful</span> in real-world settings.
             </p>
           </div>
 
           <section id="research-interests" class="reveal">
             <div class="section-title">
-              <svg class="icon" aria-hidden="true"><use href="#i-layers"></use></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-flask"></use></svg>
               Research Interests
             </div>
 
             <div class="list">
               <div class="item reveal">
                 <div class="item-title">
-                  <svg class="title-icon" aria-hidden="true"><use href="#i-layers"></use></svg>
+                  <svg class="title-icon" aria-hidden="true"><use href="#i-flask"></use></svg>
                   Multimodal
                   <span class="chip"><svg class="mini" aria-hidden="true"><use href="#i-tag"></use></svg>Natural Language Processing</span>
                   <span class="chip"><svg class="mini" aria-hidden="true"><use href="#i-tag"></use></svg>Computer Vision</span>
@@ -590,7 +685,7 @@
 
               <div class="item reveal">
                 <div class="item-title">
-                  <svg class="title-icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+                  <svg class="title-icon" aria-hidden="true"><use href="#i-hospital"></use></svg>
                   Digital Therapeutics
                   <span class="chip"><svg class="mini" aria-hidden="true"><use href="#i-tag"></use></svg>Mental Health</span>
                   <span class="chip"><svg class="mini" aria-hidden="true"><use href="#i-tag"></use></svg>Ophthalmology</span>
@@ -631,14 +726,14 @@
         <div id="page-about" class="page">
           <section id="education" class="reveal" style="border-top:none; padding-top:0; margin-top:0;">
             <div class="section-title">
-              <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-cap"></use></svg>
               Education
             </div>
 
             <div class="list">
               <div class="item reveal">
                 <div class="item-title">
-                  <svg class="title-icon" aria-hidden="true"><use href="#i-book"></use></svg>
+                  <svg class="title-icon" aria-hidden="true"><use href="#i-university"></use></svg>
                   Sungkyunkwan University
                 </div>
                 <p class="item-meta">Seoul, Republic of Korea</p>
@@ -647,7 +742,7 @@
 
               <div class="item reveal">
                 <div class="item-title">
-                  <svg class="title-icon" aria-hidden="true"><use href="#i-book"></use></svg>
+                  <svg class="title-icon" aria-hidden="true"><use href="#i-university"></use></svg>
                   Sungkyunkwan University
                 </div>
                 <p class="item-meta">Seoul, Republic of Korea</p>
