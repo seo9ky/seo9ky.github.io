@@ -13,10 +13,10 @@
 </head>
 
 <body>
-  <div class="bg"></div>
+  <div class="bg" aria-hidden="true"></div>
 
   <div class="container">
-    <div class="topnav">
+    <nav class="topnav" aria-label="Primary">
       <div class="navpill">
         <a href="./index.html">
           <i data-lucide="home"></i> Home
@@ -25,22 +25,34 @@
           <i data-lucide="user"></i> About
         </a>
       </div>
-    </div>
+    </nav>
 
     <div class="layout">
-      <!-- Left: Profile -->
+      <!-- ===== Left: Profile (index와 동일) ===== -->
       <aside class="profile-wrap">
-        <div class="card profile">
+        <section class="card profile" aria-label="Profile">
           <div class="photo">
             <img src="./assets/profile.jpg" alt="Profile photo">
           </div>
 
-          <div class="name">Minseok Kim</div>
+          <h2 class="name">Minseok Kim</h2>
 
-          <div class="contacts">
+          <div class="contacts" aria-label="Contacts">
             <div class="contact-row">
               <i data-lucide="mail"></i>
-              <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
+
+              <!-- About도 동일하게 click-to-copy 적용 -->
+              <button
+                class="copy-text"
+                type="button"
+                data-copy="seo9ky@g.skku.edu"
+                aria-label="Copy email address"
+                title="Click to copy"
+              >
+                seo9ky@g.skku.edu
+              </button>
+
+              <span class="copy-toast" aria-live="polite" aria-atomic="true">Copied!</span>
             </div>
 
             <div class="contact-row">
@@ -48,6 +60,9 @@
               <a href="https://dsail.skku.edu" target="_blank" rel="noopener">DSAIL@SKKU</a>
             </div>
           </div>
+
+          <!-- Divider -->
+          <div class="divider divider-inset" aria-hidden="true"></div>
 
           <a class="school-link" href="https://www.skku.edu/skku/index.do" target="_blank" rel="noopener">
             <span class="school-logo">
@@ -58,13 +73,13 @@
               <span class="loc">Seoul, Republic of Korea</span>
             </span>
           </a>
-        </div>
+        </section>
       </aside>
 
-      <!-- Right: About content -->
+      <!-- ===== Right: About content ===== -->
       <main>
         <!-- Education -->
-        <section class="card listcard">
+        <section class="card listcard" aria-label="Education">
           <div class="card-inner">
             <div class="card-title">
               <i data-lucide="graduation-cap"></i>
@@ -92,7 +107,7 @@
         </section>
 
         <!-- Experiences -->
-        <section class="card listcard section-gap">
+        <section class="card listcard section-gap" aria-label="Experiences">
           <div class="card-inner">
             <div class="card-title">
               <i data-lucide="briefcase"></i>
@@ -104,10 +119,11 @@
               <div>
                 <p class="headline">DSAIL@SKKU</p>
                 <p class="sub">Intern · Jun. 2025 – Feb. 2026</p>
-                <p class="meta">Worked on ML and DL research projects, focusing on model development, evaluation, and practical experimentation.</p>
+                <p class="meta">
+                  Worked on ML and DL research projects, focusing on model development, evaluation, and practical experimentation.
+                </p>
               </div>
             </div>
-
           </div>
         </section>
       </main>
@@ -117,6 +133,33 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
+
+    // index.html과 동일한 복사 로직 (중복이지만 페이지별 독립 동작)
+    (function () {
+      const btn = document.querySelector(".copy-text[data-copy]");
+      const toast = document.querySelector(".copy-toast");
+      if (!btn) return;
+
+      let t = null;
+
+      btn.addEventListener("click", async () => {
+        const text = btn.getAttribute("data-copy") || "";
+        try {
+          await navigator.clipboard.writeText(text);
+          if (toast) {
+            toast.classList.add("show");
+            clearTimeout(t);
+            t = setTimeout(() => toast.classList.remove("show"), 900);
+          }
+        } catch (e) {
+          const sel = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(btn);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
