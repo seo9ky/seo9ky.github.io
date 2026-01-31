@@ -618,3 +618,143 @@ a:hover{ text-decoration:underline; }
   font-size:13px;
   line-height:1.45;
 }
+
+/* =========================================================
+   14) Responsive (Mobile / Tablet)
+   - 맨 아래에 추가해서 기존 스타일을 "덮어쓰기" 방식으로 안정화
+   ========================================================= */
+
+/* 1) 태블릿/작은 노트북: 좌측 폭을 약간 유연하게 */
+@media (max-width: 1100px){
+  .layout{
+    grid-template-columns: minmax(260px, 300px) 1fr;
+  }
+}
+
+/* 2) 모바일 전환: 1컬럼 + sticky 해제(이미 로직이 있으나 확실하게 정리) */
+@media (max-width: 980px){
+  .container{
+    width: calc(100% - 28px);
+    padding: 22px 0 52px;
+  }
+
+  .topnav{
+    margin-bottom: 14px;
+  }
+
+  .layout{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .profile-wrap{
+    position: static !important;
+    top: auto !important;
+  }
+
+  /* 좌측 프로필 카드가 모바일에서 가운데/폭 문제 안 생기게 */
+  .profile{
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .card-inner{
+    padding: 18px;
+  }
+
+  .hero{
+    padding: 18px 18px;
+  }
+
+  .hero h1{
+    font-size: 28px;
+  }
+
+  .profile .name{
+    font-size: 28px;
+  }
+
+  /* Research Interests row를 세로 스택으로 (왼쪽 설명 + 오른쪽 pills) */
+  .interests .row{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* pills가 오른쪽으로 너무 붙지 않게 */
+  .pills{
+    justify-items: start;
+  }
+}
+
+/* 3) 작은 모바일: 가로 넘침 방지(가장 중요)
+   - two-cols의 max-content + nowrap 조합 때문에 가로 스크롤이 생길 수 있음 */
+@media (max-width: 560px){
+  /* navpill이 좁을 때 터치 영역 유지하면서 줄바꿈 허용 */
+  .navpill{
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .navpill a{
+    padding: 9px 12px;
+  }
+
+  /* pills를 2열 고정(1fr 기반)으로 바꿔서 화면에 맞춤 */
+  .pills.two-cols{
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  /* pill 안 텍스트가 길어도 넘치지 않게 */
+  .pill{
+    white-space: normal;        /* nowrap 해제 */
+    justify-content: center;
+    text-align: center;
+    padding: 9px 12px;
+  }
+
+  /* 혹시 긴 텍스트(메일/링크) 때문에 넘칠 경우 대비 */
+  .contact-row{
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .copy-text,
+  .contact-row a{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* 섹션 제목/내용 간격을 살짝 타이트하게 */
+  .section-gap{ margin-top: 14px; }
+  .card-title{ font-size: 17px; }
+}
+
+/* 4) 초소형(아이폰 SE급): 카드 패딩 추가 축소 */
+@media (max-width: 420px){
+  .container{
+    width: calc(100% - 22px);
+  }
+
+  .card-inner{
+    padding: 16px;
+  }
+
+  .hero h1{
+    font-size: 24px;
+  }
+
+  .profile .name{
+    font-size: 26px;
+  }
+
+  .pills.two-cols{
+    grid-template-columns: 1fr; /* 너무 좁으면 1열로 */
+  }
+
+  .pill{
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
