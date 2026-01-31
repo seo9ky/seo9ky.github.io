@@ -41,14 +41,11 @@
       align-self: flex-start;
     }
 
-    /* Profile photo (4:5 ratio, crop less body) */
+    /* Profile photo: keep original image ratio (no cropping), keep rounded corners */
     .avatar{
-      width: 210px;
-      aspect-ratio: 4 / 5;
-      height: auto;
-      border-radius: 16px;
-      object-fit: cover;
-      object-position: 50% 0%;
+      width: 210px;                 /* adjust width if you want bigger/smaller */
+      height: auto;                 /* keep original ratio */
+      border-radius: 16px;          /* keep rounding */
       display: block;
       border: 1px solid var(--border);
       background: #fff;
