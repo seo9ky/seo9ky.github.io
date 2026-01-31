@@ -112,6 +112,8 @@ a:hover{ text-decoration:underline; }
   font-size:14px;
 }
 .navpill a svg{ width:16px; height:16px; }
+
+/* active nav button uses the old Projects yellow */
 .navpill a.active{
   background: rgba(255, 215, 102, 0.18);
   border: 1px solid rgba(246, 196, 83, 0.22);
@@ -210,6 +212,7 @@ a:hover{ text-decoration:underline; }
   color: var(--muted2);
   font-weight:700;
   font-size:14px;
+  position: relative;
 }
 .contact-row svg{
   width:16px;
@@ -223,7 +226,49 @@ a:hover{ text-decoration:underline; }
 }
 .contact-row a:hover{ text-decoration:underline; }
 
-/* School block */
+/* =========================
+   Email copy (text-only)
+   ========================= */
+.copy-email{
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+
+  color: var(--muted2);
+  font: inherit;
+  font-weight:700;
+
+  text-align:left;
+  line-height:1.2;
+}
+.copy-email:hover{ text-decoration: underline; }
+.copy-email:focus-visible{
+  outline: 2px solid rgba(59,114,255,0.25);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Small inline "Copied!" toast */
+.copy-toast{
+  margin-left:8px;
+  font-size:12px;
+  font-weight:700;
+  color: rgba(15,23,42,0.70);
+
+  opacity:0;
+  transform: translateY(-2px);
+  transition: opacity .12s ease, transform .12s ease;
+  pointer-events:none;
+}
+.copy-toast.show{
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* =========================
+   School block
+   ========================= */
 .school-link{
   display:flex;
   gap:12px;
@@ -376,6 +421,7 @@ a:hover{ text-decoration:underline; }
 .projects .item:first-child{ border-top:none; padding-top:0; }
 .projects .item:last-child{ padding-bottom:0; }
 
+/* Projects icons now match the same blue as other icons */
 .proj-ic{
   width:34px;
   height:34px;
