@@ -192,7 +192,8 @@ a:hover{ text-decoration:underline; }
   font-size:32px;
   font-weight:700;
   letter-spacing:-0.03em;
-  text-align:center;
+  text-align:left;
+  padding:0 20px;
 }
 
 .profile .contacts{
