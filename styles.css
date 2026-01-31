@@ -29,6 +29,10 @@
 
   /* 오른쪽 박스의 얇은 선 느낌을 공통화 */
   --divider: 1px solid rgba(30,64,175,0.08);
+
+  /* 버튼처럼 보이게 하는 hover 공통값 */
+  --hover-bg: rgba(255,255,255,0.72);
+  --hover-border: rgba(59,114,255,0.22);
 }
 
 /* =========================================================
@@ -113,11 +117,26 @@ a:hover{ text-decoration:underline; }
   color: rgba(15,23,42,0.72);
   font-weight:600;
   font-size:14px;
+  transition: background .12s ease, border-color .12s ease, transform .12s ease, box-shadow .12s ease;
 }
 
 .navpill a svg{
   width:16px;
   height:16px;
+}
+
+.navpill a:hover{
+  background: rgba(255,255,255,0.60);
+  border-color: rgba(59,114,255,0.18);
+}
+
+.navpill a:active{
+  transform: translateY(0);
+}
+
+.navpill a:focus-visible{
+  outline: 2px solid rgba(59,114,255,0.25);
+  outline-offset: 3px;
 }
 
 .navpill a.active{
@@ -185,6 +204,46 @@ a:hover{ text-decoration:underline; }
 /* 프로필 contacts padding(20px)과 맞춘 inset divider */
 .divider-inset{
   margin:16px 20px;
+}
+
+/* =========================================================
+   6-1) Hover Button Feel (아이콘/알약 공통)
+   - 지금은 클릭 기능이 없어도, hover 시 버튼처럼 보이도록
+   - 나중에 <a> 또는 <button>으로 바꿔도 동일하게 동작
+   ========================================================= */
+.pill,
+.badge-ic,
+.proj-ic,
+.entry-ic{
+  cursor: pointer;
+  user-select: none;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+
+.pill:hover,
+.badge-ic:hover,
+.proj-ic:hover,
+.entry-ic:hover{
+  background: var(--hover-bg);
+  border-color: var(--hover-border);
+  box-shadow: var(--shadow-tiny);
+  transform: translateY(-1px);
+}
+
+.pill:active,
+.badge-ic:active,
+.proj-ic:active,
+.entry-ic:active{
+  transform: translateY(0);
+}
+
+/* 접근성: 실제로 a/button으로 바뀌었을 때 포커스 링 표시 */
+.pill:focus-visible,
+.badge-ic:focus-visible,
+.proj-ic:focus-visible,
+.entry-ic:focus-visible{
+  outline: 2px solid rgba(59,114,255,0.25);
+  outline-offset: 3px;
 }
 
 /* =========================================================
@@ -306,11 +365,14 @@ a:hover{ text-decoration:underline; }
   background: rgba(255,255,255,0.55);
   border:1px solid rgba(30,64,175,0.10);
   box-shadow: var(--shadow-tiny);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
 }
 
 .school-link:hover{
   border-color: rgba(59,114,255,0.22);
   background: rgba(255,255,255,0.68);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
   text-decoration:none;
 }
 
