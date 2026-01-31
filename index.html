@@ -4,214 +4,206 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minseok Kim</title>
-    <link rel="stylesheet" href="styles.css" />
 
-    <!-- Standard icon set (Lucide) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome (Standard icon set) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <div class="bg" aria-hidden="true"></div>
-
     <div class="page">
-      <!-- Top Navigation -->
-      <header class="topnav">
-        <nav class="nav">
-          <a class="nav-btn is-active" href="index.html" aria-current="page">
-            <i data-lucide="home" class="ico"></i>
+      <header class="topbar">
+        <nav class="nav" aria-label="Primary navigation">
+          <a class="nav-btn active" href="index.html" aria-current="page">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
             <span>Home</span>
           </a>
           <a class="nav-btn" href="about.html">
-            <i data-lucide="user" class="ico"></i>
+            <i class="fa-regular fa-user" aria-hidden="true"></i>
             <span>About</span>
           </a>
         </nav>
       </header>
 
       <div class="layout">
-        <!-- Left Sticky Profile Card -->
-        <aside class="sidebar">
-          <section class="profile-card" aria-label="Profile">
-            <div class="avatar-wrap">
-              <img
-                class="avatar"
-                src="assets/profile.jpg"
-                alt="Profile photo of Minseok Kim"
-                loading="eager"
-              />
+        <aside class="sidebar" aria-label="Profile sidebar">
+          <div class="profile-card">
+            <div class="profile-photo" aria-label="Profile photo">
+              <img src="assets/profile.jpg" alt="Minseok Kim profile photo" />
             </div>
 
-            <h1 class="name">Minseok Kim</h1>
+            <div class="profile-name">Minseok Kim</div>
 
-            <div class="contacts" aria-label="Contacts">
-              <a class="contact-item link-blue" href="mailto:seo9ky@g.skku.edu">
-                <i data-lucide="mail" class="ico"></i>
+            <div class="profile-links" aria-label="Contact links">
+              <a class="profile-link" href="mailto:seo9ky@g.skku.edu">
+                <i class="fa-regular fa-envelope" aria-hidden="true"></i>
                 <span>seo9ky@g.skku.edu</span>
               </a>
 
-              <a class="contact-item link-blue" href="https://dsail.skku.edu/" target="_blank" rel="noreferrer">
-                <i data-lucide="globe" class="ico"></i>
+              <a class="profile-link" href="https://dsail.skku.edu" target="_blank" rel="noopener">
+                <i class="fa-solid fa-globe" aria-hidden="true"></i>
                 <span>DSAIL@SKKU</span>
               </a>
             </div>
 
-            <!-- Clickable school block (no “logo-only box”) -->
             <a
-              class="school-link"
+              class="skku-link"
               href="https://www.skku.edu/skku/index.do"
               target="_blank"
-              rel="noreferrer"
-              aria-label="Visit Sungkyunkwan University website"
+              rel="noopener"
+              aria-label="Open Sungkyunkwan University website"
+              title="Open SKKU website"
             >
-              <img class="school-logo" src="assets/skku-logo.png" alt="SKKU logo" />
-              <div class="school-text">
-                <div class="school-name">Sungkyunkwan University</div>
-                <div class="school-meta">Seoul, Republic of Korea</div>
+              <div class="skku-mark" aria-hidden="true">
+                <img src="assets/skku-logo.png" alt="" />
               </div>
-              <i data-lucide="arrow-up-right" class="ico school-arrow" aria-hidden="true"></i>
+
+              <div class="skku-meta">
+                <div class="skku-name">Sungkyunkwan University</div>
+                <div class="skku-loc">Seoul, Republic of Korea</div>
+              </div>
+
+              <i class="fa-solid fa-arrow-up-right-from-square skku-external" aria-hidden="true"></i>
             </a>
-          </section>
+          </div>
         </aside>
 
-        <!-- Right Content -->
         <main class="content">
-          <!-- Greeting -->
-          <section class="card hero" aria-label="Greeting">
-            <h2 class="hero-title">Hello!</h2>
-            <p class="hero-lead">
-              I’m Minseok Kim, studying <strong>Applied Artificial Intelligence</strong> at
-              <strong>Sungkyunkwan University</strong> (B.S., M.S., Ph.D. track). I build
-              dependable ML systems at the intersection of <strong>multimodal AI</strong> and
-              <strong>digital therapeutics</strong>.
+          <section class="card hero" aria-label="Introduction">
+            <div class="hero-title">Hello!</div>
+            <p class="hero-text">
+              I’m Minseok Kim, an AI researcher at Sungkyunkwan University.
             </p>
             <p class="hero-text">
-              My work spans <strong>Natural Language Processing</strong>, <strong>Computer Vision</strong>, and
-              <strong>Audio</strong>, with applications in mental health, ophthalmology, and audiology.
-              I care about practical research: robust evaluation, clear reasoning, and responsible deployment.
+              I work across Natural Language Processing, Computer Vision, and Speech Processing, with a focus on trustworthy
+              evaluation, clear reasoning, and responsible deployment.
             </p>
           </section>
 
-          <!-- Research Interests -->
-          <section class="section">
-            <h2 class="section-title">
-              <i data-lucide="layers" class="ico"></i>
-              <span>Research Interests</span>
-            </h2>
+          <section class="section" aria-label="Research interests">
+            <div class="section-head">
+              <i class="fa-solid fa-flask" aria-hidden="true"></i>
+              <h2 class="section-title">Research Interests</h2>
+            </div>
 
-            <div class="card block">
-              <!-- Multimodal -->
-              <div class="row">
-                <div class="row-head">
-                  <div class="row-icon">
-                    <i data-lucide="layers-3" class="ico"></i>
+            <div class="card">
+              <!-- Row 1 -->
+              <div class="interest-row">
+                <div class="interest-left">
+                  <div class="interest-badge" aria-hidden="true">
+                    <i class="fa-solid fa-layer-group"></i>
                   </div>
-                  <div class="row-title-wrap">
-                    <div class="row-title">Multimodal</div>
-                    <div class="row-desc">
-                      Learning representations and reasoning across text, vision, and audio—designed for robustness,
-                      alignment, and reliable generalization in real-world settings.
+                  <div class="interest-copy">
+                    <div class="interest-title">Multimodal</div>
+                    <div class="interest-desc">
+                      Learning and reasoning across text, image, and audio for robust generalization and
+                      dependable real-world behavior.
                     </div>
                   </div>
                 </div>
 
-                <div class="pill-grid" aria-label="Multimodal tags">
+                <div class="pills" aria-label="Multimodal tags">
                   <span class="pill">
-                    <i data-lucide="text" class="ico pill-ico"></i>
-                    Natural Language Processing
+                    <i class="fa-solid fa-align-left" aria-hidden="true"></i>
+                    <span>Natural Language Processing</span>
                   </span>
                   <span class="pill">
-                    <i data-lucide="camera" class="ico pill-ico"></i>
-                    Computer Vision
+                    <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                    <span>Computer Vision</span>
                   </span>
                   <span class="pill">
-                    <i data-lucide="mic" class="ico pill-ico"></i>
-                    Audio
+                    <i class="fa-solid fa-wave-square" aria-hidden="true"></i>
+                    <span>Speech Processing</span>
                   </span>
                 </div>
               </div>
 
-              <div class="divider"></div>
+              <div class="divider" role="separator" aria-hidden="true"></div>
 
-              <!-- Digital Therapeutics -->
-              <div class="row">
-                <div class="row-head">
-                  <div class="row-icon">
-                    <i data-lucide="shield-check" class="ico"></i>
+              <!-- Row 2 -->
+              <div class="interest-row">
+                <div class="interest-left">
+                  <div class="interest-badge" aria-hidden="true">
+                    <i class="fa-solid fa-heart-pulse"></i>
                   </div>
-                  <div class="row-title-wrap">
-                    <div class="row-title">Digital Therapeutics</div>
-                    <div class="row-desc">
-                      Building clinically meaningful AI that is safe by design—grounded in evidence, sensitive to bias,
-                      and evaluated with rigorous, transparent protocols.
+                  <div class="interest-copy">
+                    <div class="interest-title">Digital Therapeutics</div>
+                    <div class="interest-desc">
+                      Designing clinically meaningful AI that is safety-focused, evidence-aware, and evaluated
+                      with transparent, reproducible protocols.
                     </div>
                   </div>
                 </div>
 
-                <div class="pill-grid" aria-label="Digital Therapeutics tags">
+                <div class="pills" aria-label="Digital therapeutics tags">
                   <span class="pill">
-                    <i data-lucide="brain" class="ico pill-ico"></i>
-                    Mental Health
+                    <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                    <span>Mental Health</span>
                   </span>
                   <span class="pill">
-                    <i data-lucide="eye" class="ico pill-ico"></i>
-                    Ophthalmology
+                    <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                    <span>Ophthalmology</span>
                   </span>
                   <span class="pill">
-                    <i data-lucide="ear" class="ico pill-ico"></i>
-                    Audiology
+                    <i class="fa-solid fa-ear-listen" aria-hidden="true"></i>
+                    <span>Audiology</span>
                   </span>
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- Projects -->
-          <section class="section">
-            <h2 class="section-title">
-              <i data-lucide="folder" class="ico"></i>
-              <span>Projects</span>
-            </h2>
+          <section class="section" aria-label="Projects">
+            <div class="section-head">
+              <i class="fa-regular fa-folder-open" aria-hidden="true"></i>
+              <h2 class="section-title">Projects</h2>
+            </div>
 
-            <div class="card block">
-              <article class="item">
-                <div class="item-title">
-                  <i data-lucide="sparkles" class="ico"></i>
-                  <span>MIND</span>
+            <div class="card">
+              <div class="item">
+                <div class="item-head">
+                  <div class="item-icon" aria-hidden="true">
+                    <i class="fa-solid fa-diagram-project"></i>
+                  </div>
+                  <div class="item-title">MIND</div>
                 </div>
-                <p class="item-text">
-                  A multimodal digital therapeutics direction focusing on reliable sensing/understanding and
-                  intervention-ready outputs. Emphasis on robustness, human-centered evaluation, and safety constraints.
+                <p class="item-desc">
+                  A research pipeline for robust modeling and evaluation in mental-health related settings,
+                  prioritizing reliable signals and practical outcomes.
                 </p>
-              </article>
+              </div>
 
-              <div class="divider"></div>
+              <div class="divider" role="separator" aria-hidden="true"></div>
 
-              <article class="item">
-                <div class="item-title">
-                  <i data-lucide="scale" class="ico"></i>
-                  <span>BiasQA</span>
+              <div class="item">
+                <div class="item-head">
+                  <div class="item-icon" aria-hidden="true">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                  </div>
+                  <div class="item-title">BiasQA</div>
                 </div>
-                <p class="item-text">
-                  A bias-aware QA and evaluation pipeline: constructing challenging prompts, measuring stereotype leakage,
-                  and designing mitigation strategies (prompting + evaluation) with reproducible reporting.
+                <p class="item-desc">
+                  A bias-aware QA framework that probes stereotypical behaviors and improves reliability through
+                  systematic benchmarking and debiasing prompts.
                 </p>
-              </article>
+              </div>
             </div>
           </section>
-
-          <!-- Footer (right content area only) -->
-          <footer class="footer">
-            <div class="footer-row">
-              <span>© Minseok Kim</span>
-              <span>Last updated: January 2026</span>
-            </div>
-          </footer>
         </main>
       </div>
     </div>
-
-    <script>
-      lucide.createIcons();
-    </script>
   </body>
 </html>
