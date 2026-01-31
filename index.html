@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>seo9ky</title>
-  <meta name="description" content="seo9ky | Multimodal Learning & Digital Therapeutics" />
+  <title>Minseok Kim</title>
+  <meta name="description" content="Minseok Kim | Multimodal Learning & Digital Therapeutics" />
   <style>
     :root{
       --text:#111827;
@@ -41,12 +41,13 @@
       align-self: flex-start;
     }
 
-    /* ✅ Profile photo (rounded-rectangle “card” feel) */
+    /* Profile photo (rounded-rectangle “card” feel) */
     .avatar{
       width: 200px;
       height: 200px;
       border-radius: 16px;
       object-fit: cover;
+      object-position: 50% 0%; /* top-center: reduce top-of-face cropping */
       display: block;
       border: 1px solid var(--border);
       background: #fff;
@@ -146,10 +147,9 @@
     <div class="grid">
       <!-- Left -->
       <aside class="sidebar">
-        <!-- ✅ Make sure profile.jpg is in the repo root -->
         <img class="avatar" src="./profile.jpg" alt="Profile photo" />
 
-        <h1 class="name">seo9ky</h1>
+        <h1 class="name">Minseok Kim</h1>
         <p class="tagline">Multimodal Learning · Digital Therapeutics</p>
 
         <div class="card">
@@ -182,7 +182,7 @@
         <div class="hero">
           <h2>Hello!</h2>
           <p>
-            I’m <b>seo9ky</b>, a researcher interested in building practical, human-centered AI systems.
+            I’m <b>Minseok Kim</b>, a researcher interested in building practical, human-centered AI systems.
             My current focus is on <b>Multimodal Learning</b> and <b>Digital Therapeutics</b>.
           </p>
           <p>
@@ -267,7 +267,7 @@
         </section>
 
         <footer>
-          <div>© <span id="year"></span> seo9ky</div>
+          <div>© <span id="year"></span> Minseok Kim</div>
           <div>Last updated: <span id="updated"></span></div>
         </footer>
       </main>
