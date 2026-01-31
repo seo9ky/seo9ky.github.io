@@ -170,8 +170,7 @@ a:hover{ text-decoration:underline; }
    Profile Card
    ========================= */
 .profile{
-  padding:18px;
-  width: 290px; /* keep compact */
+  padding: 16px 18px;
 }
 
 .profile .photo{
@@ -190,9 +189,9 @@ a:hover{ text-decoration:underline; }
 }
 
 .profile .name{
-  margin:14px 0 10px;
-  font-size:34px; /* 요청: 더 키움 */
-  font-weight:900;
+  margin:18px 0 10px;
+  font-size:30px;
+  font-weight:800;
   letter-spacing:-0.03em;
   text-align:center;
 }
@@ -201,7 +200,7 @@ a:hover{ text-decoration:underline; }
   display:flex;
   flex-direction:column;
   gap:10px;
-  margin-top:6px;
+  margin-top:10px;
   padding:0 2px;
 }
 
@@ -230,7 +229,7 @@ a:hover{ text-decoration:underline; }
   display:flex;
   gap:12px;
   align-items:center;
-  margin-top:14px;
+  margin-top:18px;
   padding:12px 12px;
   border-radius: 16px;
   background: rgba(255,255,255,0.55);
