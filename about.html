@@ -4,141 +4,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minseok Kim — About</title>
-    <link rel="stylesheet" href="styles.css" />
 
-    <!-- Standard icon set (Lucide) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome (Standard icon set) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <div class="bg" aria-hidden="true"></div>
-
     <div class="page">
-      <!-- Top Navigation -->
-      <header class="topnav">
-        <nav class="nav">
+      <header class="topbar">
+        <nav class="nav" aria-label="Primary navigation">
           <a class="nav-btn" href="index.html">
-            <i data-lucide="home" class="ico"></i>
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
             <span>Home</span>
           </a>
-          <a class="nav-btn is-active" href="about.html" aria-current="page">
-            <i data-lucide="user" class="ico"></i>
+          <a class="nav-btn active" href="about.html" aria-current="page">
+            <i class="fa-regular fa-user" aria-hidden="true"></i>
             <span>About</span>
           </a>
         </nav>
       </header>
 
       <div class="layout">
-        <!-- Left Sticky Profile Card (shared) -->
-        <aside class="sidebar">
-          <section class="profile-card" aria-label="Profile">
-            <div class="avatar-wrap">
-              <img
-                class="avatar"
-                src="assets/profile.jpg"
-                alt="Profile photo of Minseok Kim"
-                loading="eager"
-              />
+        <aside class="sidebar" aria-label="Profile sidebar">
+          <div class="profile-card">
+            <div class="profile-photo" aria-label="Profile photo">
+              <img src="assets/profile.jpg" alt="Minseok Kim profile photo" />
             </div>
 
-            <h1 class="name">Minseok Kim</h1>
+            <div class="profile-name">Minseok Kim</div>
 
-            <div class="contacts" aria-label="Contacts">
-              <a class="contact-item link-blue" href="mailto:seo9ky@g.skku.edu">
-                <i data-lucide="mail" class="ico"></i>
+            <div class="profile-links" aria-label="Contact links">
+              <a class="profile-link" href="mailto:seo9ky@g.skku.edu">
+                <i class="fa-regular fa-envelope" aria-hidden="true"></i>
                 <span>seo9ky@g.skku.edu</span>
               </a>
 
-              <a class="contact-item link-blue" href="https://dsail.skku.edu/" target="_blank" rel="noreferrer">
-                <i data-lucide="globe" class="ico"></i>
+              <a class="profile-link" href="https://dsail.skku.edu" target="_blank" rel="noopener">
+                <i class="fa-solid fa-globe" aria-hidden="true"></i>
                 <span>DSAIL@SKKU</span>
               </a>
             </div>
 
             <a
-              class="school-link"
+              class="skku-link"
               href="https://www.skku.edu/skku/index.do"
               target="_blank"
-              rel="noreferrer"
-              aria-label="Visit Sungkyunkwan University website"
+              rel="noopener"
+              aria-label="Open Sungkyunkwan University website"
+              title="Open SKKU website"
             >
-              <img class="school-logo" src="assets/skku-logo.png" alt="SKKU logo" />
-              <div class="school-text">
-                <div class="school-name">Sungkyunkwan University</div>
-                <div class="school-meta">Seoul, Republic of Korea</div>
+              <div class="skku-mark" aria-hidden="true">
+                <img src="assets/skku-logo.png" alt="" />
               </div>
-              <i data-lucide="arrow-up-right" class="ico school-arrow" aria-hidden="true"></i>
+
+              <div class="skku-meta">
+                <div class="skku-name">Sungkyunkwan University</div>
+                <div class="skku-loc">Seoul, Republic of Korea</div>
+              </div>
+
+              <i class="fa-solid fa-arrow-up-right-from-square skku-external" aria-hidden="true"></i>
             </a>
-          </section>
+          </div>
         </aside>
 
-        <!-- Right Content -->
         <main class="content">
-          <!-- Education -->
-          <section class="section">
-            <h2 class="section-title">
-              <i data-lucide="graduation-cap" class="ico"></i>
-              <span>Education</span>
-            </h2>
+          <section class="section" aria-label="Education">
+            <div class="section-head">
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <h2 class="section-title">Education</h2>
+            </div>
 
-            <div class="card block">
-              <div class="item">
-                <div class="item-title">
-                  <i data-lucide="building-2" class="ico"></i>
-                  <span>Sungkyunkwan University</span>
-                </div>
-                <div class="meta">Seoul, Republic of Korea</div>
-                <div class="meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</div>
+            <div class="card">
+              <!-- Education content kept as-is -->
+              <div class="edu-item">
+                <div class="edu-title">Sungkyunkwan University</div>
+                <div class="edu-sub">Seoul, Republic of Korea</div>
+                <div class="edu-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</div>
               </div>
 
-              <div class="divider"></div>
+              <div class="divider" role="separator" aria-hidden="true"></div>
 
-              <div class="item">
-                <div class="item-title">
-                  <i data-lucide="building-2" class="ico"></i>
-                  <span>Sungkyunkwan University</span>
-                </div>
-                <div class="meta">Seoul, Republic of Korea</div>
-                <div class="meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</div>
+              <div class="edu-item">
+                <div class="edu-title">Sungkyunkwan University</div>
+                <div class="edu-sub">Seoul, Republic of Korea</div>
+                <div class="edu-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</div>
               </div>
             </div>
           </section>
 
-          <!-- Experiences -->
-          <section class="section">
-            <h2 class="section-title">
-              <i data-lucide="briefcase" class="ico"></i>
-              <span>Experiences</span>
-            </h2>
+          <section class="section" aria-label="Experiences">
+            <div class="section-head">
+              <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+              <h2 class="section-title">Experiences</h2>
+            </div>
 
-            <div class="card block">
+            <div class="card">
               <div class="item">
-                <div class="item-title">
-                  <i data-lucide="flask-conical" class="ico"></i>
-                  <span>DSAIL@SKKU</span>
+                <div class="item-head">
+                  <div class="item-icon" aria-hidden="true">
+                    <i class="fa-solid fa-building-columns"></i>
+                  </div>
+                  <div class="item-title">DSAIL@SKKU</div>
                 </div>
-                <div class="meta">Intern · Jun. 2025 – Feb. 2026</div>
-                <p class="item-text">
-                  Worked on research prototypes and evaluation pipelines for trustworthy NLP/QA and multimodal systems.
-                  Focused on reproducibility, robust metrics, and practical deployment constraints.
+
+                <div class="meta-line">Intern · Jun. 2025 – Feb. 2026</div>
+
+                <p class="item-desc">
+                  Worked on ML/DL research projects, focusing on model development, evaluation, and practical experimentation.
                 </p>
               </div>
             </div>
           </section>
 
-          <!-- Footer (right content area only) -->
-          <footer class="footer">
-            <div class="footer-row">
-              <span>© Minseok Kim</span>
-              <span>Last updated: January 2026</span>
-            </div>
+          <footer class="footer" aria-label="Footer">
+            <div class="footer-left">© Minseok Kim</div>
+            <div class="footer-right">Last updated: February 2026</div>
           </footer>
         </main>
       </div>
     </div>
-
-    <script>
-      lucide.createIcons();
-    </script>
   </body>
 </html>
