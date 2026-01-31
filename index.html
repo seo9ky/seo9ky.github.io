@@ -17,21 +17,19 @@
     :root{
       --bg0:#f6f9ff;
       --bg1:#f4f7ff;
+
       --card: rgba(255,255,255,.78);
-      --card-solid:#ffffff;
       --stroke: rgba(15,23,42,.10);
-      --stroke-strong: rgba(15,23,42,.14);
+
       --text:#0f172a;
       --muted:#475569;
       --muted2:#64748b;
-      --shadow: 0 18px 50px rgba(2,6,23,.10);
+
       --shadow-soft: 0 10px 28px rgba(2,6,23,.08);
       --radius: 18px;
 
       --accent:#2563eb;
       --accent-soft: rgba(37,99,235,.10);
-      --pill:#eaf1ff;
-      --pill-stroke: rgba(37,99,235,.22);
 
       --hl:#fde68a;
       --hl-stroke:#f3d16a;
@@ -59,7 +57,7 @@
     a{ color:var(--accent); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
-    /* Navbar */
+    /* ===== Navbar (NOW: transparent, no separation) ===== */
     .navbar{
       position: sticky;
       top: 0;
@@ -67,10 +65,12 @@
       height: var(--nav-h);
       display:flex;
       align-items:center;
-      border-bottom: 1px solid rgba(15,23,42,.08);
-      background: rgba(255,255,255,.70);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+
+      /* remove separation feel */
+      background: transparent;
+      border-bottom: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
     .nav-inner{
       width: min(var(--max), calc(100% - 40px));
@@ -80,15 +80,21 @@
       justify-content:flex-end;
       gap: 10px;
     }
+
+    /* Only keep the right floating buttons */
     .nav-pill{
       display:flex;
       align-items:center;
       gap: 10px;
       padding: 6px;
-      border: 1px solid rgba(15,23,42,.10);
       border-radius: 999px;
-      background: rgba(255,255,255,.75);
-      box-shadow: 0 8px 20px rgba(2,6,23,.05);
+
+      /* subtle floating chip, but not "bar" */
+      border: 1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 26px rgba(2,6,23,.08);
     }
     .nav-btn{
       display:inline-flex;
@@ -98,7 +104,7 @@
       border-radius: 999px;
       border: 1px solid transparent;
       color: var(--text);
-      font-weight: 600;
+      font-weight: 650;
       font-size: 14px;
       background: transparent;
       cursor:pointer;
@@ -119,7 +125,7 @@
     /* Layout */
     .wrap{
       width: min(var(--max), calc(100% - 40px));
-      margin: 26px auto 48px;
+      margin: 22px auto 48px;
     }
     .layout{
       display:grid;
@@ -129,9 +135,6 @@
     }
 
     /* Sidebar sticky */
-    .sidebar{
-      position: relative;
-    }
     .sidebar-sticky{
       position: sticky;
       top: calc(var(--nav-h) + 18px);
@@ -147,7 +150,7 @@
     }
     .card-inner{ padding: 18px; }
 
-    /* Profile */
+    /* ===== Profile (improved harmony) ===== */
     .photo{
       width: 100%;
       aspect-ratio: 4 / 5;
@@ -164,12 +167,27 @@
       object-position: center;
       display:block;
     }
-    .name{
-      margin: 14px 0 6px;
-      font-size: 30px;
-      letter-spacing: -0.02em;
-      font-weight: 750;
+
+    /* Name block: clearer hierarchy & placement */
+    .name-block{
+      margin-top: 14px;
+      text-align: left;
     }
+    .name{
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+      line-height: 1.12;
+    }
+    .name-sub{
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted2);
+      font-weight: 600;
+    }
+
+    /* University chip inside card (premium feel) */
     .uni{
       display:flex;
       align-items:center;
@@ -181,20 +199,20 @@
       margin-top: 12px;
     }
     .uni img{
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 999px;
       display:block;
     }
     .uni .u1{
-      font-weight: 700;
-      font-size: 13.5px;
-      line-height: 1.2;
+      font-weight: 750;
+      font-size: 13.2px;
+      line-height: 1.15;
     }
     .uni .u2{
-      font-size: 12.5px;
+      font-size: 12.3px;
       color: var(--muted2);
-      line-height: 1.2;
+      line-height: 1.15;
       margin-top: 2px;
     }
 
@@ -209,7 +227,7 @@
       align-items:center;
       gap: 10px;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 650;
       font-size: 13.5px;
     }
     .meta-row i{
@@ -218,7 +236,8 @@
       color: rgba(15,23,42,.65);
     }
     .meta-row a{
-      font-weight: 600;
+      font-weight: 700;
+      color: var(--accent);
     }
 
     .cat-pills{
@@ -227,8 +246,6 @@
       flex-direction:column;
       gap: 10px;
     }
-
-    /* Left: big category pills (bigger + more prominent) */
     .pill-cat{
       display:inline-flex;
       align-items:center;
@@ -250,8 +267,8 @@
       flex: 0 0 auto;
     }
     .pill-cat span{
-      font-weight: 750;
-      font-size: 13.5px;
+      font-weight: 800;
+      font-size: 13.2px;
       color: #1e3a8a;
       white-space: nowrap;
       overflow: hidden;
@@ -259,18 +276,14 @@
     }
 
     /* Content column */
-    .content{
-      min-width: 0;
-    }
-    .section{
-      margin-bottom: 20px;
-    }
+    .content{ min-width: 0; }
 
-    /* Titles */
+    .section{ margin-bottom: 20px; }
+
     .h1{
       font-size: 34px;
       letter-spacing: -0.03em;
-      font-weight: 800;
+      font-weight: 820;
       margin: 6px 0 10px;
     }
     .p{
@@ -288,20 +301,40 @@
       display:flex;
       align-items:center;
       gap: 10px;
-      font-weight: 800;
+      font-weight: 820;
       letter-spacing: -0.01em;
       margin: 14px 0 10px;
     }
     .section-title i{ width: 18px; height: 18px; color: rgba(15,23,42,.70); }
 
-    /* Highlight chips (yellow) for sentence emphasis */
+    /* Research Interests icon: "two cross stars" 느낌 (표준 아이콘 2개 조합) */
+    .title-sparkles{
+      position: relative;
+      width: 18px; height: 18px;
+      display:inline-block;
+      flex: 0 0 auto;
+    }
+    .title-sparkles i{
+      position:absolute;
+      inset:0;
+      width: 18px; height: 18px;
+      color: rgba(15,23,42,.72);
+    }
+    .title-sparkles .mini{
+      width: 10px; height: 10px;
+      left: -4px; top: 10px;
+      opacity: .9;
+      transform: rotate(-10deg);
+    }
+
+    /* Highlight chips */
     .hl{
       display:inline-block;
       padding: 2px 8px;
       border-radius: 999px;
       background: rgba(253,230,138,.65);
       border: 1px solid rgba(243,209,106,.75);
-      font-weight: 750;
+      font-weight: 800;
       color: #7a5200;
     }
 
@@ -328,7 +361,7 @@
     }
     .interest-left i{ width: 18px; height: 18px; color: rgba(15,23,42,.72); flex:0 0 auto; }
     .interest-left .t{
-      font-weight: 800;
+      font-weight: 820;
       letter-spacing: -0.01em;
       white-space: nowrap;
       overflow: hidden;
@@ -340,7 +373,7 @@
       font-size: 14px;
     }
 
-    /* Right: detail pills (smaller, lighter than category pills) */
+    /* Detail pills */
     .pills{
       display:flex;
       flex-wrap:wrap;
@@ -356,7 +389,7 @@
       background: rgba(37,99,235,.07);
       border: 1px solid rgba(37,99,235,.18);
       color: #1d4ed8;
-      font-weight: 650;
+      font-weight: 700;
       font-size: 12.5px;
       white-space: nowrap;
     }
@@ -379,7 +412,7 @@
       display:flex;
       align-items:center;
       gap: 10px;
-      font-weight: 800;
+      font-weight: 820;
       margin-bottom: 4px;
       letter-spacing: -0.01em;
     }
@@ -399,11 +432,8 @@
     .page{ display:none; }
     .page.active{ display:block; }
 
-    /* Reveal effect (safe): default visible; JS will add subtle transitions */
-    .reveal{
-      opacity: 1;
-      transform: none;
-    }
+    /* Reveal effect (safe) */
+    .reveal{ opacity: 1; transform: none; }
     html.js .reveal{
       opacity: 0;
       transform: translateY(10px);
@@ -414,10 +444,9 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Critical: ensure profile card never becomes invisible */
+    /* Ensure profile card never hidden */
     .profile-card{ opacity: 1 !important; transform: none !important; }
 
-    /* Footer */
     .footer{
       display:flex;
       justify-content:space-between;
@@ -428,11 +457,9 @@
       padding: 8px 2px 0;
     }
 
-    /* Responsive */
     @media (max-width: 980px){
       .layout{ grid-template-columns: 1fr; }
       .sidebar-sticky{ position: static; }
-      .name{ font-size: 28px; }
       .h1{ font-size: 30px; }
       .pills{ justify-content:flex-start; }
     }
@@ -440,7 +467,7 @@
 </head>
 
 <body>
-  <!-- Navbar -->
+  <!-- Navbar (transparent) -->
   <header class="navbar">
     <div class="nav-inner">
       <div class="nav-pill" role="navigation" aria-label="Primary">
@@ -459,19 +486,20 @@
   <main class="wrap">
     <div class="layout">
       <!-- Sidebar -->
-      <aside class="sidebar">
+      <aside>
         <div class="sidebar-sticky">
           <div class="card profile-card">
             <div class="card-inner">
               <div class="photo" aria-label="Profile photo">
-                <!-- Replace with your own file path (no forced cropping beyond container) -->
                 <img src="profile.jpg" alt="Profile photo of Minseok Kim" />
               </div>
 
-              <div class="name">Minseok Kim</div>
+              <div class="name-block">
+                <h2 class="name">Minseok Kim</h2>
+                <div class="name-sub">Multimodal · Digital Therapeutics</div>
+              </div>
 
               <div class="uni" aria-label="University">
-                <!-- You said SKKU logo is now PNG -->
                 <img src="skku-logo.png" alt="Sungkyunkwan University logo" />
                 <div>
                   <div class="u1">Sungkyunkwan University</div>
@@ -484,9 +512,13 @@
                   <i data-lucide="mail"></i>
                   <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
                 </div>
+
+                <!-- Lab link (FIX: make it clickable) -->
                 <div class="meta-row">
-                  <i data-lucide="microscope"></i>
-                  <span>DSAIL@SKKU</span>
+                  <!-- simpler triangular flask icon -->
+                  <i data-lucide="flask-conical"></i>
+                  <!-- CHANGE THIS URL to your real lab page -->
+                  <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener">DSAIL@SKKU</a>
                 </div>
               </div>
 
@@ -520,7 +552,11 @@
             <div class="divider"></div>
 
             <div class="section-title">
-              <i data-lucide="brain-circuit"></i>
+              <!-- standard icons only: sparkles + small sparkles = "2 cross-stars" 느낌 -->
+              <span class="title-sparkles" aria-hidden="true">
+                <i data-lucide="sparkles"></i>
+                <i class="mini" data-lucide="sparkles"></i>
+              </span>
               <span>Research Interests</span>
             </div>
 
@@ -645,10 +681,9 @@
   </main>
 
   <script>
-    // Mark JS available (for safe reveal behavior)
     document.documentElement.classList.add('js');
 
-    // Render Lucide icons (standard, consistent)
+    // Standard icons only
     lucide.createIcons({ attrs: { "stroke-width": "2" } });
 
     // Page switcher (Home/About)
@@ -661,36 +696,33 @@
     function setActivePage(key){
       Object.values(pages).forEach(p => p.classList.remove('active'));
       pages[key].classList.add('active');
-
       buttons.forEach(b => b.classList.toggle('active', b.dataset.target === key));
-
-      // update hash without jumping weirdly
       history.replaceState(null, '', '#' + key);
 
-      // trigger reveal recalculation after switching
+      // reset reveals on page switch
       requestAnimationFrame(() => {
         document.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'));
         observeReveals();
       });
     }
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => setActivePage(btn.dataset.target));
-    });
+    buttons.forEach(btn => btn.addEventListener('click', () => setActivePage(btn.dataset.target)));
 
-    // Initial page from hash
+    // initial from hash
     const initial = (location.hash || '#home').replace('#','');
     if (pages[initial]) setActivePage(initial);
 
-    // Reveal on scroll (IntersectionObserver), but profile card remains always visible
+    // Reveal
     let io;
     function observeReveals(){
       if (io) io.disconnect();
       const els = document.querySelectorAll('.page.active .reveal');
+
       if (!('IntersectionObserver' in window)) {
         els.forEach(el => el.classList.add('visible'));
         return;
       }
+
       io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('visible');
