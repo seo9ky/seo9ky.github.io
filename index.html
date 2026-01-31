@@ -6,6 +6,7 @@
   <title>Minseok Kim</title>
   <meta name="description" content="Minseok Kim | Multimodal & Digital Therapeutics" />
 
+  <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -13,7 +14,6 @@
   <style>
     :root{
       --bg:#ffffff;
-      --bg-soft:#f6f8fb;
 
       --surface:#ffffff;
       --surface-alt:#f1f5ff;
@@ -23,10 +23,8 @@
 
       --text:#111827;
       --text-muted:#6b7280;
-      --text-soft:#94a3b8;
 
       --primary:#2f6fed;
-      --primary-weak:#dce9ff;
       --primary-border:#bfd6ff;
 
       --highlight:#fde68a;
@@ -41,6 +39,8 @@
 
       --w-sidebar: 280px;
       --w-avatar: 220px;
+
+      --sidebar-top: 28px;
     }
 
     *{ box-sizing:border-box; }
@@ -50,13 +50,26 @@
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans KR", sans-serif;
       color:var(--text);
-      background:
-        radial-gradient(900px 420px at 18% 10%, rgba(47,111,237,0.08), rgba(255,255,255,0)),
-        radial-gradient(700px 360px at 80% 0%, rgba(47,111,237,0.06), rgba(255,255,255,0)),
-        var(--bg);
+      background: var(--bg);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Full-page background that never "cuts off" while scrolling */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(900px 420px at 18% 10%, rgba(47,111,237,0.08), rgba(255,255,255,0)),
+        radial-gradient(700px 360px at 80% 0%, rgba(47,111,237,0.06), rgba(255,255,255,0)),
+        radial-gradient(900px 520px at 70% 95%, rgba(47,111,237,0.06), rgba(255,255,255,0)),
+        radial-gradient(700px 420px at 20% 92%, rgba(47,111,237,0.05), rgba(255,255,255,0));
     }
 
     a{ color: var(--primary); text-decoration: none; }
@@ -80,10 +93,11 @@
       flex: 0 0 var(--w-sidebar);
     }
 
+    /* Fixed sidebar: does not move with page content */
     .sidebar{
       width: var(--w-sidebar);
       position: fixed;
-      top: 28px;
+      top: var(--sidebar-top);
       left: 50%;
       margin-left: calc(-1 * (var(--wrap-max) / 2) + var(--wrap-pad));
       z-index: 10;
@@ -95,7 +109,6 @@
       border-radius: var(--r-card);
       box-shadow: var(--shadow);
     }
-
     .card-pad{ padding: 16px; }
 
     /* Profile photo: keep original ratio, keep rounded corners */
@@ -113,20 +126,8 @@
     .name{
       font-size: 28px;
       letter-spacing: -0.02em;
-      margin: 0 0 8px;
-      font-weight: 700;
-    }
-
-    .subline{
       margin: 0 0 14px;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    .subline em{
-      font-style: italic;
-      color: var(--text);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .kv{
@@ -169,7 +170,7 @@
 
     .hero{
       padding: 18px 20px;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--divider);
       border-radius: var(--r-card);
       box-shadow: 0 10px 26px rgba(17,24,39,0.06);
@@ -200,33 +201,6 @@
       color: var(--text);
       font-weight: 600;
     }
-
-    .cta-row{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 8px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text);
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .btn:hover{ text-decoration: none; border-color: var(--primary-border); }
-    .btn-primary{
-      background: var(--text);
-      border-color: var(--text);
-      color: #fff;
-    }
-    .btn-primary:hover{ border-color: var(--text); opacity: 0.95; }
 
     section{
       margin-top: 22px;
@@ -279,13 +253,6 @@
       font-size: 13.5px;
     }
 
-    .meta-row{
-      margin-top: 6px;
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
     .chip{
       font-size: 12px;
       padding: 4px 9px;
@@ -335,6 +302,7 @@
         width: auto;
         left: auto;
         margin-left: 0;
+        top: auto;
       }
       .avatar{ width: 190px; }
     }
@@ -349,9 +317,6 @@
           <img class="avatar" src="./profile.jpg" alt="Profile photo" />
 
           <h1 class="name">Minseok Kim</h1>
-          <p class="subline">
-            Focused on <em>Multimodal</em> and <em>Digital Therapeutics</em>
-          </p>
 
           <div class="card card-pad">
             <div class="kv">
@@ -364,9 +329,6 @@
                   SKKU-DSAIL
                 </a>
               </span>
-
-              <b>GitHub</b>
-              <span><a href="https://github.com/seo9ky" target="_blank" rel="noopener noreferrer">github.com/seo9ky</a></span>
             </div>
 
             <div class="pills" aria-label="keywords">
@@ -387,12 +349,6 @@
           <p>
             I aim to design systems that are <span class="highlight">reliable</span>, <span class="highlight">safe</span>, and <span class="highlight">useful</span> in real-world settings.
           </p>
-
-          <div class="cta-row">
-            <a class="btn btn-primary" href="mailto:seo9ky@g.skku.edu">Email</a>
-            <a class="btn" href="https://github.com/seo9ky" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a class="btn" href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">Lab</a>
-          </div>
         </div>
 
         <section id="research-interests">
@@ -439,19 +395,10 @@
             <div class="item">
               <div class="item-title">Project Title #1 <em>Short tagline</em></div>
               <p class="item-meta">One–two lines describing what you built/researched and the outcome.</p>
-              <div class="meta-row">
-                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">paper</a>
-                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">code</a>
-                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">demo</a>
-              </div>
             </div>
             <div class="item">
               <div class="item-title">Project Title #2 <em>Short tagline</em></div>
               <p class="item-meta">One–two lines describing your contribution. Add metrics/results if available.</p>
-              <div class="meta-row">
-                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">paper</a>
-                <a class="btn" href="#" target="_blank" rel="noopener noreferrer">code</a>
-              </div>
             </div>
           </div>
         </section>
@@ -460,7 +407,7 @@
           <div class="section-title">Experiences</div>
           <div class="list">
             <div class="item">
-              <div class="item-title">SKKU DSAIL <em>Research Member</em></div>
+              <div class="item-title">SKKU-DSAIL <em>Research Member</em></div>
               <p class="item-meta">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
               <p class="item-meta">Mar. 202X – Present</p>
             </div>
