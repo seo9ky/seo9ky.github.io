@@ -40,7 +40,7 @@
       --w-sidebar: 280px;
       --w-avatar: 220px;
 
-      --sidebar-top: 28px;
+      --nav-h: 64px;
     }
 
     *{ box-sizing:border-box; }
@@ -54,11 +54,10 @@
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      position: relative;
       overflow-x: hidden;
     }
 
-    /* Full-page background that never "cuts off" while scrolling */
+    /* Full-page background that stays consistent throughout scroll */
     body::before{
       content:"";
       position: fixed;
@@ -75,32 +74,90 @@
     a{ color: var(--primary); text-decoration: none; }
     a:hover{ text-decoration: underline; }
 
+    /* Top nav */
+    .topnav{
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      height: var(--nav-h);
+      display:flex;
+      align-items:center;
+      background: rgba(255,255,255,0.78);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(10px);
+    }
+    .topnav .inner{
+      max-width: var(--wrap-max);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--wrap-pad);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .brand .brand-name{
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .brand .brand-sub{
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 600;
+    }
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .navbtn{
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .navbtn:hover{
+      border-color: var(--primary-border);
+      text-decoration: none;
+    }
+    .navbtn[aria-current="page"]{
+      background: var(--surface-alt);
+      border-color: var(--primary-border);
+      color: rgba(47,111,237,0.95);
+    }
+
     .wrap{
       max-width: var(--wrap-max);
       margin: 0 auto;
-      padding: 56px var(--wrap-pad);
+      padding: 24px var(--wrap-pad) 56px;
     }
 
     .grid{
       display:flex;
       gap: 56px;
       align-items:flex-start;
+      margin-top: 6px;
     }
 
-    /* Spacer keeps layout width while the sidebar is fixed */
-    .sidebar-col{
-      width: var(--w-sidebar);
-      flex: 0 0 var(--w-sidebar);
-    }
-
-    /* Fixed sidebar: does not move with page content */
+    /* Sticky sidebar (moves with scroll but stays visible) */
     .sidebar{
       width: var(--w-sidebar);
-      position: fixed;
-      top: var(--sidebar-top);
-      left: 50%;
-      margin-left: calc(-1 * (var(--wrap-max) / 2) + var(--wrap-pad));
-      z-index: 10;
+      flex: 0 0 var(--w-sidebar);
+      position: sticky;
+      top: calc(var(--nav-h) + 18px);
+      align-self: flex-start;
     }
 
     .card{
@@ -111,7 +168,6 @@
     }
     .card-pad{ padding: 16px; }
 
-    /* Profile photo: keep original ratio, keep rounded corners */
     .avatar{
       width: var(--w-avatar);
       height: auto;
@@ -285,141 +341,165 @@
       flex-wrap:wrap;
     }
 
-    /* If viewport is narrower than the wrap max, anchor sidebar to padding */
-    @media (max-width: 1080px){
-      .sidebar{
-        left: var(--wrap-pad);
-        margin-left: 0;
-      }
+    /* Scroll reveal effect */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 550ms ease, transform 550ms ease;
+      will-change: opacity, transform;
+    }
+    .reveal.in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .reveal{ opacity: 1; transform: none; transition: none; }
     }
 
-    /* Mobile: disable fixed sidebar and stack */
+    /* About page visibility */
+    .page{ display: none; }
+    .page.active{ display: block; }
+
     @media (max-width: 920px){
       .grid{ flex-direction:column; gap: 18px; }
-      .sidebar-col{ width:auto; flex: 1 1 auto; }
-      .sidebar{
-        position: static;
-        width: auto;
-        left: auto;
-        margin-left: 0;
-        top: auto;
-      }
+      .sidebar{ width:auto; flex: 1 1 auto; position: static; top: auto; }
       .avatar{ width: 190px; }
+      .brand .brand-sub{ display:none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="grid">
-      <div class="sidebar-col">
-        <aside class="sidebar">
-          <img class="avatar" src="./profile.jpg" alt="Profile photo" />
-
-          <h1 class="name">Minseok Kim</h1>
-
-          <div class="card card-pad">
-            <div class="kv">
-              <b>Email</b>
-              <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
-
-              <b>Lab</b>
-              <span>
-                <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
-                  SKKU-DSAIL
-                </a>
-              </span>
-            </div>
-
-            <div class="pills" aria-label="keywords">
-              <span class="pill">Multimodal</span>
-              <span class="pill">Digital Therapeutics</span>
-            </div>
-          </div>
-        </aside>
+  <header class="topnav">
+    <div class="inner">
+      <div class="brand">
+        <div class="brand-name">Minseok Kim</div>
+        <div class="brand-sub">Multimodal · Digital Therapeutics</div>
       </div>
 
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a class="navbtn" id="nav-home" href="#home" aria-current="page">Home</a>
+        <a class="navbtn" id="nav-about" href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="grid">
+      <!-- Left -->
+      <aside class="sidebar">
+        <img class="avatar reveal" src="./profile.jpg" alt="Profile photo" />
+
+        <h1 class="name reveal">Minseok Kim</h1>
+
+        <div class="card card-pad reveal">
+          <div class="kv">
+            <b>Email</b>
+            <span><a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a></span>
+
+            <b>Lab</b>
+            <span>
+              <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
+                SKKU-DSAIL
+              </a>
+            </span>
+          </div>
+
+          <div class="pills" aria-label="keywords">
+            <span class="pill">Multimodal</span>
+            <span class="pill">Digital Therapeutics</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right -->
       <main>
-        <div class="hero">
-          <div class="hero-title">Hello</div>
-          <p>
-            I’m <strong>Minseok Kim</strong>, a researcher interested in building <em>practical</em>, human-centered AI systems.
-            My current focus is on <strong>Multimodal</strong> learning and <strong>Digital Therapeutics</strong>.
-          </p>
-          <p>
-            I aim to design systems that are <span class="highlight">reliable</span>, <span class="highlight">safe</span>, and <span class="highlight">useful</span> in real-world settings.
-          </p>
+        <!-- HOME PAGE -->
+        <div id="page-home" class="page active">
+          <div class="hero reveal">
+            <div class="hero-title">Hello</div>
+            <p>
+              I’m <strong>Minseok Kim</strong>, a researcher interested in building <em>practical</em>, human-centered AI systems.
+              My current focus is on <strong>Multimodal</strong> learning and <strong>Digital Therapeutics</strong>.
+            </p>
+            <p>
+              I aim to design systems that are <span class="highlight">reliable</span>, <span class="highlight">safe</span>, and <span class="highlight">useful</span> in real-world settings.
+            </p>
+          </div>
+
+          <section id="research-interests" class="reveal">
+            <div class="section-title">Research Interests</div>
+            <div class="list">
+              <div class="item reveal">
+                <div class="item-title">
+                  Multimodal <em>Learning</em>
+                  <span class="chip">vision-language</span>
+                  <span class="chip">representation</span>
+                  <span class="chip">evaluation</span>
+                </div>
+                <p class="item-meta">Vision–language reasoning, multimodal representation learning, and robust evaluation.</p>
+              </div>
+              <div class="item reveal">
+                <div class="item-title">
+                  Digital <em>Therapeutics</em>
+                  <span class="chip">safety</span>
+                  <span class="chip">personalization</span>
+                  <span class="chip">dialogue</span>
+                </div>
+                <p class="item-meta">Reliable and safe conversational AI for mental health and self-assessment applications.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="projects" class="reveal">
+            <div class="section-title">Projects</div>
+            <div class="list">
+              <div class="item reveal">
+                <div class="item-title">Project Title #1 <em>Short tagline</em></div>
+                <p class="item-meta">One–two lines describing what you built/researched and the outcome.</p>
+              </div>
+              <div class="item reveal">
+                <div class="item-title">Project Title #2 <em>Short tagline</em></div>
+                <p class="item-meta">One–two lines describing your contribution. Add metrics/results if available.</p>
+              </div>
+            </div>
+          </section>
         </div>
 
-        <section id="research-interests">
-          <div class="section-title">Research Interests</div>
-          <div class="list">
-            <div class="item">
-              <div class="item-title">
-                Multimodal <em>Learning</em>
-                <span class="chip">vision-language</span>
-                <span class="chip">representation</span>
-                <span class="chip">evaluation</span>
+        <!-- ABOUT PAGE -->
+        <div id="page-about" class="page">
+          <section id="education" class="reveal" style="border-top:none; padding-top:0; margin-top:0;">
+            <div class="section-title">Education</div>
+            <div class="list">
+              <div class="item reveal">
+                <div class="item-title">Sungkyunkwan University <em>Seoul, Republic of Korea</em></div>
+                <p class="item-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</p>
               </div>
-              <p class="item-meta">Vision–language reasoning, multimodal representation learning, and robust evaluation.</p>
-            </div>
-            <div class="item">
-              <div class="item-title">
-                Digital <em>Therapeutics</em>
-                <span class="chip">safety</span>
-                <span class="chip">personalization</span>
-                <span class="chip">dialogue</span>
+              <div class="item reveal">
+                <div class="item-title">Sungkyunkwan University <em>Seoul, Republic of Korea</em></div>
+                <p class="item-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</p>
               </div>
-              <p class="item-meta">Reliable and safe conversational AI for mental health and self-assessment applications.</p>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="education">
-          <div class="section-title">Education</div>
-          <div class="list">
-            <div class="item">
-              <div class="item-title">Sungkyunkwan University <em>Seoul, Republic of Korea</em></div>
-              <p class="item-meta">B.S. in Applied Artificial Intelligence · Mar. 2020 – Feb. 2026</p>
+          <section id="experiences" class="reveal">
+            <div class="section-title">Experiences</div>
+            <div class="list">
+              <div class="item reveal">
+                <div class="item-title">SKKU-DSAIL <em>Research Member</em></div>
+                <p class="item-meta">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
+                <p class="item-meta">Mar. 202X – Present</p>
+              </div>
+              <div class="item reveal">
+                <div class="item-title">Experience Title #2 <em>Role</em></div>
+                <p class="item-meta">Add 1–2 lines: role, tasks, and impact.</p>
+                <p class="item-meta">YYYY – YYYY</p>
+              </div>
             </div>
-            <div class="item">
-              <div class="item-title">Sungkyunkwan University <em>Seoul, Republic of Korea</em></div>
-              <p class="item-meta">M.S. in Applied Artificial Intelligence · Mar. 2026 – Present</p>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
-        <section id="projects">
-          <div class="section-title">Projects</div>
-          <div class="list">
-            <div class="item">
-              <div class="item-title">Project Title #1 <em>Short tagline</em></div>
-              <p class="item-meta">One–two lines describing what you built/researched and the outcome.</p>
-            </div>
-            <div class="item">
-              <div class="item-title">Project Title #2 <em>Short tagline</em></div>
-              <p class="item-meta">One–two lines describing your contribution. Add metrics/results if available.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="experiences">
-          <div class="section-title">Experiences</div>
-          <div class="list">
-            <div class="item">
-              <div class="item-title">SKKU-DSAIL <em>Research Member</em></div>
-              <p class="item-meta">Add 1–2 lines: topics, methods, responsibilities, and outcomes.</p>
-              <p class="item-meta">Mar. 202X – Present</p>
-            </div>
-            <div class="item">
-              <div class="item-title">Experience Title #2 <em>Role</em></div>
-              <p class="item-meta">Add 1–2 lines: role, tasks, and impact.</p>
-              <p class="item-meta">YYYY – YYYY</p>
-            </div>
-          </div>
-        </section>
-
-        <footer>
+        <footer class="reveal">
           <div>© <span id="year"></span> Minseok Kim</div>
           <div>Last updated: <span id="updated"></span></div>
         </footer>
@@ -428,10 +508,58 @@
   </div>
 
   <script>
+    // Footer dates
     const d = new Date();
     document.getElementById("year").textContent = d.getFullYear();
     document.getElementById("updated").textContent =
       d.toLocaleString("en-US", { month: "long", year: "numeric" });
+
+    // Simple router (Home / About) using hash
+    const navHome = document.getElementById("nav-home");
+    const navAbout = document.getElementById("nav-about");
+    const pageHome = document.getElementById("page-home");
+    const pageAbout = document.getElementById("page-about");
+
+    function setActive(tab){
+      const isHome = tab === "home";
+      pageHome.classList.toggle("active", isHome);
+      pageAbout.classList.toggle("active", !isHome);
+
+      navHome.setAttribute("aria-current", isHome ? "page" : "false");
+      navAbout.setAttribute("aria-current", !isHome ? "page" : "false");
+
+      // scroll to top on page switch (feels like navigation)
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // re-trigger reveal observation for newly shown items
+      requestAnimationFrame(() => {
+        document.querySelectorAll(".reveal").forEach(el => {
+          el.classList.remove("in");
+          observer.observe(el);
+        });
+      });
+    }
+
+    function route(){
+      const hash = (location.hash || "#home").replace("#", "");
+      setActive(hash === "about" ? "about" : "home");
+    }
+    window.addEventListener("hashchange", route);
+
+    // Scroll reveal effect using IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // Initial route
+    route();
   </script>
 </body>
 </html>
