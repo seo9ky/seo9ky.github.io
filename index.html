@@ -1,278 +1,282 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Minseok Kim</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="container">
-    <!-- Transparent navbar: right buttons only -->
-    <header class="nav">
-      <div class="nav-inner">
-        <nav class="nav-actions" aria-label="Primary">
-          <a class="nav-btn is-active" href="index.html" aria-current="page">
-            <!-- home icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-              <path d="M3 10.5 12 3l9 7.5"></path>
-              <path d="M5 9.5V21h14V9.5"></path>
-            </svg>
-            Home
-          </a>
-          <a class="nav-btn" href="about.html">
-            <!-- user icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-              <path d="M20 21a8 8 0 0 0-16 0"></path>
-              <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"></path>
-            </svg>
-            About
-          </a>
-        </nav>
-      </div>
-    </header>
+  <!-- Background is handled in styles.css via body::before -->
 
-    <main class="page">
-      <!-- LEFT: Profile -->
-      <aside class="profile-wrap">
-        <section class="card profile reveal">
+  <header class="topbar">
+    <nav class="nav">
+      <div class="nav-spacer"></div>
+      <div class="nav-actions" role="navigation" aria-label="Primary">
+        <a class="nav-btn is-active" href="./index.html" aria-current="page">
+          <span class="ico" aria-hidden="true">
+            <!-- Home icon -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 10.5 12 3l9 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.5 10.5V21h11V10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Home</span>
+        </a>
+
+        <a class="nav-btn" href="./about.html">
+          <span class="ico" aria-hidden="true">
+            <!-- User icon -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>About</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="layout">
+      <!-- LEFT: profile card -->
+      <aside class="sidebar">
+        <section class="card profile-card">
           <div class="profile-photo">
-            <img src="assets/profile.jpg" alt="Profile photo"/>
+            <!-- Replace with your image path -->
+            <img src="./assets/profile.jpg" alt="Portrait of Minseok Kim" />
           </div>
 
-          <div class="profile-head">
-            <div class="name-school">
-              <h1 class="name">Minseok Kim</h1>
+          <!-- ONE BOX: name + school block -->
+          <div class="profile-header">
+            <h1 class="profile-name">Minseok Kim</h1>
 
-              <!-- Name + school grouped -->
-              <div class="school-badge" title="Sungkyunkwan University">
-                <img src="assets/skku-logo.png" alt="SKKU logo"/>
-                <div>
-                  <div class="school-title">Sungkyunkwan University</div>
-                  <div class="school-sub">Seoul, Republic of Korea</div>
-                </div>
+            <div class="school-block">
+              <img class="school-logo" src="./assets/skku-logo.png" alt="Sungkyunkwan University logo" />
+              <div class="school-text">
+                <div class="school-name">Sungkyunkwan University</div>
+                <div class="school-loc">Seoul, Republic of Korea</div>
               </div>
             </div>
+          </div>
 
-            <div class="profile-meta">
-              <div class="meta-row">
-                <!-- email -->
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                  <path d="M4 6h16v12H4z"></path>
-                  <path d="m4 7 8 6 8-6"></path>
+          <div class="profile-meta">
+            <a class="meta-row" href="mailto:seo9ky@g.skku.edu">
+              <span class="meta-ico" aria-hidden="true">
+                <!-- Mail -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
                 </svg>
-                <a href="mailto:seo9ky@g.skku.edu">seo9ky@g.skku.edu</a>
-              </div>
+              </span>
+              <span class="meta-text">seo9ky@g.skku.edu</span>
+            </a>
 
-              <div class="meta-row">
-                <!-- organization (building) -->
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                  <path d="M3 21h18"></path>
-                  <path d="M5 21V7l7-4 7 4v14"></path>
-                  <path d="M9 21v-6h6v6"></path>
-                  <path d="M9 10h.01M12 10h.01M15 10h.01"></path>
+            <a class="meta-row" href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noreferrer">
+              <span class="meta-ico" aria-hidden="true">
+                <!-- Organization / building -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M6 21V9l6-4 6 4v12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
                 </svg>
-                <a href="https://sites.google.com/view/datasciencelab/home?authuser=0" target="_blank" rel="noopener noreferrer">
-                  DSAIL@SKKU
-                </a>
-              </div>
+              </span>
+              <span class="meta-text">DSAIL@SKKU</span>
+            </a>
+          </div>
+
+          <!-- Interests inside profile card, redesigned to blend -->
+          <div class="profile-interests">
+            <div class="interest-pill">
+              <span class="dot dot-blue" aria-hidden="true"></span>
+              <span>Multimodal</span>
             </div>
-
-            <!-- Primary interests (harmonized) -->
-            <div class="primary-tags" aria-label="Primary interests">
-              <span class="tag-primary"><span class="dot"></span>Multimodal</span>
-              <span class="tag-primary"><span class="dot"></span>Digital Therapeutics</span>
+            <div class="interest-pill">
+              <span class="dot dot-blue" aria-hidden="true"></span>
+              <span>Digital Therapeutics</span>
             </div>
           </div>
         </section>
       </aside>
 
-      <!-- RIGHT: Content -->
-      <section class="main">
-        <!-- Intro (no big "Hello" title) -->
-        <section class="card intro reveal">
-          <p>
+      <!-- RIGHT: content -->
+      <section class="content">
+        <section class="card hero">
+          <h2 class="hero-title">Hello World</h2>
+          <p class="hero-text">
             I’m Minseok Kim, studying <strong>Applied Artificial Intelligence</strong> at
             <strong>Sungkyunkwan University</strong> (B.S., M.S., Ph.D. track), working at the intersection of
             <strong>Multimodal AI</strong> and <strong>Digital Therapeutics</strong>.
           </p>
-          <p>
-            My work spans Natural Language Processing, Computer Vision, and Audio, with applications in
-            Mental Health, Ophthalmology, and Audiology.
+          <p class="hero-text">
+            My work spans Natural Language Processing, Computer Vision, and Audio, with applications in Mental Health,
+            Ophthalmology, and Audiology.
           </p>
-          <p>
-            I focus on building <span class="hl">reliable</span>, <span class="hl">safe</span>, and
-            <span class="hl">useful</span> systems for real-world settings.
+          <p class="hero-text">
+            I focus on building reliable, safe, and useful systems for real-world settings.
           </p>
+        </section>
 
-          <div class="hr"></div>
-
-          <div class="section">
-            <div class="h2">
-              <!-- Research Interests icon: standard beaker -->
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <path d="M6 2h12"></path>
-                <path d="M10 2v6l-6 10a2 2 0 0 0 1.75 3h12.5A2 2 0 0 0 20 18L14 8V2"></path>
-                <path d="M8 14h8"></path>
+        <section class="section">
+          <div class="section-head">
+            <span class="section-ico" aria-hidden="true">
+              <!-- Research / flask icon (standard) -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M10 2v6l-5 9a4 4 0 0 0 3.5 6h7A4 4 0 0 0 19 17l-5-9V2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
-              Research Interests
-            </div>
+            </span>
+            <h3 class="section-title">Research Interests</h3>
+          </div>
 
-            <div class="interest-card">
-              <div class="row-top">
-                <div class="row-left">
-                  <div class="icon-badge" aria-hidden="true">
-                    <!-- layers icon -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                      <path d="m12 2 9 5-9 5-9-5 9-5z"></path>
-                      <path d="m3 12 9 5 9-5"></path>
-                      <path d="m3 17 9 5 9-5"></path>
+          <div class="interest-cards">
+            <article class="card interest-card">
+              <div class="interest-card-head">
+                <div class="interest-left">
+                  <span class="interest-ico" aria-hidden="true">
+                    <!-- Layers icon -->
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M12 3 3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M3 12l9 5 9-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M3 16l9 5 9-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
                     </svg>
-                  </div>
+                  </span>
                   <div>
-                    <p class="title">Multimodal</p>
-                    <p class="desc">Learning and reasoning across modalities for robust, practical systems.</p>
+                    <div class="interest-title">Multimodal</div>
+                    <div class="interest-sub">Learning and reasoning across modalities for robust, practical systems.</div>
                   </div>
                 </div>
 
-                <div class="chips">
-                  <span class="chip">
-                    <!-- text icon -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                      <path d="M4 6h16"></path>
-                      <path d="M4 12h10"></path>
-                      <path d="M4 18h16"></path>
-                    </svg>
+                <div class="tags">
+                  <span class="tag tag-blue">
+                    <span class="tag-ico" aria-hidden="true">
+                      <!-- Text icon -->
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M4 6h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M4 12h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M4 18h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </span>
                     Natural Language Processing
                   </span>
-                  <span class="chip">
-                    <!-- image icon -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                      <rect x="4" y="5" width="16" height="14" rx="2"></rect>
-                      <path d="m8 13 2-2 4 4 2-2 2 2"></path>
-                      <path d="M9 9h.01"></path>
-                    </svg>
+                  <span class="tag tag-blue">
+                    <span class="tag-ico" aria-hidden="true">
+                      <!-- Image icon -->
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M4 5h16v14H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M8 11l3 3 5-5 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 9.5h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                    </span>
                     Computer Vision
                   </span>
-                  <span class="chip">
-                    <!-- audio icon -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                      <path d="M12 3v18"></path>
-                      <path d="M8 7v10"></path>
-                      <path d="M16 7v10"></path>
-                      <path d="M4 10v4"></path>
-                      <path d="M20 10v4"></path>
-                    </svg>
+                  <span class="tag tag-blue">
+                    <span class="tag-ico" aria-hidden="true">
+                      <!-- Audio icon -->
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M11 5 6 9H3v6h3l5 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M16.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M19 6a8 8 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </span>
                     Audio
                   </span>
                 </div>
               </div>
-            </div>
+            </article>
 
-            <div class="interest-card">
-              <div class="row-top">
-                <div class="row-left">
-                  <div class="icon-badge" aria-hidden="true" style="background: rgba(255,231,168,.35); border-color: rgba(255,200,92,.35);">
-                    <!-- shield + icon -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" style="stroke: rgba(175,118,0,.95);">
-                      <path d="M12 2 20 6v6c0 5-3.2 9.4-8 10-4.8-.6-8-5-8-10V6l8-4z"></path>
-                      <path d="M12 8v6"></path>
-                      <path d="M9 11h6"></path>
+            <article class="card interest-card">
+              <div class="interest-card-head">
+                <div class="interest-left">
+                  <span class="interest-ico" aria-hidden="true">
+                    <!-- Shield + icon (more square) -->
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M12 3l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V7l8-4Z"
+                            stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M12 9v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M9 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
-                  </div>
+                  </span>
                   <div>
-                    <p class="title">Digital Therapeutics</p>
-                    <p class="desc">Human-centered AI for clinically meaningful and safe applications.</p>
+                    <div class="interest-title">Digital Therapeutics</div>
+                    <div class="interest-sub">Human-centered AI for clinically meaningful and safe applications.</div>
                   </div>
                 </div>
 
-                <div class="chips">
-                  <span class="chip">
-                    <!-- heart -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                      <path d="M12 21s-7-4.5-9.5-9A5.8 5.8 0 0 1 12 6a5.8 5.8 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"></path>
-                    </svg>
+                <!-- IMPORTANT: changed to BLUE (same as Multimodal) -->
+                <div class="tags">
+                  <span class="tag tag-blue">
+                    <span class="tag-ico" aria-hidden="true">
+                      <!-- Heart -->
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 21s-7-4.7-9.3-8.5C.7 9.3 2.6 6 6.2 6c1.8 0 3.2 1 3.8 2 0 0 1.4-2 3.8-2 3.6 0 5.5 3.3 3.5 6.5C19 16.3 12 21 12 21Z"
+                              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
                     Mental Health
                   </span>
-                  <span class="chip">
-                    <!-- eye -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                      <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
+
+                  <span class="tag tag-blue">
+                    <span class="tag-ico" aria-hidden="true">
+                      <!-- Eye -->
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"
+                              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
                     Ophthalmology
                   </span>
-                  <span class="chip">
-                    <!-- ear (simple) -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                      <path d="M12 3a7 7 0 0 0-7 7c0 2.5 1.2 4.3 2.6 5.7"></path>
-                      <path d="M8 19a3 3 0 0 0 6 0c0-2-2-2.4-2-4"></path>
-                      <path d="M12 11a2 2 0 0 1 2 2"></path>
-                    </svg>
+
+                  <span class="tag tag-blue">
+                    <span class="tag-ico" aria-hidden="true">
+                      <!-- Ear -->
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3a7 7 0 0 0-7 7c0 2.6 1.4 4.7 3.3 6.1 1 .7 1.7 1.6 1.7 2.9 0 1.7 1.3 3 3 3"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </span>
                     Audiology
                   </span>
                 </div>
               </div>
-            </div>
-
-            <div class="hr"></div>
-
-            <div class="h2" style="margin-top: 14px;">
-              <!-- folder icon -->
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <path d="M3 6h7l2 2h9v12H3z"></path>
-              </svg>
-              Projects
-            </div>
-
-            <div class="projects">
-              <div class="project reveal">
-                <!-- file icon -->
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <path d="M14 2v6h6"></path>
-                </svg>
-                <div>
-                  <h3>Project Title #1</h3>
-                  <p>One–two lines describing what you built/researched and the outcome.</p>
-                </div>
-              </div>
-
-              <div class="project reveal">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <path d="M14 2v6h6"></path>
-                </svg>
-                <div>
-                  <h3>Project Title #2</h3>
-                  <p>One–two lines describing your contribution. Add metrics/results if available.</p>
-                </div>
-              </div>
-            </div>
-
-            <footer class="footer">
-              <span>© 2026 Minseok Kim</span>
-              <span>Last updated: January 2026</span>
-            </footer>
+            </article>
           </div>
         </section>
-      </section>
-    </main>
-  </div>
 
-  <script>
-    (function(){
-      const els = Array.from(document.querySelectorAll('.reveal'));
-      const io = new IntersectionObserver((entries)=>{
-        for(const e of entries){
-          if(e.isIntersecting){
-            e.target.classList.add('is-in');
-            io.unobserve(e.target);
-          }
-        }
-      }, { threshold: 0.12 });
-      els.forEach(el => io.observe(el));
-    })();
-  </script>
+        <section class="section">
+          <div class="section-head">
+            <span class="section-ico" aria-hidden="true">
+              <!-- Folder -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M3 7h6l2 2h10v11H3V7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h3 class="section-title">Projects</h3>
+          </div>
+
+          <div class="stack">
+            <article class="card item">
+              <div class="item-title">Project Title #1</div>
+              <div class="item-desc">One–two lines describing what you built/researched and the outcome.</div>
+            </article>
+            <article class="card item">
+              <div class="item-title">Project Title #2</div>
+              <div class="item-desc">One–two lines describing your contribution. Add metrics/results if available.</div>
+            </article>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>© 2026 Minseok Kim</span>
+          <span class="footer-right">Last updated: January 2026</span>
+        </footer>
+      </section>
+    </div>
+  </main>
 </body>
 </html>
