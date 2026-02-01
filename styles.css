@@ -479,14 +479,14 @@ a:hover{ text-decoration:underline; }
 .row-left .title{
   font-weight:700;
   margin:0;
-  font-size:17px;
+  font-size:18px;
   letter-spacing:-0.02em;
 }
 
 .row-left .desc{
   margin:6px 0 0;
   color: var(--muted);
-  font-size:13px;
+  font-size:14px;
   line-height:1.5;
   max-width: 54ch;
 }
@@ -512,7 +512,7 @@ a:hover{ text-decoration:underline; }
   box-shadow:none;
   color: rgba(15,23,42,0.78);
   font-weight:800;
-  font-size:13px;
+  font-size:14px;
   white-space:nowrap;
 }
 
@@ -562,7 +562,7 @@ a:hover{ text-decoration:underline; }
 .projects .summary{
   margin:6px 0 0;
   color: var(--muted);
-  font-size:13px;
+  font-size:14px;
   line-height:1.5;
   max-width: 78ch;
 }
@@ -602,20 +602,20 @@ a:hover{ text-decoration:underline; }
   margin:0;
   font-weight:700;
   letter-spacing:-0.02em;
-  font-size:15px;
+  font-size:18px;
 }
 
 .entry .sub{
   margin:4px 0 0;
   color: var(--muted2);
   font-weight:600;
-  font-size:12.5px;
+  font-size:13px;
 }
 
 .entry .meta{
   margin:6px 0 0;
   color: var(--muted);
-  font-size:13px;
+  font-size:14px;
   line-height:1.45;
 }
 
