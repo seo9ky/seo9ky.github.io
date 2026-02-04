@@ -117,10 +117,7 @@ a:hover{ text-decoration:underline; }
   transition: background .12s ease, border-color .12s ease, transform .12s ease, box-shadow .12s ease;
 }
 
-.navpill a svg{
-  width:16px;
-  height:16px;
-}
+.navpill a svg{ width:16px; height:16px; }
 
 .navpill a:hover{
   background: rgba(255,255,255,0.60);
@@ -140,7 +137,6 @@ a:hover{ text-decoration:underline; }
   color: rgba(15,23,42,0.92);
 }
 
-/* grid + sticky 안정화 포인트 */
 .layout{
   display:grid;
   grid-template-columns: 300px 1fr;
@@ -148,9 +144,7 @@ a:hover{ text-decoration:underline; }
   align-items:start;
 }
 
-/* =========================================================
-   4-1) Sticky Profile (스크롤 따라다니기)
-   ========================================================= */
+/* 프로필 카드 스크롤 따라다니기(데스크탑 sticky) */
 .profile-wrap{
   position: sticky;
   top: 26px;
@@ -201,7 +195,7 @@ a:hover{ text-decoration:underline; }
 .divider-inset{ margin:16px 20px; }
 
 /* =========================================================
-   6-1) Hover Button Feel
+   6-1) Hover Button Feel (icons/pills)
    ========================================================= */
 .pill,
 .badge-ic,
@@ -237,9 +231,7 @@ a:hover{ text-decoration:underline; }
   outline-offset: 3px;
 }
 
-/* =========================================================
-   6-2) 링크 래퍼 스타일
-   ========================================================= */
+/* 링크 래퍼 기본 */
 a.icon-link{
   display:inline-flex;
   text-decoration:none;
@@ -260,13 +252,11 @@ a.pill{
 }
 a.pill:hover{ text-decoration:none; }
 
-/* 비활성 링크: 클릭은 막지만, 모양/호버는 유지 */
-a.is-disabled-link{
-  pointer-events: auto;
-}
+/* 비활성 링크도 hover/cursor는 유지 */
+a.is-disabled-link{ pointer-events: auto; }
 
 /* =========================================================
-   7) Profile Card
+   7) Profile
    ========================================================= */
 .profile{ padding: 20px 18px; }
 
@@ -717,25 +707,18 @@ a.is-disabled-link{
 
 /* =========================================================
    15) Page Enter Animation (fade + slide-down)
-   - page-enter는 "기본은 보이게" 두고, is-ready가 붙을 때만 애니메이션
+   - nav/main에만 class="page-enter"를 주는 것을 권장
    ========================================================= */
 @keyframes pageEnter{
   from{ opacity: 0; transform: translateY(-14px); }
   to{ opacity: 1; transform: translateY(0); }
 }
 
-/* 기본 상태: 보이도록(애니메이션 실패해도 화면이 안 비게) */
 .page-enter{
-  opacity: 1;
-  transform: none;
-}
-
-/* JS가 body.is-ready를 붙이면 애니메이션 실행 */
-body.is-ready .page-enter{
   animation: pageEnter 560ms ease-out both;
-  will-change: opacity, transform;
+  will-change: transform, opacity;
 }
 
 @media (prefers-reduced-motion: reduce){
-  body.is-ready .page-enter{ animation: none; }
+  .page-enter{ animation: none; }
 }
