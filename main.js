@@ -41,12 +41,18 @@
     "abt.exp.dsail":   { url: "", newTab: true }
   };
 
+  /* =========================================================
+     1) Lucide 아이콘 초기화
+     ========================================================= */
   function initLucide() {
     if (window.lucide && typeof window.lucide.createIcons === "function") {
       window.lucide.createIcons();
     }
   }
 
+  /* =========================================================
+     2) Copy-to-clipboard
+     ========================================================= */
   function showToast(toastEl) {
     if (!toastEl) return;
     toastEl.classList.add("show");
@@ -88,24 +94,20 @@
         var toast = row ? row.querySelector(".copy-toast") : null;
 
         var ok = await copyToClipboard(text);
-        if (ok) {
-          showToast(toast);
-        } else {
-          fallbackSelectText(btn);
-        }
+        if (ok) showToast(toast);
+        else fallbackSelectText(btn);
       });
     });
   }
 
   /* =========================================================
      3) data-link-key -> href 자동 주입
-     - URL이 비어있으면: 클릭 막기(placeholder)
+     - URL이 비어있으면: placeholder 유지 + 클릭 방지
      - URL이 있으면: href/target/rel 세팅
      ========================================================= */
   function normalizeUrl(value) {
     if (value == null) return "";
-    var url = String(value).trim();
-    return url;
+    return String(value).trim();
   }
 
   function applyLinkToAnchor(a, cfg) {
@@ -113,7 +115,7 @@
     var openNew = !!(cfg && cfg.newTab);
 
     if (!url) {
-      // 비활성: href="#" 유지 + 클릭 방지 플래그 + 스타일용 클래스
+      // 비활성 링크: 클릭 시 페이지 점프 방지
       a.setAttribute("href", "#");
       a.setAttribute("data-disabled-link", "true");
       a.classList.add("is-disabled-link");
@@ -122,7 +124,7 @@
       return;
     }
 
-    // 활성 링크 적용
+    // 활성 링크
     a.setAttribute("href", url);
     a.removeAttribute("data-disabled-link");
     a.classList.remove("is-disabled-link");
@@ -137,13 +139,6 @@
   }
 
   function initAutoLinks() {
-    /*
-      사용 방법:
-      1) HTML에서 <a data-link-key="..."> 를 붙인다.
-      2) main.js의 LINK_MAP에서 같은 key에 url을 넣는다.
-         - url이 비어있으면 비활성(클릭 막힘)
-         - url이 있으면 자동 연결
-    */
     var nodes = document.querySelectorAll("a[data-link-key]");
     if (!nodes.length) return;
 
@@ -151,7 +146,7 @@
       var key = a.getAttribute("data-link-key") || "";
       var cfg = LINK_MAP[key];
 
-      // cfg가 없으면 실수 방지를 위해 비활성 처리
+      // 맵에 키가 없으면 실수 방지를 위해 비활성 처리
       if (!cfg) cfg = { url: "", newTab: true };
 
       applyLinkToAnchor(a, cfg);
@@ -159,7 +154,6 @@
   }
 
   function disablePlaceholderLinks() {
-    // 비활성 링크(placeholder)는 클릭 시 페이지 점프 방지
     var links = document.querySelectorAll('a[data-disabled-link="true"]');
     if (!links.length) return;
 
@@ -170,29 +164,31 @@
     });
   }
 
+  /* =========================================================
+     4) Page Enter Animation 트리거
+     - CSS는 body.is-ready가 있을 때만 애니메이션을 시작
+     - bfcache 복원(pageshow persisted)에서도 다시 트리거
+     ========================================================= */
   function triggerPageEnter() {
     function run() {
+      // 강제로 reflow를 유도해서 애니메이션이 항상 재시작되게 함
       document.body.classList.remove("is-ready");
-      window.requestAnimationFrame(function () {
-        document.body.classList.add("is-ready");
-      });
+      void document.body.offsetWidth;
+      document.body.classList.add("is-ready");
     }
 
     run();
 
     window.addEventListener("pageshow", function (e) {
+      // Safari/모바일에서 뒤로가기(bfcache) 복원 시 애니메이션이 안 도는 문제 방지
       if (e && e.persisted) run();
     });
   }
 
   function boot() {
     initLucide();
-
-    // 링크 자동 주입은 아이콘 svg 변환과 무관하지만,
-    // DOM이 준비된 시점에 한번만 적용하면 된다.
     initAutoLinks();
     disablePlaceholderLinks();
-
     initCopyButtons();
     triggerPageEnter();
   }
