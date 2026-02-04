@@ -15,8 +15,8 @@
 <body>
   <div class="bg" aria-hidden="true"></div>
 
-  <div class="container page-enter">
-    <nav class="topnav" aria-label="Primary">
+  <div class="container">
+    <nav class="topnav page-enter" aria-label="Primary">
       <div class="navpill">
         <a class="active" href="./index.html">
           <i data-lucide="home"></i> Home
@@ -28,7 +28,6 @@
     </nav>
 
     <div class="layout">
-      <!-- Left: Profile -->
       <aside class="profile-wrap">
         <section class="card profile" aria-label="Profile">
           <div class="photo">
@@ -74,8 +73,7 @@
         </section>
       </aside>
 
-      <!-- Right: Main -->
-      <main>
+      <main class="page-enter">
         <section class="card hero" aria-label="Intro">
           <div class="card-inner">
             <h1>Hello!</h1>
@@ -94,12 +92,10 @@
               Research Interests
             </div>
 
-            <!-- Multimodal Learning -->
             <div class="row">
               <div class="row-left">
-                <!-- 링크 키만 지정: 실제 URL은 main.js의 LINK_MAP에서 관리 -->
                 <a class="icon-link" data-link-key="idx.mm.icon" href="#" aria-label="Multimodal Learning icon link">
-                  <div class="badge-ic" role="link">
+                  <div class="badge-ic">
                     <i data-lucide="layers"></i>
                   </div>
                 </a>
@@ -113,23 +109,22 @@
               </div>
 
               <div class="pills two-cols" aria-label="Multimodal categories">
-                <a class="pill pill-link" data-link-key="idx.mm.text" href="#" aria-label="Text pill link">
+                <a class="pill" data-link-key="idx.mm.text" href="#" aria-label="Text pill link">
                   <i data-lucide="type"></i> Text
                 </a>
-                <a class="pill pill-link" data-link-key="idx.mm.image" href="#" aria-label="Image pill link">
+                <a class="pill" data-link-key="idx.mm.image" href="#" aria-label="Image pill link">
                   <i data-lucide="image"></i> Image
                 </a>
-                <a class="pill pill-link" data-link-key="idx.mm.audio" href="#" aria-label="Audio pill link">
+                <a class="pill" data-link-key="idx.mm.audio" href="#" aria-label="Audio pill link">
                   <i data-lucide="audio-lines"></i> Audio
                 </a>
               </div>
             </div>
 
-            <!-- Digital Therapeutics -->
             <div class="row">
               <div class="row-left">
                 <a class="icon-link" data-link-key="idx.dt.icon" href="#" aria-label="Digital Therapeutics icon link">
-                  <div class="badge-ic" role="link">
+                  <div class="badge-ic">
                     <i data-lucide="heart-pulse"></i>
                   </div>
                 </a>
@@ -143,13 +138,13 @@
               </div>
 
               <div class="pills two-cols" aria-label="Digital therapeutics domains">
-                <a class="pill pill-link" data-link-key="idx.dt.mental" href="#" aria-label="Mental Health pill link">
+                <a class="pill" data-link-key="idx.dt.mental" href="#" aria-label="Mental Health pill link">
                   <i data-lucide="brain"></i> Mental Health
                 </a>
-                <a class="pill pill-link" data-link-key="idx.dt.oph" href="#" aria-label="Ophthalmology pill link">
+                <a class="pill" data-link-key="idx.dt.oph" href="#" aria-label="Ophthalmology pill link">
                   <i data-lucide="eye"></i> Ophthalmology
                 </a>
-                <a class="pill pill-link" data-link-key="idx.dt.audio" href="#" aria-label="Audiology pill link">
+                <a class="pill" data-link-key="idx.dt.audio" href="#" aria-label="Audiology pill link">
                   <i data-lucide="ear"></i> Audiology
                 </a>
               </div>
@@ -166,7 +161,7 @@
 
             <div class="item">
               <a class="icon-link" data-link-key="idx.proj.mind" href="#" aria-label="MIND project icon link">
-                <div class="proj-ic" role="link">
+                <div class="proj-ic">
                   <i data-lucide="bot"></i>
                 </div>
               </a>
@@ -181,7 +176,7 @@
 
             <div class="item">
               <a class="icon-link" data-link-key="idx.proj.biasqa" href="#" aria-label="BiasQA project icon link">
-                <div class="proj-ic" role="link">
+                <div class="proj-ic">
                   <i data-lucide="help-circle"></i>
                 </div>
               </a>
