@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Minseok Kim</title>
 
+  <!-- Font: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,7 +16,8 @@
 <body>
   <div class="bg" aria-hidden="true"></div>
 
-  <div class="container">
+  <!-- page-enter: 페이지 진입 애니메이션 대상 -->
+  <div class="container page-enter">
     <nav class="topnav" aria-label="Primary">
       <div class="navpill">
         <a class="active" href="./index.html">
@@ -28,6 +30,7 @@
     </nav>
 
     <div class="layout">
+      <!-- Left: Profile (shared) -->
       <aside class="profile-wrap">
         <section class="card profile" aria-label="Profile">
           <div class="photo">
@@ -39,6 +42,8 @@
           <div class="contacts" aria-label="Contacts">
             <div class="contact-row">
               <i data-lucide="mail"></i>
+
+              <!-- Click-to-copy only (no mailto) -->
               <button
                 class="copy-text"
                 type="button"
@@ -48,6 +53,7 @@
               >
                 seo9ky@g.skku.edu
               </button>
+
               <span class="copy-toast" aria-live="polite" aria-atomic="true">Copied!</span>
             </div>
 
@@ -57,6 +63,7 @@
             </div>
           </div>
 
+          <!-- Divider -->
           <div class="divider divider-inset" aria-hidden="true"></div>
 
           <a class="school-link" href="https://www.skku.edu/skku/index.do" target="_blank" rel="noopener">
@@ -71,6 +78,7 @@
         </section>
       </aside>
 
+      <!-- Right: Main content -->
       <main>
         <section class="card hero" aria-label="Intro">
           <div class="card-inner">
@@ -90,9 +98,23 @@
               Research Interests
             </div>
 
+            <!-- Row 1 -->
             <div class="row">
               <div class="row-left">
-                <div class="badge-ic"><i data-lucide="layers"></i></div>
+                <!--
+                  링크 연결 방법:
+                  1) 아래 TODO_LINK 주석의 URL을 href에 넣기
+                  2) data-disabled-link="true" 삭제하기
+                  3) 필요하면 target/rel 추가하기
+
+                  TODO_LINK: href="https://example.com" target="_blank" rel="noopener"
+                -->
+                <a class="icon-link" href="#" data-disabled-link="true" aria-label="Multimodal Learning icon link">
+                  <div class="badge-ic" role="link">
+                    <i data-lucide="layers"></i>
+                  </div>
+                </a>
+
                 <div>
                   <p class="title">Multimodal Learning</p>
                   <p class="desc">
@@ -102,15 +124,40 @@
               </div>
 
               <div class="pills two-cols" aria-label="Multimodal categories">
-                <div class="pill"><i data-lucide="type"></i> Text</div>
-                <div class="pill"><i data-lucide="image"></i> Image</div>
-                <div class="pill"><i data-lucide="audio-lines"></i> Audio</div>
+                <!--
+                  링크 연결 방법(각 pill 공통):
+                  1) TODO_LINK 주석의 URL을 href에 넣기
+                  2) data-disabled-link="true" 삭제하기
+                -->
+                <!-- TODO_LINK: href="https://example.com" target="_blank" rel="noopener" -->
+                <a class="pill pill-link" href="#" data-disabled-link="true" aria-label="Text pill link">
+                  <i data-lucide="type"></i> Text
+                </a>
+
+                <!-- TODO_LINK: href="https://example.com" target="_blank" rel="noopener" -->
+                <a class="pill pill-link" href="#" data-disabled-link="true" aria-label="Image pill link">
+                  <i data-lucide="image"></i> Image
+                </a>
+
+                <!-- TODO_LINK: href="https://example.com" target="_blank" rel="noopener" -->
+                <a class="pill pill-link" href="#" data-disabled-link="true" aria-label="Audio pill link">
+                  <i data-lucide="audio-lines"></i> Audio
+                </a>
               </div>
             </div>
 
+            <!-- Row 2 -->
             <div class="row">
               <div class="row-left">
-                <div class="badge-ic"><i data-lucide="heart-pulse"></i></div>
+                <!--
+                  TODO_LINK: href="https://example.com" target="_blank" rel="noopener"
+                -->
+                <a class="icon-link" href="#" data-disabled-link="true" aria-label="Digital Therapeutics icon link">
+                  <div class="badge-ic" role="link">
+                    <i data-lucide="heart-pulse"></i>
+                  </div>
+                </a>
+
                 <div>
                   <p class="title">Digital Therapeutics</p>
                   <p class="desc">
@@ -120,9 +167,20 @@
               </div>
 
               <div class="pills two-cols" aria-label="Digital therapeutics domains">
-                <div class="pill"><i data-lucide="brain"></i> Mental Health</div>
-                <div class="pill"><i data-lucide="eye"></i> Ophthalmology</div>
-                <div class="pill"><i data-lucide="ear"></i> Audiology</div>
+                <!-- TODO_LINK: href="https://example.com" target="_blank" rel="noopener" -->
+                <a class="pill pill-link" href="#" data-disabled-link="true" aria-label="Mental Health pill link">
+                  <i data-lucide="brain"></i> Mental Health
+                </a>
+
+                <!-- TODO_LINK: href="https://example.com" target="_blank" rel="noopener" -->
+                <a class="pill pill-link" href="#" data-disabled-link="true" aria-label="Ophthalmology pill link">
+                  <i data-lucide="eye"></i> Ophthalmology
+                </a>
+
+                <!-- TODO_LINK: href="https://example.com" target="_blank" rel="noopener" -->
+                <a class="pill pill-link" href="#" data-disabled-link="true" aria-label="Audiology pill link">
+                  <i data-lucide="ear"></i> Audiology
+                </a>
               </div>
             </div>
           </div>
@@ -136,7 +194,15 @@
             </div>
 
             <div class="item">
-              <div class="proj-ic"><i data-lucide="bot"></i></div>
+              <!--
+                TODO_LINK: href="https://example.com" target="_blank" rel="noopener"
+              -->
+              <a class="icon-link" href="#" data-disabled-link="true" aria-label="MIND project icon link">
+                <div class="proj-ic" role="link">
+                  <i data-lucide="bot"></i>
+                </div>
+              </a>
+
               <div>
                 <p class="name">MIND</p>
                 <p class="summary">
@@ -146,7 +212,15 @@
             </div>
 
             <div class="item">
-              <div class="proj-ic"><i data-lucide="help-circle"></i></div>
+              <!--
+                TODO_LINK: href="https://example.com" target="_blank" rel="noopener"
+              -->
+              <a class="icon-link" href="#" data-disabled-link="true" aria-label="BiasQA project icon link">
+                <div class="proj-ic" role="link">
+                  <i data-lucide="help-circle"></i>
+                </div>
+              </a>
+
               <div>
                 <p class="name">BiasQA</p>
                 <p class="summary">
@@ -160,6 +234,7 @@
     </div>
   </div>
 
+  <!-- Scripts: lucide must be before main.js -->
   <script defer src="https://unpkg.com/lucide@latest"></script>
   <script defer src="./main.js"></script>
 </body>
