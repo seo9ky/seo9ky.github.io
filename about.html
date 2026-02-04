@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Minseok Kim – About</title>
 
+  <!-- Font: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,7 +16,8 @@
 <body>
   <div class="bg" aria-hidden="true"></div>
 
-  <div class="container">
+  <!-- page-enter: 페이지 진입 애니메이션 대상 -->
+  <div class="container page-enter">
     <nav class="topnav" aria-label="Primary">
       <div class="navpill">
         <a href="./index.html">
@@ -28,6 +30,7 @@
     </nav>
 
     <div class="layout">
+      <!-- Left: Profile (shared) -->
       <aside class="profile-wrap">
         <section class="card profile" aria-label="Profile">
           <div class="photo">
@@ -39,6 +42,8 @@
           <div class="contacts" aria-label="Contacts">
             <div class="contact-row">
               <i data-lucide="mail"></i>
+
+              <!-- Click-to-copy only (no mailto) -->
               <button
                 class="copy-text"
                 type="button"
@@ -48,6 +53,7 @@
               >
                 seo9ky@g.skku.edu
               </button>
+
               <span class="copy-toast" aria-live="polite" aria-atomic="true">Copied!</span>
             </div>
 
@@ -57,6 +63,7 @@
             </div>
           </div>
 
+          <!-- Divider -->
           <div class="divider divider-inset" aria-hidden="true"></div>
 
           <a class="school-link" href="https://www.skku.edu/skku/index.do" target="_blank" rel="noopener">
@@ -71,6 +78,7 @@
         </section>
       </aside>
 
+      <!-- Right: About content -->
       <main>
         <section class="card listcard" aria-label="Education">
           <div class="card-inner">
@@ -80,7 +88,15 @@
             </div>
 
             <div class="entry">
-              <div class="entry-ic"><i data-lucide="university"></i></div>
+              <!--
+                TODO_LINK: href="https://example.com" target="_blank" rel="noopener"
+              -->
+              <a class="icon-link" href="#" data-disabled-link="true" aria-label="Sungkyunkwan University education icon link">
+                <div class="entry-ic" role="link">
+                  <i data-lucide="university"></i>
+                </div>
+              </a>
+
               <div>
                 <p class="headline">Sungkyunkwan University</p>
                 <p class="sub">Seoul, Republic of Korea</p>
@@ -107,7 +123,15 @@
             </div>
 
             <div class="entry">
-              <div class="entry-ic"><i data-lucide="building-2"></i></div>
+              <!--
+                TODO_LINK: href="https://example.com" target="_blank" rel="noopener"
+              -->
+              <a class="icon-link" href="#" data-disabled-link="true" aria-label="DSAIL@SKKU experience icon link">
+                <div class="entry-ic" role="link">
+                  <i data-lucide="building-2"></i>
+                </div>
+              </a>
+
               <div>
                 <p class="headline">DSAIL@SKKU</p>
                 <p class="sub">Seoul, Republic of Korea</p>
@@ -120,6 +144,7 @@
     </div>
   </div>
 
+  <!-- Scripts: lucide must be before main.js -->
   <script defer src="https://unpkg.com/lucide@latest"></script>
   <script defer src="./main.js"></script>
 </body>
