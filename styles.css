@@ -1,6 +1,5 @@
 /* =========================================================
    1) Design Tokens
-   - 전체 톤을 바꾸고 싶으면 여기부터 조정
    ========================================================= */
 :root{
   --bg-base: #edf4ff;
@@ -27,10 +26,8 @@
   --container: 1040px;
   --gap: 26px;
 
-  /* 오른쪽 박스의 얇은 선 느낌을 공통화 */
   --divider: 1px solid rgba(30,64,175,0.08);
 
-  /* 버튼처럼 보이게 하는 hover 공통값 */
   --hover-bg: rgba(255,255,255,0.72);
   --hover-border: rgba(59,114,255,0.22);
 }
@@ -130,9 +127,7 @@ a:hover{ text-decoration:underline; }
   border-color: rgba(59,114,255,0.18);
 }
 
-.navpill a:active{
-  transform: translateY(0);
-}
+.navpill a:active{ transform: translateY(0); }
 
 .navpill a:focus-visible{
   outline: 2px solid rgba(59,114,255,0.25);
@@ -152,7 +147,7 @@ a:hover{ text-decoration:underline; }
   align-items:start;
 }
 
-/* 데스크탑에서 프로필 카드가 스크롤을 따라다니도록 sticky 유지 */
+/* 프로필 카드 스크롤 따라다니기: 데스크탑에서 sticky 유지 */
 .profile-wrap{
   position: sticky;
   top: 26px;
@@ -161,7 +156,6 @@ a:hover{ text-decoration:underline; }
 
 @media (max-width: 980px){
   .layout{ grid-template-columns: 1fr; }
-  /* 모바일에서는 sticky 해제(좁은 화면에서 UX 안정) */
   .profile-wrap{ position:static !important; top:auto !important; }
 }
 
@@ -198,21 +192,13 @@ a:hover{ text-decoration:underline; }
 .section-gap{ margin-top:18px; }
 
 /* =========================================================
-   6) Divider (얇은 선)
+   6) Divider
    ========================================================= */
-.divider{
-  border-top: var(--divider);
-}
-
-/* 프로필 contacts padding(20px)과 맞춘 inset divider */
-.divider-inset{
-  margin:16px 20px;
-}
+.divider{ border-top: var(--divider); }
+.divider-inset{ margin:16px 20px; }
 
 /* =========================================================
    6-1) Hover Button Feel (아이콘/알약 공통)
-   - 지금은 클릭 기능이 없어도, hover 시 버튼처럼 보이도록
-   - 나중에 <a> 또는 <button>으로 바꿔도 동일하게 동작
    ========================================================= */
 .pill,
 .badge-ic,
@@ -240,7 +226,6 @@ a:hover{ text-decoration:underline; }
   transform: translateY(0);
 }
 
-/* 접근성: 실제로 a/button으로 바뀌었을 때 포커스 링 표시 */
 .pill:focus-visible,
 .badge-ic:focus-visible,
 .proj-ic:focus-visible,
@@ -250,14 +235,13 @@ a:hover{ text-decoration:underline; }
 }
 
 /* =========================================================
-   6-2) Icon/Pill Link Wrapper
-   - 아이콘/알약을 <a>로 만들었을 때 밑줄/색/레이아웃이 깨지지 않게
+   6-2) 링크 래퍼 스타일 (아이콘/알약을 <a>로 만들었을 때 깨짐 방지)
    ========================================================= */
 a.icon-link{
   display:inline-flex;
   text-decoration:none;
   color: inherit;
-  line-height: 0; /* SVG 주변 미세 여백 방지 */
+  line-height: 0;
 }
 a.icon-link:hover{ text-decoration:none; }
 a.icon-link:focus-visible{
@@ -266,19 +250,22 @@ a.icon-link:focus-visible{
   border-radius: 12px;
 }
 
-/* pill을 <a>로 바꿔도 색/밑줄 유지 */
+/* pill이 <a>여도 밑줄/색 깨지지 않게 */
 a.pill{
   color: rgba(15,23,42,0.78);
   text-decoration:none;
 }
 a.pill:hover{ text-decoration:none; }
 
+/* 링크가 비활성일 때도 "버튼처럼" 보이게 (커서/호버는 유지) */
+a.is-disabled-link{
+  pointer-events: auto;
+}
+
 /* =========================================================
    7) Profile Card
    ========================================================= */
-.profile{
-  padding: 20px 18px;
-}
+.profile{ padding: 20px 18px; }
 
 .profile .photo{
   width:100%;
@@ -289,11 +276,7 @@ a.pill:hover{ text-decoration:none; }
   box-shadow: var(--shadow-soft);
 }
 
-.profile .photo img{
-  width:100%;
-  height:auto;
-  display:block;
-}
+.profile .photo img{ width:100%; height:auto; display:block; }
 
 .profile .name{
   margin:20px 0 18px;
@@ -321,7 +304,6 @@ a.pill:hover{ text-decoration:none; }
   position: relative;
 }
 
-/* 아이콘이 텍스트 길이에 의해 줄어드는 현상 방지 */
 .contact-row svg{
   width:16px;
   height:16px;
@@ -338,7 +320,7 @@ a.pill:hover{ text-decoration:none; }
 .contact-row a:hover{ text-decoration:underline; }
 
 /* =========================================================
-   8) Copy-to-clipboard (text-only)
+   8) Copy-to-clipboard
    ========================================================= */
 .copy-text{
   padding:0;
@@ -353,7 +335,6 @@ a.pill:hover{ text-decoration:none; }
   text-align:left;
   line-height:1.2;
 }
-
 .copy-text:hover{ text-decoration: underline; }
 
 .copy-text:focus-visible{
@@ -373,11 +354,7 @@ a.pill:hover{ text-decoration:none; }
   transition: opacity .12s ease, transform .12s ease;
   pointer-events:none;
 }
-
-.copy-toast.show{
-  opacity:1;
-  transform: translateY(0);
-}
+.copy-toast.show{ opacity:1; transform: translateY(0); }
 
 /* =========================================================
    9) School Link
@@ -444,9 +421,7 @@ a.pill:hover{ text-decoration:none; }
 /* =========================================================
    10) Hero
    ========================================================= */
-.hero{
-  padding:22px 24px;
-}
+.hero{ padding:22px 24px; }
 
 .hero h1{
   margin:0;
@@ -477,13 +452,9 @@ a.pill:hover{ text-decoration:none; }
   border-top:none;
   padding-top:0;
 }
-
 .interests .row:last-child{ padding-bottom:0; }
 
-.row-left{
-  display:flex;
-  gap:12px;
-}
+.row-left{ display:flex; gap:12px; }
 
 .badge-ic{
   width:34px;
@@ -594,7 +565,7 @@ a.pill:hover{ text-decoration:none; }
 }
 
 /* =========================================================
-   13) About: listcard (Education / Experiences)
+   13) About: listcard
    ========================================================= */
 .listcard .entry{
   display:flex;
@@ -646,27 +617,21 @@ a.pill:hover{ text-decoration:none; }
 }
 
 /* =========================================================
-   14) Responsive (Mobile / Tablet)
-   - 맨 아래에 추가해서 기존 스타일을 덮어쓰기 방식으로 안정화
+   14) Responsive
    ========================================================= */
-
-/* 1) 태블릿/작은 노트북: 좌측 폭을 약간 유연하게 */
 @media (max-width: 1100px){
   .layout{
     grid-template-columns: minmax(260px, 300px) 1fr;
   }
 }
 
-/* 2) 모바일 전환: 1컬럼 + sticky 해제 */
 @media (max-width: 980px){
   .container{
     width: calc(100% - 28px);
     padding: 22px 0 52px;
   }
 
-  .topnav{
-    margin-bottom: 14px;
-  }
+  .topnav{ margin-bottom: 14px; }
 
   .layout{
     grid-template-columns: 1fr;
@@ -684,42 +649,28 @@ a.pill:hover{ text-decoration:none; }
     margin: 0 auto;
   }
 
-  .card-inner{
-    padding: 18px;
-  }
+  .card-inner{ padding: 18px; }
 
-  .hero{
-    padding: 18px 18px;
-  }
+  .hero{ padding: 18px 18px; }
+  .hero h1{ font-size: 28px; }
 
-  .hero h1{
-    font-size: 28px;
-  }
-
-  .profile .name{
-    font-size: 28px;
-  }
+  .profile .name{ font-size: 28px; }
 
   .interests .row{
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  .pills{
-    justify-items: start;
-  }
+  .pills{ justify-items: start; }
 }
 
-/* 3) 작은 모바일: 가로 넘침 방지 */
 @media (max-width: 560px){
   .navpill{
     flex-wrap: wrap;
     justify-content: flex-end;
   }
 
-  .navpill a{
-    padding: 9px 12px;
-  }
+  .navpill a{ padding: 9px 12px; }
 
   .pills.two-cols{
     grid-template-columns: 1fr 1fr;
@@ -748,28 +699,13 @@ a.pill:hover{ text-decoration:none; }
   .card-title{ font-size: 17px; }
 }
 
-/* 4) 초소형: 카드 패딩 축소 */
 @media (max-width: 420px){
-  .container{
-    width: calc(100% - 22px);
-  }
+  .container{ width: calc(100% - 22px); }
+  .card-inner{ padding: 16px; }
+  .hero h1{ font-size: 24px; }
+  .profile .name{ font-size: 26px; }
 
-  .card-inner{
-    padding: 16px;
-  }
-
-  .hero h1{
-    font-size: 24px;
-  }
-
-  .profile .name{
-    font-size: 26px;
-  }
-
-  .pills.two-cols{
-    grid-template-columns: 1fr;
-  }
-
+  .pills.two-cols{ grid-template-columns: 1fr; }
   .pill{
     justify-content: flex-start;
     text-align: left;
@@ -778,38 +714,22 @@ a.pill:hover{ text-decoration:none; }
 
 /* =========================================================
    15) Page Enter Animation (fade + slide-down)
-   - CSS만으로는 bfcache(뒤로가기/앞으로가기)에서 재생이 안 되는 경우가 있어
-     body에 클래스를 JS로 붙여서 확실히 트리거되도록 설계
    ========================================================= */
 @keyframes pageEnter{
-  from{
-    opacity: 0;
-    transform: translateY(-14px);
-  }
-  to{
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from{ opacity: 0; transform: translateY(-14px); }
+  to{ opacity: 1; transform: translateY(0); }
 }
 
-/* 초기 상태: JS가 is-ready를 붙이기 전까지는 숨김/이동 상태 */
 .page-enter{
   opacity: 0;
   transform: translateY(-14px);
 }
 
-/* JS가 body에 is-ready를 붙이면 애니메이션 실행 */
 body.is-ready .page-enter{
   animation: pageEnter 560ms ease-out both;
 }
 
-/* 접근성: 모션 줄이기 설정 사용자는 애니메이션 제거 */
 @media (prefers-reduced-motion: reduce){
-  .page-enter{
-    opacity: 1;
-    transform: none;
-  }
-  body.is-ready .page-enter{
-    animation: none;
-  }
+  .page-enter{ opacity: 1; transform: none; }
+  body.is-ready .page-enter{ animation: none; }
 }
