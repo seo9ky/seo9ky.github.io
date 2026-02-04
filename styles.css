@@ -758,3 +758,30 @@ a:hover{ text-decoration:underline; }
     text-align: left;
   }
 }
+
+/* =========================================================
+   15) Page Enter Animation (fade + slide-down)
+   - index / about 진입 시 자연스럽게 페이드 + 살짝 내려오는 효과
+   ========================================================= */
+@keyframes pageEnter{
+  from{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 페이지 본문 컨테이너에 진입 애니메이션 적용 */
+.container{
+  animation: pageEnter 420ms ease-out both;
+}
+
+/* 접근성: 모션 줄이기 설정 사용자는 애니메이션 제거 */
+@media (prefers-reduced-motion: reduce){
+  .container{
+    animation: none;
+  }
+}
